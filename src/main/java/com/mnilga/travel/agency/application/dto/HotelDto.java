@@ -11,8 +11,8 @@ public class HotelDto {
     private String name;
     private String country;
     private String city;
-    private List<RoomDto> rooms = new ArrayList<>();
-    private List<OrderDto> orders = new ArrayList<>();
+//    private List<RoomDto> rooms = new ArrayList<>();
+//    private List<OrderDto> orders = new ArrayList<>();
 
 
     public String getHotelId() {

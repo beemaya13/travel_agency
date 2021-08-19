@@ -2,9 +2,11 @@ package com.mnilga.travel.agency.application.service.impl;
 
 import com.mnilga.travel.agency.application.model.Order;
 import com.mnilga.travel.agency.application.service.OrderService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class OrderServiceImpl implements OrderService {
     @Override
     public void addOrder(Order order) {

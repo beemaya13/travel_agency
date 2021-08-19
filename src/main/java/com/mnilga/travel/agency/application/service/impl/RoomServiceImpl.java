@@ -3,10 +3,12 @@ package com.mnilga.travel.agency.application.service.impl;
 import com.mnilga.travel.agency.application.model.Hotel;
 import com.mnilga.travel.agency.application.model.Room;
 import com.mnilga.travel.agency.application.service.RoomService;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
 
+@Service
 public class RoomServiceImpl implements RoomService {
     @Override
     public boolean addRoom(Room room) {
