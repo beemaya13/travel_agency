@@ -1,14 +1,16 @@
 package com.mnilga.travel.agency.application.dto;
 
-public class RoleDto {
-    String roleId;
-    String name;
+import java.util.UUID;
 
-    public String getRoleId() {
+public class RoleDto {
+    private UUID roleId;
+    private String name;
+
+    public UUID getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(String roleId) {
+    public void setRoleId(UUID roleId) {
         this.roleId = roleId;
     }
 

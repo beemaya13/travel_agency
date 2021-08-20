@@ -1,29 +1,38 @@
 package com.mnilga.travel.agency.application.dto;
 
-import java.util.ArrayList;
+import java.util.UUID;
 
 public class RoomDto {
-    private String roomId;
-    private String number;
+    private UUID roomId;
+    private Integer roomNumber;
     private String roomType;
-    private String price;
+    private Double price;
     private HotelDto hotel;
 //    private List<OrderDto> orders = new ArrayList<>();
 
-    public String getRoomId() {
+
+    public UUID getRoomId() {
         return roomId;
     }
 
-    public void setRoomId(String roomId) {
+    public void setRoomId(UUID roomId) {
         this.roomId = roomId;
     }
 
-    public String getNumber() {
-        return number;
+    public Integer getRoomNumber() {
+        return roomNumber;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setRoomNumber(Integer roomNumber) {
+        this.roomNumber = roomNumber;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
     public String getRoomType() {
@@ -32,14 +41,6 @@ public class RoomDto {
 
     public void setRoomType(String roomType) {
         this.roomType = roomType;
-    }
-
-    public String getPrice() {
-        return price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
     }
 
     public HotelDto getHotel() {
@@ -54,7 +55,7 @@ public class RoomDto {
     public String toString() {
         return "RoomDto{" +
                 "roomId='" + roomId + '\'' +
-                ", number='" + number + '\'' +
+                ", number='" + roomNumber + '\'' +
                 ", roomType='" + roomType + '\'' +
                 ", price='" + price + '\'' +
                 ", hotel=" + hotel +

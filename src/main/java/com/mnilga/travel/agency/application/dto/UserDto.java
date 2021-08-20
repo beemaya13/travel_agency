@@ -1,23 +1,21 @@
 package com.mnilga.travel.agency.application.dto;
 
-import com.mnilga.travel.agency.application.model.Role;
-import com.mnilga.travel.agency.application.model.User;
 
 import java.util.UUID;
 
 public class UserDto {
-    private String id;
+    private UUID id;
     private String email;
     private String firstName;
     private String lastName;
     private String sex;
     private RoleDto role;
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

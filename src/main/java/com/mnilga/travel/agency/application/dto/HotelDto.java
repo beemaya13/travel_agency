@@ -1,13 +1,10 @@
 package com.mnilga.travel.agency.application.dto;
 
-import com.mnilga.travel.agency.application.model.Order;
-import com.mnilga.travel.agency.application.model.Room;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.UUID;
 
 public class HotelDto {
-    private String hotelId;
+    private UUID hotelId;
     private String name;
     private String country;
     private String city;
@@ -15,11 +12,11 @@ public class HotelDto {
 //    private List<OrderDto> orders = new ArrayList<>();
 
 
-    public String getHotelId() {
+    public UUID getHotelId() {
         return hotelId;
     }
 
-    public void setHotelId(String hotelId) {
+    public void setHotelId(UUID hotelId) {
         this.hotelId = hotelId;
     }
 

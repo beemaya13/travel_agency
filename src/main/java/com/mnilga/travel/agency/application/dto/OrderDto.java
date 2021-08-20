@@ -4,9 +4,10 @@ import com.mnilga.travel.agency.application.model.Hotel;
 import com.mnilga.travel.agency.application.model.Room;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 public class OrderDto {
-    private String orderId;
+    private UUID orderId;
     private UserDto user;
     private HotelDto hotel;
     private RoomDto room;
@@ -14,11 +15,11 @@ public class OrderDto {
     private String departureDate;
     private String orderDate;
 
-    public String getOrderId() {
+    public UUID getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(String orderId) {
+    public void setOrderId(UUID orderId) {
         this.orderId = orderId;
     }
 
