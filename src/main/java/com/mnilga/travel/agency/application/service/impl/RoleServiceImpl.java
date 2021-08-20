@@ -22,12 +22,11 @@ public class RoleServiceImpl implements RoleService {
         this.service = service;
     }
 
-    public void test(){
+    public void testDto(){
         Role role = new Role();
         role.setId(UUID.randomUUID());
         role.setName("Admin");
-        RoleDto roleDto = new RoleDto();
-        roleDto = service.convert(role, RoleDto.class);
+        RoleDto roleDto = service.convert(role, RoleDto.class);
         System.out.println(roleDto);
     }
 
