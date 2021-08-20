@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "role")
+@Table(name = "roles")
 public class Role extends Audit{
 
     @Column(nullable = false)
