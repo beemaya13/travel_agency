@@ -9,11 +9,11 @@ import java.util.List;
 public class Room extends Audit {
 
     @Column(nullable = false)
-    private Integer number;
+    private Integer roomNumber;
 
     @Column
     @Enumerated(EnumType.STRING)
-    private RoomType type;
+    private RoomType roomType;
 
     @Column(nullable = false)
     private Double price;
@@ -31,20 +31,20 @@ public class Room extends Audit {
         SINGLE, DOUBLE, FAMILY, DELUXE;
     }
 
-    public Integer getNumber() {
-        return number;
+    public Integer getRoomNumber() {
+        return roomNumber;
     }
 
-    public void setNumber(Integer number) {
-        this.number = number;
+    public void setRoomNumber(Integer roomNumber) {
+        this.roomNumber = roomNumber;
     }
 
-    public RoomType getType() {
-        return type;
+    public RoomType getRoomType() {
+        return roomType;
     }
 
-    public void setType(RoomType type) {
-        this.type = type;
+    public void setRoomType(RoomType type) {
+        this.roomType = type;
     }
 
     public Double getPrice() {
