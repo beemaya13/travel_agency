@@ -3,7 +3,6 @@ package com.mnilga.travel.agency.application.converter;
 
 import com.mnilga.travel.agency.application.dto.RoleDto;
 import com.mnilga.travel.agency.application.dto.UserDto;
-import com.mnilga.travel.agency.application.model.Role;
 import com.mnilga.travel.agency.application.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;

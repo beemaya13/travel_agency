@@ -4,10 +4,10 @@ package com.mnilga.travel.agency.application.dto;
 import java.util.UUID;
 
 public class HotelDto {
-    private UUID hotelId;
-    private String name;
-    private String country;
-    private String city;
+    private UUID hotelId = UUID.randomUUID();
+    private String name = "";
+    private String country = "";
+    private String city = "";
 //    private List<RoomDto> rooms = new ArrayList<>();
 //    private List<OrderDto> orders = new ArrayList<>();
 

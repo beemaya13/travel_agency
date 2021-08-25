@@ -19,9 +19,9 @@ public abstract class Audit {
     @Column(nullable = false)
     private LocalDateTime dateCreated = LocalDateTime.now();
 
-    private LocalDateTime dateUpdated;
+    private LocalDateTime dateUpdated = LocalDateTime.now();
 
-    private LocalDateTime dateDeleted;
+    private LocalDateTime dateDeleted = LocalDateTime.now();
 
     public UUID getId() {
         return id;

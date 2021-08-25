@@ -3,11 +3,11 @@ package com.mnilga.travel.agency.application.dto;
 import java.util.UUID;
 
 public class RoomDto {
-    private UUID roomId;
-    private Integer roomNumber;
-    private String roomType;
-    private Double price;
-    private HotelDto hotel;
+    private UUID roomId = UUID.randomUUID();
+    private Integer roomNumber = 0;
+    private String roomType = "";
+    private Double price = 0.0;
+    private HotelDto hotel = new HotelDto();
 //    private List<OrderDto> orders = new ArrayList<>();
 
 

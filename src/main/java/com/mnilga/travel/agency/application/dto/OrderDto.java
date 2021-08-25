@@ -7,13 +7,13 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 public class OrderDto {
-    private UUID orderId;
-    private UserDto user;
-    private HotelDto hotel;
-    private RoomDto room;
-    private String arrivalDate;
-    private String departureDate;
-    private String orderDate;
+    private UUID orderId = UUID.randomUUID();
+    private UserDto user = new UserDto();
+    private HotelDto hotel = new HotelDto();
+    private RoomDto room = new RoomDto();
+    private LocalDate arrivalDate = LocalDate.ofEpochDay(0);
+    private LocalDate departureDate = LocalDate.ofEpochDay(0);
+    private LocalDate orderDate = LocalDate.ofEpochDay(0);
 
     public UUID getOrderId() {
         return orderId;
@@ -47,27 +47,27 @@ public class OrderDto {
         this.room = room;
     }
 
-    public String getArrivalDate() {
+    public LocalDate getArrivalDate() {
         return arrivalDate;
     }
 
-    public void setArrivalDate(String arrivalDate) {
+    public void setArrivalDate(LocalDate arrivalDate) {
         this.arrivalDate = arrivalDate;
     }
 
-    public String getDepartureDate() {
+    public LocalDate getDepartureDate() {
         return departureDate;
     }
 
-    public void setDepartureDate(String departureDate) {
+    public void setDepartureDate(LocalDate departureDate) {
         this.departureDate = departureDate;
     }
 
-    public String getOrderDate() {
+    public LocalDate getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(String orderDate) {
+    public void setOrderDate(LocalDate orderDate) {
         this.orderDate = orderDate;
     }
 

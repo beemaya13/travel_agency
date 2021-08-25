@@ -13,20 +13,20 @@ public class User extends Audit {
     @Email(message = "Incorrect email")
     @NotBlank(message = "Email cannot be empty♥")
     @Column(nullable = false, unique = true)
-    private String email;
+    private String email = "";
 
     @Column(name = "first_name", nullable = false)
-    private String firstName;
+    private String firstName = "";
 
     @Column(name = "last_name", nullable = false)
-    private String lastName;
+    private String lastName = "";
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private Sex sex;
+    private Sex sex = Sex.UNKNOWN;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Role role;
+    private Role role = new Role();
 
     @OneToMany(cascade = CascadeType.ALL,       //fetch type  EAGER ???
             mappedBy = "user")
@@ -34,7 +34,7 @@ public class User extends Audit {
 
 
     public enum Sex {
-        MALE, FEMALE
+        UNKNOWN, MALE, FEMALE
     }
 
     public String getEmail() {

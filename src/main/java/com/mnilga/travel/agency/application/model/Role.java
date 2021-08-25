@@ -9,7 +9,7 @@ import javax.persistence.Table;
 public class Role extends Audit{
 
     @Column(nullable = false)
-    private String name;
+    private String name = "USER";   // redo in enum
 
     public String getName() {
         return name;
