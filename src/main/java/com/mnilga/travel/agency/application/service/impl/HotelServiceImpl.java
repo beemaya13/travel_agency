@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
@@ -36,38 +37,34 @@ public class HotelServiceImpl implements HotelService {
         System.out.println(hotelDto);
     }
 
-    @Override
-    public boolean addHotel(Hotel hotel) {
-        return false;
-    }
 
     @Override
-    public HotelDto getHotelById(String id) {
+    public HotelDto create(Hotel hotel) {
         return null;
     }
 
     @Override
-    public HotelDto getHotelByName(String name) {
+    public HotelDto readById(UUID id) {
         return null;
     }
 
     @Override
-    public List<HotelDto> getHotelsByCountry(String country) {
+    public HotelDto update(Hotel hotel) {
         return null;
     }
 
     @Override
-    public List<HotelDto> getAllHotels() {
+    public void delete(UUID id) {
+
+    }
+
+    @Override
+    public HotelDto patch(Map<String, Object> fields, UUID id) {
         return null;
     }
 
     @Override
-    public void deleteHotelById(UUID id) {
-
-    }
-
-    @Override
-    public Set<String> getAllCountries() {
+    public List<HotelDto> getAllUsers() {
         return null;
     }
 }

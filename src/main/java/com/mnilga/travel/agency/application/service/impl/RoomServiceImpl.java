@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @Service
@@ -32,38 +33,38 @@ public class RoomServiceImpl implements RoomService {
         room.setRoomType(Room.RoomType.SINGLE);
         room.setPrice(2000.0);
         room.setHotel(new Hotel());
-
         RoomDto roomDto = service.convert(room, RoomDto.class);
         System.out.println(roomDto);
     }
 
-    @Override
-    public boolean addRoom(Room room) {
-        return false;
-    }
 
     @Override
-    public RoomDto getRoomById(String id) {
+    public RoomDto create(Room room) {
         return null;
     }
 
     @Override
-    public RoomDto getRoomByHotelAndNumber(Hotel hotel, Integer number) {
+    public RoomDto readById(UUID id) {
+        return null;
+    }
+
+    @Override
+    public RoomDto update(Room room) {
+        return null;
+    }
+
+    @Override
+    public void delete(UUID id) {
+
+    }
+
+    @Override
+    public RoomDto patch(Map<String, Object> fields, UUID id) {
         return null;
     }
 
     @Override
     public List<RoomDto> getAllRooms() {
         return null;
-    }
-
-    @Override
-    public List<RoomDto> getAvailableRooms(String country, LocalDate arrivalDate, LocalDate departureDate) {
-        return null;
-    }
-
-    @Override
-    public void deleteRoom(UUID id) {
-
     }
 }

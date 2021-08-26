@@ -1,15 +1,19 @@
 package com.mnilga.travel.agency.application.service;
 
 import com.mnilga.travel.agency.application.dto.OrderDto;
+import com.mnilga.travel.agency.application.dto.UserDto;
 import com.mnilga.travel.agency.application.model.Order;
+import com.mnilga.travel.agency.application.model.User;
 
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 public interface OrderService {
-    void addOrder(Order order);
-    OrderDto getOrderById(String id);   //  or UUID id
-    List<OrderDto> getOrdersByUserId(UUID userId);  // or String userId
-    List<OrderDto> getOrdersByHotelId(UUID hotelId);  // or String hotelId
-    void deleteOrderById(UUID id);
+    OrderDto create(Order order);
+    OrderDto readById(UUID id);
+    OrderDto update(Order order);
+    void delete(UUID id);
+    OrderDto patch(Map<String, Object> fields, UUID id);
+    List<OrderDto> getAllOrders();
 }

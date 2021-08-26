@@ -10,6 +10,7 @@ import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @Service
@@ -30,36 +31,38 @@ public class UserServiceImpl implements UserService {
         user.setLastName("Nilga");
         user.setSex(User.Sex.FEMALE);
         user.setRole(new Role());
-
         UserDto userDto = service.convert(user, UserDto.class);
         System.out.println(userDto);
     }
 
 
-
-
     @Override
-    public boolean addUser(User user) {
-        return false;
-    }
-
-    @Override
-    public UserDto getUserById(String id) {
+    public UserDto create(User user) {
         return null;
     }
 
     @Override
-    public UserDto getUserByEmail(String email) {
+    public UserDto readById(UUID id) {
+        return null;
+    }
+
+    @Override
+    public UserDto update(User user) {
+        return null;
+    }
+
+    @Override
+    public void delete(UUID id) {
+
+    }
+
+    @Override
+    public UserDto patch(Map<String, Object> fields, UUID id) {
         return null;
     }
 
     @Override
     public List<UserDto> getAllUsers() {
         return null;
-    }
-
-    @Override
-    public void deleteUser(UUID id) {
-
     }
 }

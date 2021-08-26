@@ -9,6 +9,7 @@ import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 
@@ -32,22 +33,32 @@ public class RoleServiceImpl implements RoleService {
 
 
     @Override
-    public boolean addRole(Role role) {
-        return false;
+    public RoleDto create(Role role) {
+        return null;
     }
 
     @Override
-    public RoleDto getRoleById(String id) {
+    public RoleDto readById(UUID id) {
+        return null;
+    }
+
+    @Override
+    public RoleDto update(Role role) {
+        return null;
+    }
+
+    @Override
+    public void delete(UUID id) {
+
+    }
+
+    @Override
+    public RoleDto patch(Map<String, Object> fields, UUID id) {
         return null;
     }
 
     @Override
     public List<RoleDto> getAllRoles() {
         return null;
-    }
-
-    @Override
-    public void deleteRole(UUID id) {
-
     }
 }
