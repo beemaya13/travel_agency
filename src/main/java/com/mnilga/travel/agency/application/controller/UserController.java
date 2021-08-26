@@ -1,4 +1,4 @@
-package com.mnilga.travel.agency.application.config;
+package com.mnilga.travel.agency.application.controller;
 
 import com.mnilga.travel.agency.application.dto.UserDto;
 import com.mnilga.travel.agency.application.model.User;
