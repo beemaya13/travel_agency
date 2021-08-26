@@ -1,17 +1,14 @@
 package com.mnilga.travel.agency.application.service.impl;
 
 import com.mnilga.travel.agency.application.dto.HotelDto;
-import com.mnilga.travel.agency.application.dto.RoleDto;
 import com.mnilga.travel.agency.application.exceptions.ResourceNotFoundException;
 import com.mnilga.travel.agency.application.model.Hotel;
-import com.mnilga.travel.agency.application.model.Role;
 import com.mnilga.travel.agency.application.repository.HotelRepository;
 import com.mnilga.travel.agency.application.service.HotelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
