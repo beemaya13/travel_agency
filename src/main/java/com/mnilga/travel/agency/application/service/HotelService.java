@@ -16,6 +16,6 @@ public interface HotelService {
     HotelDto update(Hotel hotel);
     void delete(UUID id);
     HotelDto patch(Map<String, Object> fields, UUID id);
-    List<HotelDto> getAllUsers();
+    List<HotelDto> getAllHotels();
 
 }

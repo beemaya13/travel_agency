@@ -59,7 +59,7 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException("User can't be null");
         }
 
-        Optional.ofNullable(userRepository.findByLogin(user.getEmail()))
+        Optional.ofNullable(userRepository.findByEmail(user.getEmail()))
                 .orElseThrow(() -> new ResourceNotFoundException("User with email = " + user.getEmail() + " does not exist!"));
 
         User updatedUser = userRepository.save(user);

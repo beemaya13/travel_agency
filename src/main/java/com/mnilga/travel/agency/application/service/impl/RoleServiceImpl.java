@@ -31,8 +31,6 @@ public class RoleServiceImpl implements RoleService {
         this.roleRepository = roleRepository;
     }
 
-
-
     @Override
     public RoleDto create(Role role) {
         Role newRole = roleRepository.save(role);

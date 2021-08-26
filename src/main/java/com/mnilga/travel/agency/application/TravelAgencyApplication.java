@@ -47,11 +47,11 @@ public class TravelAgencyApplication {
 	//for testing dto converters    + in Audit class init field UUID
 	@EventListener(ApplicationReadyEvent.class)
 	public void test() {
-		userServiceImpl.testDto();
-		roleServiceImpl.testDto();
-		hotelServiceImpl.testDto();
-		roomServiceImpl.testDto();
-		orderServiceImpl.testDto();
+		//userServiceImpl.testDto();
+		//roleServiceImpl.testDto();
+		//hotelServiceImpl.testDto();
+		//roomServiceImpl.testDto();
+		//orderServiceImpl.testDto();
 	}
 
 	public static void main(String[] args) {
