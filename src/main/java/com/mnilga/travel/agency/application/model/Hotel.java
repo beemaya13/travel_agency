@@ -10,13 +10,13 @@ import java.util.List;
 public class Hotel extends Audit{
 
     @Column(unique = true)
-    private String name = "";
+    private String name;
 
     @Column(unique = true)
-    private String country = "";
+    private String country;
 
     @Column
-    private String city = "";
+    private String city;
 
     @OneToMany(cascade = CascadeType.ALL,
     mappedBy = "hotel")

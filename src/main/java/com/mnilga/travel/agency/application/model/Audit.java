@@ -14,14 +14,14 @@ public abstract class Audit {
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @Column(columnDefinition = "UUID")
-    private UUID id = UUID.randomUUID();      // delete initialization!!!
+    private UUID id;
 
     @Column(nullable = false)
     private LocalDateTime dateCreated = LocalDateTime.now();
 
-    private LocalDateTime dateUpdated = LocalDateTime.now();
+    private LocalDateTime dateUpdated;
 
-    private LocalDateTime dateDeleted = LocalDateTime.now();
+    private LocalDateTime dateDeleted;
 
     public UUID getId() {
         return id;

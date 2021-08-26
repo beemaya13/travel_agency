@@ -4,12 +4,12 @@ package com.mnilga.travel.agency.application.dto;
 import java.util.UUID;
 
 public class UserDto {
-    private UUID id = UUID.randomUUID();
-    private String email = "";
-    private String firstName = "";
-    private String lastName = "";
-    private String sex = "";
-    private RoleDto role = new RoleDto();
+    private UUID id;
+    private String email;
+    private String firstName;
+    private String lastName;
+    private String sex;
+    private RoleDto role;
 
     public UUID getId() {
         return id;

@@ -9,18 +9,18 @@ import java.util.List;
 public class Room extends Audit {
 
     @Column(nullable = false)
-    private Integer roomNumber = 0;
+    private Integer roomNumber;
 
     @Column
     @Enumerated(EnumType.STRING)
-    private RoomType roomType = RoomType.UNKNOWN;
+    private RoomType roomType;
 
     @Column(nullable = false)
-    private Double price = 0.0;
+    private Double price;
 
     @ManyToOne
     @JoinColumn(name = "hotel_id")
-    private Hotel hotel = new Hotel();
+    private Hotel hotel;
 
     @OneToMany(cascade = CascadeType.ALL,
             fetch = FetchType.EAGER,
@@ -28,7 +28,7 @@ public class Room extends Audit {
     private List<Order> orders = new ArrayList<>();
 
     public enum RoomType {
-        UNKNOWN, SINGLE, DOUBLE, FAMILY, DELUXE;
+        SINGLE, DOUBLE, FAMILY, DELUXE;
     }
 
     public Integer getRoomNumber() {

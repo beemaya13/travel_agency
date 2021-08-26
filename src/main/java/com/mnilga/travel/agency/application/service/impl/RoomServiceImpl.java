@@ -1,13 +1,11 @@
 package com.mnilga.travel.agency.application.service.impl;
 
-import com.mnilga.travel.agency.application.dto.HotelDto;
+
 import com.mnilga.travel.agency.application.dto.RoomDto;
-import com.mnilga.travel.agency.application.dto.UserDto;
 import com.mnilga.travel.agency.application.model.Hotel;
-import com.mnilga.travel.agency.application.model.Role;
 import com.mnilga.travel.agency.application.model.Room;
-import com.mnilga.travel.agency.application.model.User;
 import com.mnilga.travel.agency.application.service.RoomService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
@@ -26,7 +24,8 @@ public class RoomServiceImpl implements RoomService {
         this.service = service;
     }
 
-    public void testDto(){
+
+    public void testDto() {
         Room room = new Room();
         room.setId(UUID.randomUUID());
         room.setRoomNumber(13);

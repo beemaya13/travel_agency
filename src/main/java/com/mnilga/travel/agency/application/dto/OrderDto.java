@@ -1,19 +1,17 @@
 package com.mnilga.travel.agency.application.dto;
 
-import com.mnilga.travel.agency.application.model.Hotel;
-import com.mnilga.travel.agency.application.model.Room;
 
 import java.time.LocalDate;
 import java.util.UUID;
 
 public class OrderDto {
-    private UUID orderId = UUID.randomUUID();
-    private UserDto user = new UserDto();
-    private HotelDto hotel = new HotelDto();
-    private RoomDto room = new RoomDto();
-    private LocalDate arrivalDate = LocalDate.ofEpochDay(0);
-    private LocalDate departureDate = LocalDate.ofEpochDay(0);
-    private LocalDate orderDate = LocalDate.ofEpochDay(0);
+    private UUID orderId;
+    private UserDto user;
+    private HotelDto hotel;
+    private RoomDto room;
+    private LocalDate arrivalDate;
+    private LocalDate departureDate;
+    private LocalDate orderDate;
 
     public UUID getOrderId() {
         return orderId;

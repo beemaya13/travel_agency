@@ -3,8 +3,8 @@ package com.mnilga.travel.agency.application.dto;
 import java.util.UUID;
 
 public class RoleDto {
-    private UUID roleId = UUID.randomUUID();
-    private String name = "";
+    private UUID roleId;
+    private String name;
 
     public UUID getRoleId() {
         return roleId;

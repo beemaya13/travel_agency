@@ -9,24 +9,24 @@ public class Order extends Audit{
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user = new User();
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "hotel_id")
-    private Hotel hotel = new Hotel();
+    private Hotel hotel;
 
     @ManyToOne
     @JoinColumn(name = "room_id")
-    private Room room = new Room();
+    private Room room;
 
     @Column(name = "arrival_date", nullable = false)
-    private LocalDate arrivalDate = LocalDate.ofEpochDay(0);
+    private LocalDate arrivalDate;
 
     @Column(name = "departure_date", nullable = false)
-    private LocalDate departureDate = LocalDate.ofEpochDay(0);
+    private LocalDate departureDate;
 
     @Column(name = "order_date", nullable = false)
-    private LocalDate orderDate = LocalDate.ofEpochDay(0);
+    private LocalDate orderDate;
 
     public User getUser() {
         return user;
