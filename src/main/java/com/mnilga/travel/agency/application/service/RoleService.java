@@ -14,7 +14,7 @@ public interface RoleService {
     RoleDto readById(UUID id);
     RoleDto update(Role role);
     void delete(UUID id);
-    RoleDto patch(Map<String, Object> fields, UUID id);
     List<RoleDto> getAllRoles();
+    Role findByName(String name);
 
 }

@@ -1,21 +1,24 @@
 package com.mnilga.travel.agency.application.service.impl;
 
 import com.mnilga.travel.agency.application.dto.RoleDto;
+import com.mnilga.travel.agency.application.dto.UserDto;
+import com.mnilga.travel.agency.application.exceptions.ResourceNotFoundException;
 import com.mnilga.travel.agency.application.model.Role;
 import com.mnilga.travel.agency.application.model.User;
+import com.mnilga.travel.agency.application.repository.RoleRepository;
 import com.mnilga.travel.agency.application.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
+import java.util.stream.Collectors;
 
 
 @Service
 public class RoleServiceImpl implements RoleService {
 
+    private RoleRepository roleRepository;
     private ConversionService service;
 
     @Autowired
@@ -23,42 +26,66 @@ public class RoleServiceImpl implements RoleService {
         this.service = service;
     }
 
-    public void testDto(){
-        Role role = new Role();
-        role.setId(UUID.randomUUID());
-        role.setName("Admin");
-        RoleDto roleDto = service.convert(role, RoleDto.class);
-        System.out.println(roleDto);
+    @Autowired
+    public void setRoleRepository(RoleRepository roleRepository) {
+        this.roleRepository = roleRepository;
     }
+
 
 
     @Override
     public RoleDto create(Role role) {
-        return null;
+        Role newRole = roleRepository.save(role);
+        return service.convert(newRole, RoleDto.class);
     }
 
     @Override
     public RoleDto readById(UUID id) {
-        return null;
+        Role role = roleRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Role with id=" + id + " not found!"));
+        return service.convert(role, RoleDto.class);
     }
 
     @Override
     public RoleDto update(Role role) {
-        return null;
+        if (role == null) {
+            throw new RuntimeException("Role can't be null");
+        }
+
+        Optional.ofNullable(roleRepository.findByName(role.getName()))
+                .orElseThrow(() -> new ResourceNotFoundException("Role with name = " + role.getName() + " does not exist!"));
+
+        Role updatedRole = roleRepository.save(role);
+        return service.convert(updatedRole, RoleDto.class);
     }
 
     @Override
     public void delete(UUID id) {
-
-    }
-
-    @Override
-    public RoleDto patch(Map<String, Object> fields, UUID id) {
-        return null;
+        Role role = roleRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Role with id=" + id + " not found!"));
+        roleRepository.delete(role);
     }
 
     @Override
     public List<RoleDto> getAllRoles() {
-        return null;
+        List<Role> roles = roleRepository.findAll();
+        return roles.stream()
+                .map(role -> service.convert(role, RoleDto.class))
+                .collect(Collectors.toList());
     }
+
+    @Override
+    public Role findByName(String name) {
+        return roleRepository.findByName(name).orElseThrow(() -> {
+            throw new ResourceNotFoundException("Role with name =" + name + " does not exist!");
+        });
+    }
+
+//    public void testDto(){
+//        Role role = new Role();
+//        role.setId(UUID.randomUUID());
+//        role.setName("Admin");
+//        RoleDto roleDto = service.convert(role, RoleDto.class);
+//        System.out.println(roleDto);
+//    }
 }
