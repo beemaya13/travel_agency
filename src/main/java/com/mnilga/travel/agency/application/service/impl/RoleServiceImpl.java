@@ -60,7 +60,7 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public void delete(UUID id) {
         Role role = roleRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Role with id=" + id + " not found!"));
+                .orElseThrow(() -> new ResourceNotFoundException("Role with id = " + id + " not found!"));
         roleRepository.delete(role);
     }
 

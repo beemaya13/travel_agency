@@ -37,7 +37,7 @@ public class HotelServiceImpl implements HotelService {
     @Override
     public HotelDto readById(UUID id) {
         Hotel hotel = hotelRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Hotel with id=" + id + " not found!"));
+                .orElseThrow(() -> new ResourceNotFoundException("Hotel with id = " + id + " not found!"));
         return service.convert(hotel, HotelDto.class);
     }
 

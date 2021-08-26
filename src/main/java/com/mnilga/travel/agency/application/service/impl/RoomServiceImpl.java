@@ -2,22 +2,25 @@ package com.mnilga.travel.agency.application.service.impl;
 
 
 import com.mnilga.travel.agency.application.dto.RoomDto;
-import com.mnilga.travel.agency.application.model.Hotel;
+import com.mnilga.travel.agency.application.exceptions.ResourceNotFoundException;
 import com.mnilga.travel.agency.application.model.Room;
+import com.mnilga.travel.agency.application.repository.RoomRepository;
 import com.mnilga.travel.agency.application.service.RoomService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class RoomServiceImpl implements RoomService {
 
+    private RoomRepository roomRepository;
     private ConversionService service;
 
     @Autowired
@@ -25,37 +28,50 @@ public class RoomServiceImpl implements RoomService {
         this.service = service;
     }
 
-
-    public void testDto() {
-        Room room = new Room();
-        room.setId(UUID.randomUUID());
-        room.setRoomNumber(13);
-        room.setRoomType(Room.RoomType.SINGLE);
-        room.setPrice(2000.0);
-        room.setHotel(new Hotel());
-        RoomDto roomDto = service.convert(room, RoomDto.class);
-        System.out.println(roomDto);
+    @Autowired
+    public void setRoomRepository(RoomRepository roomRepository) {
+        this.roomRepository = roomRepository;
     }
-
 
     @Override
     public RoomDto create(Room room) {
-        return null;
+        Room newRoom = roomRepository.save(room);
+        return service.convert(newRoom, RoomDto.class);
     }
 
     @Override
     public RoomDto readById(UUID id) {
-        return null;
+        Room room = roomRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Room with id = " + id + " not found!"));
+        return service.convert(room, RoomDto.class);
     }
 
     @Override
     public RoomDto update(Room room) {
-        return null;
+        if (room == null) {
+            throw new RuntimeException("Room can't be null");
+        }
+
+        Optional.ofNullable(roomRepository.findByRoomNumber(room.getRoomNumber()))
+                .orElseThrow(() -> new ResourceNotFoundException("Room with roomNumber = " + room.getRoomNumber() + " does not exist!"));
+
+        Room updatedRoom = roomRepository.save(room);
+        return service.convert(updatedRoom, RoomDto.class);
     }
 
     @Override
     public void delete(UUID id) {
+        Room room = roomRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Room with id = " + id + " not found!"));
+        roomRepository.delete(room);
+    }
 
+    @Override
+    public List<RoomDto> getAllRooms() {
+        List<Room> rooms = roomRepository.findAll();
+        return rooms.stream()
+                .map(room -> service.convert(room, RoomDto.class))
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -63,8 +79,15 @@ public class RoomServiceImpl implements RoomService {
         return null;
     }
 
-    @Override
-    public List<RoomDto> getAllRooms() {
-        return null;
-    }
+
+//    public void testDto() {
+//        Room room = new Room();
+//        room.setId(UUID.randomUUID());
+//        room.setRoomNumber(13);
+//        room.setRoomType(Room.RoomType.SINGLE);
+//        room.setPrice(2000.0);
+//        room.setHotel(new Hotel());
+//        RoomDto roomDto = service.convert(room, RoomDto.class);
+//        System.out.println(roomDto);
+//    }
 }
