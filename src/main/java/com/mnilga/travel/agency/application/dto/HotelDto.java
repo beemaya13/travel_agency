@@ -6,7 +6,7 @@ import java.util.UUID;
 public class HotelDto {
     private UUID hotelId;
     private String name;
-    private String country;
+    private CountryDto country;
     private String city;
 //    private List<RoomDto> rooms = new ArrayList<>();
 //    private List<OrderDto> orders = new ArrayList<>();
@@ -28,11 +28,11 @@ public class HotelDto {
         this.name = name;
     }
 
-    public String getCountry() {
+    public CountryDto getCountry() {
         return country;
     }
 
-    public void setCountry(String country) {
+    public void setCountry(CountryDto country) {
         this.country = country;
     }
 

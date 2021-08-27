@@ -33,7 +33,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserDto> readById(@PathVariable UUID id){
+    public ResponseEntity<UserDto> readById(@PathVariable("id") UUID id){
         if(id == null){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -56,7 +56,7 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<UserDto> delete(@PathVariable UUID id){
+    public ResponseEntity<UserDto> delete(@PathVariable("id") UUID id){
         UserDto userDto = userService.readById(id);
         if(userDto == null){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

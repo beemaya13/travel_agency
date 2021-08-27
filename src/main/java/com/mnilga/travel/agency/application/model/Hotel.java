@@ -12,11 +12,11 @@ public class Hotel extends Audit{
     @Column(unique = true)
     private String name;
 
-    @Column(unique = true)
-    private String country;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Country country;
 
     @Column
-    private String city;
+    private String city;            //????  move to Country class
 
     @OneToMany(cascade = CascadeType.ALL,
     mappedBy = "hotel")
@@ -35,11 +35,11 @@ public class Hotel extends Audit{
         this.name = name;
     }
 
-    public String getCountry() {
+    public Country getCountry() {
         return country;
     }
 
-    public void setCountry(String country) {
+    public void setCountry(Country country) {
         this.country = country;
     }
 
