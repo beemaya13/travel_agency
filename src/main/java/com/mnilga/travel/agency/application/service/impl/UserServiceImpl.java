@@ -31,6 +31,16 @@ public class UserServiceImpl implements UserService {
         this.service = service;
     }
 
+    @Autowired
+    public void setUserRepository(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    @Autowired
+    public void setRoleService(RoleServiceImpl roleService) {
+        this.roleService = roleService;
+    }
+
     @Override
     public UserDto create(User user) {
         Role role = roleService.findByName("USER");
