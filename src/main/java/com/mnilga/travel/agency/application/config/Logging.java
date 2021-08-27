@@ -11,7 +11,7 @@ import org.springframework.util.StopWatch;
 
 @Aspect
 @Component
-public class MyAspect {     //for logging
+public class Logging {
 
     @Pointcut("within(com.mnilga.travel.agency.application..*)")
     public void callAtMyServicePublic() {
