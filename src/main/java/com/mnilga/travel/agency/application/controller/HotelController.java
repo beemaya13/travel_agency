@@ -66,7 +66,7 @@ public class HotelController {
     }
 
     @GetMapping
-    public ResponseEntity<List<HotelDto>> getAllRoles(){
+    public ResponseEntity<List<HotelDto>> getAllHotels(){
         List<HotelDto> hotelDtoList = hotelService.getAllHotels();
         if(hotelDtoList.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
