@@ -28,7 +28,7 @@ create table if not exists hotels
     unique,
     country_id uuid
     constraint fkkwysadtw35u6s82fllwubvkiw
-    references countries
+    references countries (id) ON DELETE CASCADE
     );
 
 alter table hotels owner to postgres;
@@ -42,6 +42,8 @@ create table if not exists roles
     date_deleted timestamp,
     date_updated timestamp,
     name varchar(255) not null
+    constraint uk_6dotkott2kjsp8vw4d0m25fb8
+    unique
     );
 
 alter table roles owner to postgres;
@@ -59,7 +61,7 @@ create table if not exists rooms
     room_type varchar(255),
     hotel_id uuid
     constraint fkp5lufxy0ghq53ugm93hdc941k
-    references hotels
+    references hotels (id) ON DELETE CASCADE
     );
 
 alter table rooms owner to postgres;
@@ -80,7 +82,7 @@ create table if not exists users
     sex varchar(255) not null,
     role_id uuid
     constraint fkp56c1712k691lhsyewcssf40f
-    references roles
+    references roles (id) ON DELETE CASCADE
     );
 
 alter table users owner to postgres;
@@ -95,16 +97,16 @@ create table if not exists orders
     date_updated timestamp,
     arrival_date date not null,
     departure_date date not null,
-    order_date date not null,
+    order_date date not null DEFAULT CURRENT_DATE,
     hotel_id uuid
     constraint fkjb9tbpwgr3ajswtf8jmsklwpg
-    references hotels,
+    references hotels (id) ON DELETE CASCADE,
     room_id uuid
     constraint fkmvji5dgxi79luuluamunmw73h
-    references rooms,
+    references rooms (id) ON DELETE CASCADE,
     user_id uuid
     constraint fk32ql8ubntj5uh44ph9659tiih
-    references users
+    references users (id) ON DELETE CASCADE
 );
 
 alter table orders owner to postgres;
