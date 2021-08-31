@@ -12,7 +12,7 @@ public class Country extends Audit{
     private String name;
 
     @Column(nullable = false, length = 3)
-    private String ISO;
+    private String Iso;
 
     @Column(nullable = false)
     private String capital;
@@ -28,12 +28,12 @@ public class Country extends Audit{
         this.name = name;
     }
 
-    public String getISO() {
-        return ISO;
+    public String getIso() {
+        return Iso;
     }
 
-    public void setISO(String ISO) {
-        this.ISO = ISO;
+    public void setIso(String iso) {
+        Iso = iso;
     }
 
     public String getCapital() {

@@ -13,7 +13,7 @@ public class CountryDtoConverterToCountry implements Converter<CountryDto, Count
         Country country = new Country();
         country.setId(countryDto.getId());
         country.setName(countryDto.getName());
-        country.setISO(countryDto.getIso());
+        country.setIso(countryDto.getIso());
         country.setCapital(countryDto.getCapital());
         country.setContinent(countryDto.getContinent());
         return country;

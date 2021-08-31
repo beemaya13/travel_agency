@@ -15,7 +15,7 @@ public class CountryConverterToDto implements Converter<Country, CountryDto> {
         CountryDto countryDto = new CountryDto();
         countryDto.setId(country.getId());
         countryDto.setName(country.getName());
-        countryDto.setIso(country.getISO());
+        countryDto.setIso(country.getIso());
         countryDto.setCapital(country.getCapital());
         countryDto.setContinent(country.getContinent());
         return countryDto;
