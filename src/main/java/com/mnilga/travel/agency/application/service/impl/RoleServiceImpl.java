@@ -8,6 +8,7 @@ import com.mnilga.travel.agency.application.model.User;
 import com.mnilga.travel.agency.application.repository.RoleRepository;
 import com.mnilga.travel.agency.application.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 
@@ -73,6 +74,7 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
+    @Cacheable(value = "roles-cache")
     public Role findByName(String name) {
         return roleRepository.findByName(name).orElseThrow(() -> {
             throw new ResourceNotFoundException("Role with name =" + name + " does not exist!");

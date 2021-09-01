@@ -5,10 +5,7 @@ import com.mnilga.travel.agency.application.dto.UserDto;
 import com.mnilga.travel.agency.application.model.Hotel;
 import com.mnilga.travel.agency.application.model.User;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 public interface HotelService {
     HotelDto create(Hotel hotel);
@@ -17,5 +14,8 @@ public interface HotelService {
     void delete(UUID id);
     HotelDto patch(Map<String, Object> fields, UUID id);
     List<HotelDto> getAllHotels();
+    Optional<Hotel> findByCountry(String name);
+    Hotel findByName(String name);
+    Hotel findHotelById(UUID id);
 
 }

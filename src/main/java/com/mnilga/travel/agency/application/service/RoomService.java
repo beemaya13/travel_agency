@@ -18,6 +18,7 @@ public interface RoomService {
     void delete(UUID id);
     RoomDto patch(Map<String, Object> fields, UUID id);
     List<RoomDto> getAllRooms();
+    Room findRoomById(UUID id);
 
     //List<RoomDto>getAvailableRooms(String country, LocalDate arrivalDate,  LocalDate departureDate);
     //RoomDto getRoomByHotelAndNumber(HotelDto hotel, String number);

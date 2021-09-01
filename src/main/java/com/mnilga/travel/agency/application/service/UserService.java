@@ -14,6 +14,6 @@ public interface UserService {
     void delete(UUID id);
     UserDto patch(Map<String, Object> fields, UUID id);
     List<UserDto> getAllUsers();
-
+    User findUserById(UUID id);
     //UserDto getUserByEmail(String email);
 }

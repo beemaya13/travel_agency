@@ -6,6 +6,7 @@ import com.mnilga.travel.agency.application.model.*;
 import com.mnilga.travel.agency.application.repository.OrderRepository;
 import com.mnilga.travel.agency.application.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,9 @@ public class OrderServiceImpl implements OrderService {
 
     private OrderRepository orderRepository;
     private ConversionService service;
+    private HotelServiceImpl hotelService;
+    private UserServiceImpl userService;
+    private RoomServiceImpl roomService;
 
     @Autowired
     public void setService(ConversionService service) {
@@ -31,10 +35,38 @@ public class OrderServiceImpl implements OrderService {
         this.orderRepository = orderRepository;
     }
 
+    @Autowired
+    public void setHotelService(HotelServiceImpl hotelService) {
+        this.hotelService = hotelService;
+    }
+
+    @Autowired
+    public void setUserService(UserServiceImpl userService) {
+        this.userService = userService;
+    }
+
+    @Autowired
+    public void setRoomService(RoomServiceImpl roomService) {
+        this.roomService = roomService;
+    }
+
     @Override
     public OrderDto create(Order order) {
+        getDetailsFromOrder(order);
         Order newOrder = orderRepository.save(order);
         return service.convert(newOrder, OrderDto.class);
+    }
+
+    private void getDetailsFromOrder(Order orderWithDetails) {
+        UUID userId = orderWithDetails.getUser().getId();
+        UUID hotelId = orderWithDetails.getHotel().getId();
+        UUID roomId = orderWithDetails.getRoom().getId();
+        User user = userService.findUserById(userId);
+        Hotel hotel = hotelService.findHotelById(hotelId);
+        Room room = roomService.findRoomById(roomId);
+        orderWithDetails.setUser(user);
+        orderWithDetails.setHotel(hotel);
+        orderWithDetails.setRoom(room);
     }
 
     @Override
@@ -55,6 +87,7 @@ public class OrderServiceImpl implements OrderService {
             throw new ResourceNotFoundException("Order with id = " + order.getId() + " does not exist!");
         }
 
+        getDetailsFromOrder(order);
         Order updatedOrder = orderRepository.save(order);
         return service.convert(updatedOrder, OrderDto.class);
     }
@@ -67,6 +100,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    @Cacheable(value = "orders-cache")
     public List<OrderDto> getAllOrders() {
         List<Order> orders = orderRepository.findAll();
         return orders.stream()

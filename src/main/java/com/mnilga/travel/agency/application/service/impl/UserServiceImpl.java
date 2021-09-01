@@ -8,6 +8,7 @@ import com.mnilga.travel.agency.application.model.User;
 import com.mnilga.travel.agency.application.repository.UserRepository;
 import com.mnilga.travel.agency.application.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ReflectionUtils;
@@ -43,8 +44,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto create(User user) {
-        Role role = roleService.findByName("USER");
-        user.setRole(role);
+        getRoleFromUser(user);
         User newUser = userRepository.save(user);
         return service.convert(newUser, UserDto.class);
     }
@@ -55,7 +55,8 @@ public class UserServiceImpl implements UserService {
         return service.convert(user, UserDto.class);
     }
 
-    private User findUserById(UUID id) {
+    @Override
+    public User findUserById(UUID id) {
         Optional<User> optionalUser = userRepository.findById(id);
         if (optionalUser.isEmpty()) {
             throw new ResourceNotFoundException("User with id = " + id + " not found");
@@ -72,6 +73,7 @@ public class UserServiceImpl implements UserService {
         Optional.ofNullable(userRepository.findByEmail(user.getEmail()))
                 .orElseThrow(() -> new ResourceNotFoundException("User with email = " + user.getEmail() + " does not exist!"));
 
+        getRoleFromUser(user);
         User updatedUser = userRepository.save(user);
         return service.convert(updatedUser, UserDto.class);
     }
@@ -95,11 +97,25 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Cacheable(value = "users-cache")
     public List<UserDto> getAllUsers() {
         List<User> users = userRepository.findAll();
         return users.stream()
                 .map(user -> service.convert(user, UserDto.class))
                 .collect(Collectors.toList());
+    }
+
+    private void getRoleFromUser(User userWithRole) {
+        String roleName = userWithRole.getRole().getName();
+        Role role;
+        try {
+            role = roleService.findByName(roleName);
+        } catch (ResourceNotFoundException exception) {
+            role = roleService.findByName("USER");
+            userWithRole.setRole(role);
+            return;
+        }
+        userWithRole.setRole(role);
     }
 
 
