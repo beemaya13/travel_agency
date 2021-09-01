@@ -7,11 +7,16 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StopWatch;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 
 
 @Aspect
 @Component
 public class Logging {
+
+    private static final Logger LOGGER = LogManager.getLogger(Logging.class);
 
     @Pointcut("within(com.mnilga.travel.agency.application..*)")
     public void callAtMyServicePublic() {
@@ -20,12 +25,7 @@ public class Logging {
     @Around("callAtMyServicePublic()")
     public Object aroundCallAt(ProceedingJoinPoint call) throws Throwable {
         StopWatch clock = new StopWatch(call.toString());
-        try {
-            clock.start(call.toShortString());
-            return call.proceed();
-        } finally {
-            clock.stop();
-            System.out.println(clock.prettyPrint());
-        }
+        LOGGER.info(clock);
+        return call.proceed();
     }
 }
