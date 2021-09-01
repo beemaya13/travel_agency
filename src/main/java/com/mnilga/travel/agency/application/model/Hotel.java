@@ -9,7 +9,7 @@ import java.util.List;
 @Table(name = "hotels")
 public class Hotel extends Audit{
 
-    @Column(unique = true)
+    @Column(nullable = false, unique = true)
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
