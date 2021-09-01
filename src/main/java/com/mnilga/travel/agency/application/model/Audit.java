@@ -14,7 +14,7 @@ public abstract class Audit {
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @Column(columnDefinition = "UUID")
-    private UUID id;
+    private UUID id = UUID.randomUUID();
 
     @Column(nullable = false)
     private LocalDateTime dateCreated = LocalDateTime.now();
