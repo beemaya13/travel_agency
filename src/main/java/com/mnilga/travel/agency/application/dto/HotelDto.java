@@ -8,9 +8,6 @@ public class HotelDto {
     private String name;
     private CountryDto country;
     private String city;
-//    private List<RoomDto> rooms = new ArrayList<>();
-//    private List<OrderDto> orders = new ArrayList<>();
-
 
     public UUID getHotelId() {
         return hotelId;
