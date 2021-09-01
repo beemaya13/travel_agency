@@ -10,6 +10,8 @@ create table if not exists countries
     capital varchar(255) not null,
     continent varchar(255) not null,
     name varchar(255) not null
+    constraint uk_m7xlqsndengqp2kpd5nux2s4i
+    unique
     );
 
 alter table countries owner to postgres;
@@ -23,7 +25,7 @@ create table if not exists hotels
     date_deleted timestamp,
     date_updated timestamp,
     city varchar(255),
-    name varchar(255)
+    name varchar(255) not null
     constraint uk_m7xlqsndengqp2kpd5nux2s3i
     unique,
     country_id uuid
