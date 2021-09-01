@@ -8,7 +8,7 @@ import javax.persistence.Table;
 @Table(name = "countries")
 public class Country extends Audit{
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String name;
 
     @Column(nullable = false, length = 3)
