@@ -1,7 +1,6 @@
 package com.mnilga.travel.agency.application.controller;
 
 import com.mnilga.travel.agency.application.dto.RoleDto;
-import com.mnilga.travel.agency.application.dto.UserDto;
 import com.mnilga.travel.agency.application.model.Role;
 import com.mnilga.travel.agency.application.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,52 +23,63 @@ public class RoleController {
     }
 
     @PostMapping
-    public ResponseEntity<RoleDto> create(@RequestBody @Valid Role role){
+    public ResponseEntity<?> create(@RequestBody @Valid Role role){
         if(role == null){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Role can't be null", HttpStatus.BAD_REQUEST);
         }
-        RoleDto createdRoleDto = roleService.create(role);
+        RoleDto createdRoleDto;
+        try {
+            createdRoleDto = roleService.create(role);
+        }catch (Exception e) {
+            return new ResponseEntity<>("Role with such name already exists!", HttpStatus.CONFLICT);
+        }
+
         return new ResponseEntity<>(createdRoleDto, HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<RoleDto> readById(@PathVariable UUID id){
+    public ResponseEntity<?> readById(@PathVariable UUID id){
         if(id == null){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Role can't be null", HttpStatus.BAD_REQUEST);
         }
 
         RoleDto roleDto = roleService.readById(id);
         if(roleDto == null){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Role with such id not found!", HttpStatus.NOT_FOUND);
         }
 
         return new ResponseEntity<>(roleDto, HttpStatus.OK);
     }
 
     @PutMapping
-    public ResponseEntity<RoleDto> update(@RequestBody @Valid Role role){
+    public ResponseEntity<?> update(@RequestBody @Valid Role role){
         if(role == null){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Role can't be null", HttpStatus.BAD_REQUEST);
         }
-        RoleDto updatedRole = roleService.update(role);
+        RoleDto updatedRole;
+        try {
+            updatedRole = roleService.update(role);
+        }catch (Exception e) {
+            return new ResponseEntity<>("Role with such name already exists!", HttpStatus.CONFLICT);
+        }
         return new ResponseEntity<>(updatedRole, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<RoleDto> delete(@PathVariable UUID id){
+    public ResponseEntity<?> delete(@PathVariable UUID id){
         RoleDto roleDto = roleService.readById(id);
         if(roleDto == null){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Role with such id not found!", HttpStatus.NOT_FOUND);
         }
         roleService.delete(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>("Role is successfully deleted!", HttpStatus.NO_CONTENT);
     }
 
     @GetMapping
-    public ResponseEntity<List<RoleDto>> getAllRoles(){
+    public ResponseEntity<?> getAllRoles(){
         List<RoleDto> roleDtoList = roleService.getAllRoles();
         if(roleDtoList.isEmpty()){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("There are no roles to display!", HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(roleDtoList, HttpStatus.OK);
     }

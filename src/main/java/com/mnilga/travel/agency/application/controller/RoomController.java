@@ -24,52 +24,63 @@ public class RoomController {
     }
 
     @PostMapping
-    public ResponseEntity<RoomDto> create(@RequestBody @Valid Room room) {
+    public ResponseEntity<?> create(@RequestBody @Valid Room room) {
         if (room == null) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Room can't be null", HttpStatus.BAD_REQUEST);
         }
-        RoomDto createdRoomDto = roomService.create(room);
+        RoomDto createdRoomDto;
+        try {
+            createdRoomDto = roomService.create(room);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Room with such id already exists!", HttpStatus.CONFLICT);
+        }
         return new ResponseEntity<>(createdRoomDto, HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<RoomDto> readById(@PathVariable UUID id) {
+    public ResponseEntity<?> readById(@PathVariable UUID id) {
         if (id == null) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Room can't be null", HttpStatus.BAD_REQUEST);
         }
 
         RoomDto roomDto = roomService.readById(id);
         if (roomDto == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Room with such id not found!", HttpStatus.NOT_FOUND);
         }
-
         return new ResponseEntity<>(roomDto, HttpStatus.OK);
     }
 
     @PutMapping
-    public ResponseEntity<RoomDto> update(@RequestBody @Valid Room room) {
+    public ResponseEntity<?> update(@RequestBody @Valid Room room) {
         if (room == null) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Room can't be null", HttpStatus.BAD_REQUEST);
         }
-        RoomDto updatedRoom = roomService.update(room);
+        RoomDto updatedRoom;
+        try {
+            updatedRoom = roomService.update(room);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Room with such id already exists!", HttpStatus.CONFLICT);
+        }
+
         return new ResponseEntity<>(updatedRoom, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<RoomDto> delete(@PathVariable UUID id) {
-        RoomDto roomDto = roomService.readById(id);
-        if (roomDto == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    public ResponseEntity<?> delete(@PathVariable UUID id) {
+        try {
+            roomService.readById(id);
+        } catch (Exception e) {
+            return new ResponseEntity<>("User with such id not found!", HttpStatus.NOT_FOUND);
         }
         roomService.delete(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>("Room is successfully deleted!", HttpStatus.NO_CONTENT);
     }
 
     @GetMapping
-    public ResponseEntity<List<RoomDto>> getAllRooms() {
+    public ResponseEntity<?> getAllRooms() {
         List<RoomDto> roomDtoList = roomService.getAllRooms();
         if (roomDtoList.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("There are no rooms to display!", HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(roomDtoList, HttpStatus.OK);
     }

@@ -24,52 +24,62 @@ public class HotelController {
     }
 
     @PostMapping
-    public ResponseEntity<HotelDto> create(@RequestBody @Valid Hotel hotel){
-        if(hotel == null){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    public ResponseEntity<?> create(@RequestBody @Valid Hotel hotel) {
+        if (hotel == null) {
+            return new ResponseEntity<>("Hotel can't be null", HttpStatus.BAD_REQUEST);
         }
-        HotelDto createdHotelDto = hotelService.create(hotel);
+        HotelDto createdHotelDto;
+        try {
+            createdHotelDto = hotelService.create(hotel);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Hotel with such name already exists!", HttpStatus.CONFLICT);
+        }
         return new ResponseEntity<>(createdHotelDto, HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<HotelDto> readById(@PathVariable UUID id){
-        if(id == null){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    public ResponseEntity<?> readById(@PathVariable UUID id) {
+        if (id == null) {
+            return new ResponseEntity<>("Hotel can't be null", HttpStatus.BAD_REQUEST);
         }
 
         HotelDto hotelDto = hotelService.readById(id);
-        if(hotelDto == null){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        if (hotelDto == null) {
+            return new ResponseEntity<>("Hotel with such id not found!", HttpStatus.NOT_FOUND);
         }
-
         return new ResponseEntity<>(hotelDto, HttpStatus.OK);
     }
 
     @PutMapping
-    public ResponseEntity<HotelDto> update(@RequestBody @Valid Hotel hotel){
-        if(hotel == null){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    public ResponseEntity<?> update(@RequestBody @Valid Hotel hotel) {
+        if (hotel == null) {
+            return new ResponseEntity<>("Hotel can't be null", HttpStatus.BAD_REQUEST);
         }
-        HotelDto updatedHotel = hotelService.update(hotel);
+        HotelDto updatedHotel;
+        try {
+            updatedHotel = hotelService.update(hotel);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Hotel with such name already exists!", HttpStatus.CONFLICT);
+        }
         return new ResponseEntity<>(updatedHotel, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<HotelDto> delete(@PathVariable UUID id){
-        HotelDto hotelDto = hotelService.readById(id);
-        if(hotelDto == null){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    public ResponseEntity<?> delete(@PathVariable UUID id) {
+        try {
+            hotelService.readById(id);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Hotel with such id not found!", HttpStatus.NOT_FOUND);
         }
         hotelService.delete(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>("Hotel is successfully deleted!", HttpStatus.NO_CONTENT);
     }
 
     @GetMapping
-    public ResponseEntity<List<HotelDto>> getAllHotels(){
+    public ResponseEntity<?> getAllHotels() {
         List<HotelDto> hotelDtoList = hotelService.getAllHotels();
-        if(hotelDtoList.isEmpty()){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        if (hotelDtoList.isEmpty()) {
+            return new ResponseEntity<>("There are no hotels to display!", HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(hotelDtoList, HttpStatus.OK);
     }

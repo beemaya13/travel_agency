@@ -24,52 +24,63 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserDto> create(@RequestBody @Valid User user){
+    public ResponseEntity<?> create(@RequestBody @Valid User user){
         if(user == null){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("User can't be null", HttpStatus.BAD_REQUEST);
         }
-        UserDto createdUserDto = userService.create(user);
+
+        UserDto createdUserDto;
+        try {
+            createdUserDto = userService.create(user);
+        }catch (Exception e) {
+            return new ResponseEntity<>("User with such email already exists!", HttpStatus.CONFLICT);
+        }
         return new ResponseEntity<>(createdUserDto, HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserDto> readById(@PathVariable("id") UUID id){
+    public ResponseEntity<?> readById(@PathVariable("id") UUID id){
         if(id == null){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("User can't be null", HttpStatus.BAD_REQUEST);
         }
 
         UserDto userDto = userService.readById(id);
         if(userDto == null){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("User with such id not found!", HttpStatus.NOT_FOUND);
         }
-
         return new ResponseEntity<>(userDto, HttpStatus.OK);
     }
 
     @PutMapping
-    public ResponseEntity<UserDto> update(@RequestBody @Valid User user){
+    public ResponseEntity<?> update(@RequestBody @Valid User user){
         if(user == null){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("User can't be null", HttpStatus.BAD_REQUEST);
         }
-        UserDto updatedUser = userService.update(user);
+        UserDto updatedUser;
+        try {
+            updatedUser = userService.update(user);
+        }catch (Exception e) {
+            return new ResponseEntity<>("User with such email already exists!", HttpStatus.CONFLICT);
+        }
         return new ResponseEntity<>(updatedUser, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<UserDto> delete(@PathVariable("id") UUID id){
-        UserDto userDto = userService.readById(id);
-        if(userDto == null){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    public ResponseEntity<?> delete(@PathVariable("id") UUID id){
+        try{
+            userService.readById(id);
+        }catch (Exception e) {
+            return new ResponseEntity<>("User with such id not found!", HttpStatus.NOT_FOUND);
         }
         userService.delete(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>("User is successfully deleted!", HttpStatus.NO_CONTENT);
     }
 
     @GetMapping
-    public ResponseEntity<List<UserDto>> getAllUsers(){
+    public ResponseEntity<?> getAllUsers(){
         List<UserDto> userDtoList = userService.getAllUsers();
         if(userDtoList.isEmpty()){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("There are no users to display!", HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(userDtoList, HttpStatus.OK);
     }

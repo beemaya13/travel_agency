@@ -24,52 +24,59 @@ public class OrderController {
     }
 
     @PostMapping
-    public ResponseEntity<OrderDto> create(@RequestBody @Valid Order order) {
+    public ResponseEntity<?> create(@RequestBody @Valid Order order) {
         if (order == null) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Order can't be null", HttpStatus.BAD_REQUEST);
         }
+
         OrderDto createdOrderDto = orderService.create(order);
         return new ResponseEntity<>(createdOrderDto, HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<OrderDto> readById(@PathVariable UUID id) {
+    public ResponseEntity<?> readById(@PathVariable UUID id) {
         if (id == null) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Order can't be null", HttpStatus.BAD_REQUEST);
         }
 
         OrderDto orderDto = orderService.readById(id);
         if (orderDto == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Order with such id not found!", HttpStatus.NOT_FOUND);
         }
 
         return new ResponseEntity<>(orderDto, HttpStatus.OK);
     }
 
     @PutMapping
-    public ResponseEntity<OrderDto> update(@RequestBody @Valid Order order) {
+    public ResponseEntity<?> update(@RequestBody @Valid Order order) {
         if (order == null) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Order can't be null", HttpStatus.BAD_REQUEST);
         }
-        OrderDto updatedOrder = orderService.update(order);
+        OrderDto updatedOrder;
+        try {
+            updatedOrder = orderService.update(order);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Order with such id already exists!", HttpStatus.CONFLICT);
+        }
         return new ResponseEntity<>(updatedOrder, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<OrderDto> delete(@PathVariable UUID id) {
-        OrderDto orderDto = orderService.readById(id);
-        if (orderDto == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    public ResponseEntity<?> delete(@PathVariable UUID id) {
+        try {
+            orderService.readById(id);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Order with such id not found!", HttpStatus.NOT_FOUND);
         }
         orderService.delete(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>("User is successfully deleted!", HttpStatus.NO_CONTENT);
     }
 
     @GetMapping
-    public ResponseEntity<List<OrderDto>> getAllOrders() {
+    public ResponseEntity<?> getAllOrders() {
         List<OrderDto> orderDtoList = orderService.getAllOrders();
         if (orderDtoList.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("There are no orders to display!", HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(orderDtoList, HttpStatus.OK);
     }
