@@ -11,4 +11,5 @@ import java.util.UUID;
 @Repository
 public interface RoomRepository extends JpaRepository<Room, UUID> {
     Optional<Room> findByRoomNumber(Integer roomNumber);
+    Optional<Room> findById(UUID id);
 }
