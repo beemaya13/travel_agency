@@ -10,6 +10,7 @@ import com.mnilga.travel.agency.application.repository.CountryRepository;
 import com.mnilga.travel.agency.application.repository.HotelRepository;
 import com.mnilga.travel.agency.application.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 
@@ -38,6 +39,7 @@ public class CountryServiceImpl implements CountryService {
     }
 
     @Override
+    @Cacheable(value = "countries-cache")
     public Country findByName(String name) {
         return countryRepository.findByName(name).orElseThrow(() -> {
             throw new ResourceNotFoundException("Country with name =" + name + " does not exist!");
