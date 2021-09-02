@@ -1,12 +1,14 @@
 package com.mnilga.travel.agency.application.controller;
 
 import com.mnilga.travel.agency.application.dto.UserDto;
+import com.mnilga.travel.agency.application.exceptions.ResourceNotFoundException;
 import com.mnilga.travel.agency.application.model.User;
 import com.mnilga.travel.agency.application.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -24,69 +26,70 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<?> create(@RequestBody @Valid User user){
-        if(user == null){
+    public ResponseEntity<?> create(@RequestBody @Valid User user) {
+        if (user == null) {
             return new ResponseEntity<>("User can't be null", HttpStatus.BAD_REQUEST);
         }
 
         UserDto createdUserDto;
         try {
             createdUserDto = userService.create(user);
-        }catch (Exception e) {
+        } catch (Exception e) {
             return new ResponseEntity<>("User with such email already exists!", HttpStatus.CONFLICT);
         }
         return new ResponseEntity<>(createdUserDto, HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> readById(@PathVariable("id") UUID id){
-        if(id == null){
+    public ResponseEntity<?> readById(@PathVariable("id") UUID id) {
+        if (id == null) {
             return new ResponseEntity<>("User can't be null", HttpStatus.BAD_REQUEST);
         }
 
         UserDto userDto = userService.readById(id);
-        if(userDto == null){
+        if (userDto == null) {
             return new ResponseEntity<>("User with such id not found!", HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(userDto, HttpStatus.OK);
     }
 
     @PutMapping
-    public ResponseEntity<?> update(@RequestBody @Valid User user){
-        if(user == null){
+    public ResponseEntity<?> update(@RequestBody @Valid User user) {
+        if (user == null) {
             return new ResponseEntity<>("User can't be null", HttpStatus.BAD_REQUEST);
         }
         UserDto updatedUser;
         try {
             updatedUser = userService.update(user);
-        }catch (Exception e) {
+        } catch (Exception e) {
             return new ResponseEntity<>("User with such email already exists!", HttpStatus.CONFLICT);
         }
         return new ResponseEntity<>(updatedUser, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable("id") UUID id){
-        try{
+    public ResponseEntity<?> delete(@PathVariable("id") UUID id) {
+        try {
             userService.readById(id);
-        }catch (Exception e) {
+        } catch (ResourceNotFoundException e) {
             return new ResponseEntity<>("User with such id not found!", HttpStatus.NOT_FOUND);
         }
         userService.delete(id);
         return new ResponseEntity<>("User is successfully deleted!", HttpStatus.NO_CONTENT);
+
     }
 
     @GetMapping
-    public ResponseEntity<?> getAllUsers(){
+    public ResponseEntity<?> getAllUsers() {
         List<UserDto> userDtoList = userService.getAllUsers();
-        if(userDtoList.isEmpty()){
+        if (userDtoList.isEmpty()) {
             return new ResponseEntity<>("There are no users to display!", HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(userDtoList, HttpStatus.OK);
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<UserDto> patch(@RequestBody Map<String, Object> fields, @PathVariable UUID id){
+    public ResponseEntity<UserDto> patch(@RequestBody Map<String, Object> fields, @PathVariable UUID id) {
         UserDto userDto = userService.patch(fields, id);
         return new ResponseEntity<>(userDto, HttpStatus.OK);
     }
