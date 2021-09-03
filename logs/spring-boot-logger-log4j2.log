@@ -1,0 +1,81 @@
+2021-09-03 18:23:54,128 INFO o.s.b.StartupInfoLogger [main] Starting TravelAgencyApplication using Java 11.0.12 on 5CD110DFVX with PID 9852 (C:\Users\mnilg\Work\MyProjects\travel_agency\target\classes started by mnilg in C:\Users\mnilg\Work\MyProjects\travel_agency)
+2021-09-03 18:23:54,134 DEBUG o.s.b.StartupInfoLogger [main] Running with Spring Boot v2.5.3, Spring v5.3.9
+2021-09-03 18:23:54,134 INFO o.s.b.SpringApplication [main] No active profile set, falling back to default profiles: default
+2021-09-03 18:23:54,628 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-09-03 18:23:54,706 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 62 ms. Found 6 JPA repository interfaces.
+2021-09-03 18:23:55,102 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2021-09-03 18:23:55,108 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-03 18:23:55,109 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2021-09-03 18:23:55,109 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-03 18:23:55,184 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2021-09-03 18:23:55,184 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1020 ms
+2021-09-03 18:23:55,248 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2021-09-03 18:23:55,394 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2021-09-03 18:23:55,883 INFO l.l.c.JavaLogger [main] Successfully acquired change log lock
+2021-09-03 18:23:56,187 INFO l.l.c.JavaLogger [main] Reading from public.databasechangelog
+2021-09-03 18:23:56,217 INFO l.l.c.JavaLogger [main] Successfully released change log lock
+2021-09-03 18:23:56,220 INFO l.l.c.JavaLogger [main] Successfully acquired change log lock
+2021-09-03 18:23:56,221 WARN l.l.c.JavaLogger [main] Skipping auto-registration
+2021-09-03 18:23:56,225 INFO l.l.c.JavaLogger [main] Successfully released change log lock
+2021-09-03 18:23:56,276 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-09-03 18:23:56,306 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-09-03 18:23:56,384 INFO o.h.a.c.r.j.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-09-03 18:23:56,465 INFO o.h.d.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2021-09-03 18:23:56,980 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-09-03 18:23:56,987 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-09-03 18:23:57,088 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-09-03 18:23:57,103 INFO c.m.t.a.a.c.Logging [main] StopWatch 'execution(void com.mnilga.travel.agency.application.config.Config.addFormatters(FormatterRegistry))': running time = 0 ns
+2021-09-03 18:23:57,641 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-03 18:23:57,656 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-03 18:23:57,665 INFO o.s.b.StartupInfoLogger [main] Started TravelAgencyApplication in 4.109 seconds (JVM running for 5.333)
+2021-09-03 18:23:57,667 INFO c.m.t.a.a.c.Logging [main] StopWatch 'execution(void com.mnilga.travel.agency.application.TravelAgencyApplication.test())': running time = 0 ns
+2021-09-03 18:24:47,200 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-09-03 18:24:47,200 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
+2021-09-03 18:24:47,201 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Completed initialization in 0 ms
+2021-09-03 18:25:31,913 INFO c.m.t.a.a.c.Logging [http-nio-8080-exec-4] StopWatch 'execution(ResponseEntity com.mnilga.travel.agency.application.controller.UserController.create(User))': running time = 0 ns
+2021-09-03 18:25:31,915 INFO c.m.t.a.a.c.Logging [http-nio-8080-exec-4] StopWatch 'execution(UserDto com.mnilga.travel.agency.application.service.impl.UserServiceImpl.create(User))': running time = 0 ns
+2021-09-03 18:25:31,917 INFO c.m.t.a.a.s.i.UserServiceImpl [http-nio-8080-exec-4] Starting to create user
+2021-09-03 18:25:31,917 INFO c.m.t.a.a.s.i.UserServiceImpl [http-nio-8080-exec-4] Starting to get role from user by name
+2021-09-03 18:25:31,918 INFO c.m.t.a.a.c.Logging [http-nio-8080-exec-4] StopWatch 'execution(Role com.mnilga.travel.agency.application.service.impl.RoleServiceImpl.findByName(String))': running time = 0 ns
+2021-09-03 18:25:32,008 INFO c.m.t.a.a.s.i.UserServiceImpl [http-nio-8080-exec-4] Role is set
+2021-09-03 18:25:32,057 INFO c.m.t.a.a.s.i.UserServiceImpl [http-nio-8080-exec-4] User is created
+2021-09-03 18:25:32,057 INFO c.m.t.a.a.c.Logging [http-nio-8080-exec-4] StopWatch 'execution(UserDto com.mnilga.travel.agency.application.converter.UserConverterToDto.convert(User))': running time = 0 ns
+2021-09-03 18:25:32,059 INFO c.m.t.a.a.c.Logging [http-nio-8080-exec-4] StopWatch 'execution(RoleDto com.mnilga.travel.agency.application.converter.RoleConverterToDto.convert(Role))': running time = 0 ns
+2021-09-03 18:26:37,706 INFO c.m.t.a.a.c.Logging [http-nio-8080-exec-7] StopWatch 'execution(ResponseEntity com.mnilga.travel.agency.application.controller.UserController.readById(UUID))': running time = 0 ns
+2021-09-03 18:26:37,706 INFO c.m.t.a.a.c.Logging [http-nio-8080-exec-7] StopWatch 'execution(UserDto com.mnilga.travel.agency.application.service.impl.UserServiceImpl.readById(UUID))': running time = 0 ns
+2021-09-03 18:26:37,707 INFO c.m.t.a.a.s.i.UserServiceImpl [http-nio-8080-exec-7] Starting to find user with id c8bc52be-c8e6-42e4-b56b-bca310174775
+2021-09-03 18:26:37,719 INFO c.m.t.a.a.s.i.UserServiceImpl [http-nio-8080-exec-7] Finishing to read user with id c8bc52be-c8e6-42e4-b56b-bca310174775
+2021-09-03 18:26:37,719 INFO c.m.t.a.a.c.Logging [http-nio-8080-exec-7] StopWatch 'execution(UserDto com.mnilga.travel.agency.application.converter.UserConverterToDto.convert(User))': running time = 0 ns
+2021-09-03 18:26:37,719 INFO c.m.t.a.a.c.Logging [http-nio-8080-exec-7] StopWatch 'execution(RoleDto com.mnilga.travel.agency.application.converter.RoleConverterToDto.convert(Role))': running time = 0 ns
+2021-09-03 18:28:13,250 INFO c.m.t.a.a.c.Logging [http-nio-8080-exec-10] StopWatch 'execution(ResponseEntity com.mnilga.travel.agency.application.controller.UserController.update(User))': running time = 0 ns
+2021-09-03 18:28:13,251 INFO c.m.t.a.a.c.Logging [http-nio-8080-exec-10] StopWatch 'execution(UserDto com.mnilga.travel.agency.application.service.impl.UserServiceImpl.update(User))': running time = 0 ns
+2021-09-03 18:28:13,251 WARN c.m.t.a.a.s.i.UserServiceImpl [http-nio-8080-exec-10] Starting to update user with id + c8bc52be-c8e6-42e4-b56b-bca310174775
+2021-09-03 18:28:13,256 INFO c.m.t.a.a.s.i.UserServiceImpl [http-nio-8080-exec-10] Starting to get role from user by name
+2021-09-03 18:28:13,256 INFO c.m.t.a.a.c.Logging [http-nio-8080-exec-10] StopWatch 'execution(Role com.mnilga.travel.agency.application.service.impl.RoleServiceImpl.findByName(String))': running time = 0 ns
+2021-09-03 18:28:13,259 INFO c.m.t.a.a.s.i.UserServiceImpl [http-nio-8080-exec-10] Role is set
+2021-09-03 18:28:13,264 INFO c.m.t.a.a.s.i.UserServiceImpl [http-nio-8080-exec-10] User with id + c8bc52be-c8e6-42e4-b56b-bca310174775 is updated
+2021-09-03 18:28:13,265 INFO c.m.t.a.a.c.Logging [http-nio-8080-exec-10] StopWatch 'execution(UserDto com.mnilga.travel.agency.application.converter.UserConverterToDto.convert(User))': running time = 0 ns
+2021-09-03 18:28:13,265 INFO c.m.t.a.a.c.Logging [http-nio-8080-exec-10] StopWatch 'execution(RoleDto com.mnilga.travel.agency.application.converter.RoleConverterToDto.convert(Role))': running time = 0 ns
+2021-09-03 18:28:42,100 INFO c.m.t.a.a.c.Logging [http-nio-8080-exec-1] StopWatch 'execution(ResponseEntity com.mnilga.travel.agency.application.controller.UserController.delete(UUID))': running time = 0 ns
+2021-09-03 18:28:42,100 INFO c.m.t.a.a.c.Logging [http-nio-8080-exec-1] StopWatch 'execution(UserDto com.mnilga.travel.agency.application.service.impl.UserServiceImpl.readById(UUID))': running time = 0 ns
+2021-09-03 18:28:42,100 INFO c.m.t.a.a.s.i.UserServiceImpl [http-nio-8080-exec-1] Starting to find user with id c8bc52be-c8e6-42e4-b56b-bca310174775
+2021-09-03 18:28:42,102 INFO c.m.t.a.a.s.i.UserServiceImpl [http-nio-8080-exec-1] Finishing to read user with id c8bc52be-c8e6-42e4-b56b-bca310174775
+2021-09-03 18:28:42,103 INFO c.m.t.a.a.c.Logging [http-nio-8080-exec-1] StopWatch 'execution(UserDto com.mnilga.travel.agency.application.converter.UserConverterToDto.convert(User))': running time = 0 ns
+2021-09-03 18:28:42,103 INFO c.m.t.a.a.c.Logging [http-nio-8080-exec-1] StopWatch 'execution(RoleDto com.mnilga.travel.agency.application.converter.RoleConverterToDto.convert(Role))': running time = 0 ns
+2021-09-03 18:28:42,104 INFO c.m.t.a.a.c.Logging [http-nio-8080-exec-1] StopWatch 'execution(void com.mnilga.travel.agency.application.service.impl.UserServiceImpl.delete(UUID))': running time = 0 ns
+2021-09-03 18:28:42,104 WARN c.m.t.a.a.s.i.UserServiceImpl [http-nio-8080-exec-1] Starting to delete user with id c8bc52be-c8e6-42e4-b56b-bca310174775
+2021-09-03 18:28:42,104 INFO c.m.t.a.a.s.i.UserServiceImpl [http-nio-8080-exec-1] Starting to find user with id c8bc52be-c8e6-42e4-b56b-bca310174775
+2021-09-03 18:28:42,104 INFO c.m.t.a.a.s.i.UserServiceImpl [http-nio-8080-exec-1] Finishing to read user with id c8bc52be-c8e6-42e4-b56b-bca310174775
+2021-09-03 18:28:42,120 INFO c.m.t.a.a.s.i.UserServiceImpl [http-nio-8080-exec-1] User with id c8bc52be-c8e6-42e4-b56b-bca310174775 is deleted
+2021-09-03 18:28:56,491 INFO c.m.t.a.a.c.Logging [http-nio-8080-exec-2] StopWatch 'execution(ResponseEntity com.mnilga.travel.agency.application.controller.UserController.getAllUsers())': running time = 0 ns
+2021-09-03 18:28:56,492 INFO c.m.t.a.a.c.Logging [http-nio-8080-exec-2] StopWatch 'execution(List com.mnilga.travel.agency.application.service.impl.UserServiceImpl.getAllUsers())': running time = 0 ns
+2021-09-03 18:28:56,492 INFO c.m.t.a.a.s.i.UserServiceImpl [http-nio-8080-exec-2] Starting to get all users
+2021-09-03 18:28:56,497 INFO c.m.t.a.a.s.i.UserServiceImpl [http-nio-8080-exec-2] All users are got
+2021-09-03 18:28:56,497 INFO c.m.t.a.a.c.Logging [http-nio-8080-exec-2] StopWatch 'execution(UserDto com.mnilga.travel.agency.application.converter.UserConverterToDto.convert(User))': running time = 0 ns
+2021-09-03 18:28:56,497 INFO c.m.t.a.a.c.Logging [http-nio-8080-exec-2] StopWatch 'execution(RoleDto com.mnilga.travel.agency.application.converter.RoleConverterToDto.convert(Role))': running time = 0 ns
+2021-09-03 18:28:56,498 INFO c.m.t.a.a.c.Logging [http-nio-8080-exec-2] StopWatch 'execution(UserDto com.mnilga.travel.agency.application.converter.UserConverterToDto.convert(User))': running time = 0 ns
+2021-09-03 18:28:56,498 INFO c.m.t.a.a.c.Logging [http-nio-8080-exec-2] StopWatch 'execution(RoleDto com.mnilga.travel.agency.application.converter.RoleConverterToDto.convert(Role))': running time = 0 ns
+2021-09-03 18:28:56,499 INFO c.m.t.a.a.c.Logging [http-nio-8080-exec-2] StopWatch 'execution(UserDto com.mnilga.travel.agency.application.converter.UserConverterToDto.convert(User))': running time = 0 ns
+2021-09-03 18:28:56,499 INFO c.m.t.a.a.c.Logging [http-nio-8080-exec-2] StopWatch 'execution(RoleDto com.mnilga.travel.agency.application.converter.RoleConverterToDto.convert(Role))': running time = 0 ns
+2021-09-03 18:28:56,499 INFO c.m.t.a.a.c.Logging [http-nio-8080-exec-2] StopWatch 'execution(UserDto com.mnilga.travel.agency.application.converter.UserConverterToDto.convert(User))': running time = 0 ns
+2021-09-03 18:28:56,500 INFO c.m.t.a.a.c.Logging [http-nio-8080-exec-2] StopWatch 'execution(RoleDto com.mnilga.travel.agency.application.converter.RoleConverterToDto.convert(Role))': running time = 0 ns
