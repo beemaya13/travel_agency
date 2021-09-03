@@ -5,6 +5,7 @@ import com.mnilga.travel.agency.application.exceptions.ResourceNotFoundException
 import com.mnilga.travel.agency.application.model.User;
 import com.mnilga.travel.agency.application.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,10 +28,6 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<?> create(@RequestBody @Valid User user) {
-        if (user == null) {
-            return new ResponseEntity<>("User can't be null", HttpStatus.BAD_REQUEST);
-        }
-
         UserDto createdUserDto;
         try {
             createdUserDto = userService.create(user);
@@ -42,10 +39,6 @@ public class UserController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> readById(@PathVariable("id") UUID id) {
-        if (id == null) {
-            return new ResponseEntity<>("User can't be null", HttpStatus.BAD_REQUEST);
-        }
-
         UserDto userDto = userService.readById(id);
         if (userDto == null) {
             return new ResponseEntity<>("User with such id not found!", HttpStatus.NOT_FOUND);
@@ -55,9 +48,6 @@ public class UserController {
 
     @PutMapping
     public ResponseEntity<?> update(@RequestBody @Valid User user) {
-        if (user == null) {
-            return new ResponseEntity<>("User can't be null", HttpStatus.BAD_REQUEST);
-        }
         UserDto updatedUser;
         try {
             updatedUser = userService.update(user);
@@ -78,6 +68,9 @@ public class UserController {
         return new ResponseEntity<>("User is successfully deleted!", HttpStatus.NO_CONTENT);
 
     }
+
+    @Autowired
+    ApplicationContext applicationContext;
 
     @GetMapping
     public ResponseEntity<?> getAllUsers() {
