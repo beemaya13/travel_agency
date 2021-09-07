@@ -29,12 +29,11 @@ public class User extends Audit {
     private Role role;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private UserAddress address;
+    private Address address;
 
-    @OneToMany(cascade = CascadeType.ALL,       //fetch type  EAGER ???
+    @OneToMany(cascade = CascadeType.ALL,
             mappedBy = "user")
     private List<Order> orders = new ArrayList<>();
-
 
     public enum Sex {
         MALE, FEMALE
@@ -80,11 +79,32 @@ public class User extends Audit {
         this.role = role;
     }
 
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
     public List<Order> getOrders() {
         return orders;
     }
 
     public void setOrders(List<Order> orders) {
         this.orders = orders;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "email='" + email + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", sex=" + sex +
+                ", role=" + role +
+                ", address=" + address +
+                ", orders=" + orders +
+                '}';
     }
 }

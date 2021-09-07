@@ -4,7 +4,13 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "addresses")
-public class UserAddress extends Audit {
+public class Address extends Audit {
+
+    @Column(nullable = false)
+    private String country;
+
+    @Column(nullable = false)
+    private String city;
 
     @Column(nullable = false)
     private String street;
@@ -15,14 +21,7 @@ public class UserAddress extends Audit {
     @Column(name = "flat_number", nullable = false)
     private Integer flatNumber;
 
-
     @Column(nullable = false)
-    private String country;
+    private Integer zipcode;
 
-    @Column(nullable = false)
-    private String city;
-
-    @OneToMany
-    @JoinColumn(name = "user_id")
-    private User user;
 }
