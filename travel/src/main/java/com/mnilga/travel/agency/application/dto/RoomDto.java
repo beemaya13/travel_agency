@@ -8,8 +8,6 @@ public class RoomDto {
     private String roomType;
     private Double price;
     private HotelDto hotel;
-//    private List<OrderDto> orders = new ArrayList<>();
-
 
     public UUID getRoomId() {
         return roomId;

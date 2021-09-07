@@ -6,12 +6,11 @@ import java.util.UUID;
 
 public class OrderDto {
     private UUID orderId;
-    private UserDto user;
-    private HotelDto hotel;
-    private RoomDto room;
     private LocalDate arrivalDate;
     private LocalDate departureDate;
     private LocalDate orderDate;
+    private UserDto user;
+    private RoomDto room;
 
     public UUID getOrderId() {
         return orderId;
@@ -19,30 +18,6 @@ public class OrderDto {
 
     public void setOrderId(UUID orderId) {
         this.orderId = orderId;
-    }
-
-    public UserDto getUser() {
-        return user;
-    }
-
-    public void setUser(UserDto user) {
-        this.user = user;
-    }
-
-    public HotelDto getHotel() {
-        return hotel;
-    }
-
-    public void setHotel(HotelDto hotel) {
-        this.hotel = hotel;
-    }
-
-    public RoomDto getRoom() {
-        return room;
-    }
-
-    public void setRoom(RoomDto room) {
-        this.room = room;
     }
 
     public LocalDate getArrivalDate() {
@@ -69,16 +44,31 @@ public class OrderDto {
         this.orderDate = orderDate;
     }
 
+    public UserDto getUser() {
+        return user;
+    }
+
+    public void setUser(UserDto user) {
+        this.user = user;
+    }
+
+    public RoomDto getRoom() {
+        return room;
+    }
+
+    public void setRoom(RoomDto room) {
+        this.room = room;
+    }
+
     @Override
     public String toString() {
         return "OrderDto{" +
-                "orderId='" + orderId + '\'' +
+                "orderId=" + orderId +
+                ", arrivalDate=" + arrivalDate +
+                ", departureDate=" + departureDate +
+                ", orderDate=" + orderDate +
                 ", user=" + user +
-                ", hotel=" + hotel +
                 ", room=" + room +
-                ", arrivalDate='" + arrivalDate + '\'' +
-                ", departureDate='" + departureDate + '\'' +
-                ", orderDate='" + orderDate + '\'' +
                 '}';
     }
 }

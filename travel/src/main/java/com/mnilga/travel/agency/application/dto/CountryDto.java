@@ -49,4 +49,15 @@ public class CountryDto {
     public void setContinent(String continent) {
         this.continent = continent;
     }
+
+    @Override
+    public String toString() {
+        return "CountryDto{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", Iso='" + Iso + '\'' +
+                ", capital='" + capital + '\'' +
+                ", continent='" + continent + '\'' +
+                '}';
+    }
 }

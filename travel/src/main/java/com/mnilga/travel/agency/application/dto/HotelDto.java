@@ -6,8 +6,9 @@ import java.util.UUID;
 public class HotelDto {
     private UUID hotelId;
     private String name;
-    private CountryDto country;
-    private String city;
+    private Integer stars;
+    private Double  square;
+    private CityDto cityDto;
 
     public UUID getHotelId() {
         return hotelId;
@@ -25,29 +26,38 @@ public class HotelDto {
         this.name = name;
     }
 
-    public CountryDto getCountry() {
-        return country;
+    public Integer getStars() {
+        return stars;
     }
 
-    public void setCountry(CountryDto country) {
-        this.country = country;
+    public void setStars(Integer stars) {
+        this.stars = stars;
     }
 
-    public String getCity() {
-        return city;
+    public Double getSquare() {
+        return square;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setSquare(Double square) {
+        this.square = square;
+    }
+
+    public CityDto getCityDto() {
+        return cityDto;
+    }
+
+    public void setCityDto(CityDto cityDto) {
+        this.cityDto = cityDto;
     }
 
     @Override
     public String toString() {
         return "HotelDto{" +
-                "hotelId='" + hotelId + '\'' +
+                "hotelId=" + hotelId +
                 ", name='" + name + '\'' +
-                ", country='" + country + '\'' +
-                ", city='" + city + '\'' +
+                ", stars=" + stars +
+                ", square=" + square +
+                ", cityDto=" + cityDto +
                 '}';
     }
 }
