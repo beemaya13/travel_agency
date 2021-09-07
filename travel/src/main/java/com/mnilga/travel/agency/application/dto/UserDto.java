@@ -10,6 +10,7 @@ public class UserDto {
     private String lastName;
     private String sex;
     private RoleDto role;
+    private AddressDto addressDto;
 
     public UUID getId() {
         return id;
@@ -59,15 +60,24 @@ public class UserDto {
         this.role = role;
     }
 
+    public AddressDto getAddressDto() {
+        return addressDto;
+    }
+
+    public void setAddressDto(AddressDto addressDto) {
+        this.addressDto = addressDto;
+    }
+
     @Override
     public String toString() {
         return "UserDto{" +
-                "id='" + id + '\'' +
+                "id=" + id +
                 ", email='" + email + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", sex='" + sex + '\'' +
                 ", role=" + role +
+                ", addressDto=" + addressDto +
                 '}';
     }
 }

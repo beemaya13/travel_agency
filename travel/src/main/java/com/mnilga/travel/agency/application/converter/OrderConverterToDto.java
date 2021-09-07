@@ -1,7 +1,5 @@
 package com.mnilga.travel.agency.application.converter;
 
-
-import com.mnilga.travel.agency.application.dto.HotelDto;
 import com.mnilga.travel.agency.application.dto.OrderDto;
 import com.mnilga.travel.agency.application.dto.RoomDto;
 import com.mnilga.travel.agency.application.dto.UserDto;
@@ -14,17 +12,11 @@ import org.springframework.stereotype.Component;
 public class OrderConverterToDto implements Converter<Order, OrderDto> {
 
     private UserConverterToDto userConverterToDto;
-    private HotelConverterToDto hotelConverterToDto;
     private RoomConverterToDto roomConverterToDto;
 
     @Autowired
     public void setUserConverterToDto(UserConverterToDto userConverterToDto) {
         this.userConverterToDto = userConverterToDto;
-    }
-
-    @Autowired
-    public void setHotelConverterToDto(HotelConverterToDto hotelConverterToDto) {
-        this.hotelConverterToDto = hotelConverterToDto;
     }
 
     @Autowired
@@ -41,8 +33,6 @@ public class OrderConverterToDto implements Converter<Order, OrderDto> {
         orderDto.setOrderDate(order.getOrderDate());
         UserDto userDto = userConverterToDto.convert(order.getUser());
         orderDto.setUser(userDto);
-        HotelDto hotelDto = hotelConverterToDto.convert(order.getHotel());
-        orderDto.setHotel(hotelDto);
         RoomDto roomDto = roomConverterToDto.convert(order.getRoom());
         orderDto.setRoom(roomDto);
         return orderDto;

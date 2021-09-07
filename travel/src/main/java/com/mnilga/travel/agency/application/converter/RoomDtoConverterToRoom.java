@@ -13,7 +13,7 @@ public class RoomDtoConverterToRoom implements Converter<RoomDto, Room> {
     private HotelDtoConverterToHotel hotelDtoConverterToHotel;
 
     @Autowired
-    public void setService(HotelDtoConverterToHotel hotelDtoConverterToHotel) {
+    public void setHotelDtoConverterToHotel(HotelDtoConverterToHotel hotelDtoConverterToHotel) {
         this.hotelDtoConverterToHotel = hotelDtoConverterToHotel;
     }
 

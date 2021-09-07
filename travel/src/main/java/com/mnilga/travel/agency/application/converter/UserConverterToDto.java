@@ -1,6 +1,7 @@
 package com.mnilga.travel.agency.application.converter;
 
 
+import com.mnilga.travel.agency.application.dto.AddressDto;
 import com.mnilga.travel.agency.application.dto.RoleDto;
 import com.mnilga.travel.agency.application.dto.UserDto;
 import com.mnilga.travel.agency.application.model.User;
@@ -12,9 +13,15 @@ import org.springframework.stereotype.Component;
 public class UserConverterToDto implements Converter<User, UserDto> {
 
     private RoleConverterToDto roleConverterToDto;
+    private AddressConverterToDto addressConverterToDto;
 
     @Autowired
-    public void setService(RoleConverterToDto roleConverterToDto) {
+    public void setAddressConverterToDto(AddressConverterToDto addressConverterToDto) {
+        this.addressConverterToDto = addressConverterToDto;
+    }
+
+    @Autowired
+    public void setRoleConverterToDto(RoleConverterToDto roleConverterToDto) {
         this.roleConverterToDto = roleConverterToDto;
     }
 
@@ -28,6 +35,8 @@ public class UserConverterToDto implements Converter<User, UserDto> {
         userDto.setSex(user.getSex().toString());
         RoleDto roleDto = roleConverterToDto.convert(user.getRole());
         userDto.setRole(roleDto);
+        AddressDto addressDto = addressConverterToDto.convert(user.getAddress());
+        userDto.setAddressDto(addressDto);
         return userDto;
     }
 }

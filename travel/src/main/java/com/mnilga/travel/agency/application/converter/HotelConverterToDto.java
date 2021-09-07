@@ -1,6 +1,7 @@
 package com.mnilga.travel.agency.application.converter;
 
 
+import com.mnilga.travel.agency.application.dto.CityDto;
 import com.mnilga.travel.agency.application.dto.CountryDto;
 import com.mnilga.travel.agency.application.dto.HotelDto;
 import com.mnilga.travel.agency.application.model.Hotel;
@@ -11,11 +12,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class HotelConverterToDto implements Converter<Hotel, HotelDto> {
 
-    private CountryConverterToDto countryConverterToDto;
+    private CityConverterToDto cityConverterToDto;
 
     @Autowired
-    public void setCountryConverterToDto(CountryConverterToDto countryConverterToDto) {
-        this.countryConverterToDto = countryConverterToDto;
+    public void setCityConverterToDto(CityConverterToDto cityConverterToDto) {
+        this.cityConverterToDto = cityConverterToDto;
     }
 
     @Override
@@ -23,9 +24,10 @@ public class HotelConverterToDto implements Converter<Hotel, HotelDto> {
         HotelDto hotelDto = new HotelDto();
         hotelDto.setHotelId(hotel.getId());
         hotelDto.setName(hotel.getName());
-        CountryDto countryDto = countryConverterToDto.convert(hotel.getCountry());
-        hotelDto.setCountry(countryDto);
-        hotelDto.setCity(hotel.getCity());
+        hotelDto.setStars(hotel.getStars());
+        hotelDto.setSquare(hotel.getSquare());
+        CityDto cityDto = cityConverterToDto.convert(hotel.getCity());
+        hotelDto.setCityDto(cityDto);
         return hotelDto;
     }
 }
