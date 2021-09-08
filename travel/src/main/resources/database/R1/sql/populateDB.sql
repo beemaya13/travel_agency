@@ -17,11 +17,11 @@ VALUES ('petro@gmail.com', 'Petr', 'Petrov', 'MALE', (select id from roles where
        ('anna@gmail.com', 'Anna', 'Karenina', 'FEMALE', (select id from roles where name = 'USER'), (select id from addresses where city = 'Ankara'));
 
 insert into countries (name, ISO, capital, continent)
-values ('United States of America', 'USA', 'Washington', 'North America'),
-       ('Ukraine', 'UKR', 'Kiev', 'Europe'),
-       ('France', 'FRA', 'Paris', 'Europe'),
-       ('Egypt', 'EGP', 'Cairo', 'Africa'),
-       ('Turkey', 'TRK', 'Ankara', 'Asia');
+values ('United States of America', 'US', 'Washington', 'North America'),
+       ('Ukraine', 'UK', 'Kiev', 'Europe'),
+       ('France', 'FR', 'Paris', 'Europe'),
+       ('Egypt', 'EG', 'Cairo', 'Africa'),
+       ('Turkey', 'TR', 'Ankara', 'Asia');
 
 insert into cities (name, country_id)
 values ('Kemer', (select id from countries where countries.name = 'Turkey')),

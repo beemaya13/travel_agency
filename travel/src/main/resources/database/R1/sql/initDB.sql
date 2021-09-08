@@ -26,9 +26,7 @@ create table if not exists addresses
     flat_number  integer      not null,
     zipcode      integer      not null,
     country      varchar(255) not null,
---         constraint uk_m1xlqsndengqp3kpd5nux2s9i unique,
     city         varchar(255) not null
---         constraint uk_m5xlqsndengqp5kpd5nux2s9i unique
 );
 alter table addresses
     owner to postgres;
@@ -66,7 +64,7 @@ create table if not exists countries
     date_created timestamp    not null DEFAULT CURRENT_TIMESTAMP,
     date_deleted timestamp,
     date_updated timestamp,
-    iso          varchar(3)   not null,
+    iso          varchar(2)   not null,
     capital      varchar(255) not null,
     continent    varchar(255) not null,
     name         varchar(255) not null
