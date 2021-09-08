@@ -26,10 +26,6 @@ public class Address extends Audit {
     @Column(nullable = false)
     private Integer zipcode;
 
-    @OneToMany(targetEntity=User.class, cascade = CascadeType.ALL,
-            mappedBy = "address")
-    private List<User> users = new ArrayList<>();
-
     public String getCountry() {
         return country;
     }
