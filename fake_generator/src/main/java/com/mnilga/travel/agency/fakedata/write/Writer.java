@@ -32,5 +32,4 @@ public abstract class Writer<E> {
     }
 
     protected abstract String prepareValue(E e);
-
 }
