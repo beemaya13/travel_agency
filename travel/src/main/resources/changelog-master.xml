@@ -7,4 +7,5 @@
 
     <include file="database/R1/ddl.xml"/>
     <include file="database/R1/dml.xml"/>
+    <include file="database/R2/dml.xml"/>
 </databaseChangeLog>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="add_addresses" author="mnilga" context="dml">
+        <sqlFile path="database/R2/generatedData/addresses.sql"/>
+    </changeSet>
+    <changeSet id="add_users" author="mnilga" context="dml">
+        <sqlFile path="database/R2/generatedData/users.sql"/>
+    </changeSet>
+    <changeSet id="add_countries" author="mnilga" context="dml">
+        <sqlFile path="database/R2/generatedData/countries.sql"/>
+    </changeSet>
+    <changeSet id="add_cities" author="mnilga" context="dml">
+        <sqlFile path="database/R2/generatedData/cities.sql"/>
+    </changeSet>
+    <changeSet id="add_hotels" author="mnilga" context="dml">
+        <sqlFile path="database/R2/generatedData/hotels.sql"/>
+    </changeSet>
+    <changeSet id="add_rooms" author="mnilga" context="dml">
+        <sqlFile path="database/R2/generatedData/rooms.sql"/>
+    </changeSet>
+    <changeSet id="add_orders" author="mnilga" context="dml">
+        <sqlFile path="database/R2/generatedData/orders.sql"/>
+    </changeSet>
+</databaseChangeLog>
