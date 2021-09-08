@@ -1,15 +1,17 @@
 package com.mnilga.travel.agency.application.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "addresses")
 public class Address extends Audit {
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String country;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String city;
 
     @Column(nullable = false)
@@ -23,6 +25,10 @@ public class Address extends Audit {
 
     @Column(nullable = false)
     private Integer zipcode;
+
+    @OneToMany(targetEntity=User.class, cascade = CascadeType.ALL,
+            mappedBy = "address")
+    private List<User> users = new ArrayList<>();
 
     public String getCountry() {
         return country;

@@ -1,9 +1,7 @@
 package com.mnilga.travel.agency.application.converter;
 
 import com.mnilga.travel.agency.application.dto.AddressDto;
-import com.mnilga.travel.agency.application.dto.UserDto;
 import com.mnilga.travel.agency.application.model.Address;
-import com.mnilga.travel.agency.application.model.User;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
