@@ -98,11 +98,6 @@ public class RoomServiceImpl implements RoomService {
         });
     }
 
-    @Override
-    public RoomDto patch(Map<String, Object> fields, UUID id) {
-        return null;
-    }
-
 
 //    public void testDto() {
 //        Room room = new Room();

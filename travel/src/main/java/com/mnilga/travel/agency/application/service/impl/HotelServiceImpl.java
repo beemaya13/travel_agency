@@ -2,7 +2,7 @@ package com.mnilga.travel.agency.application.service.impl;
 
 import com.mnilga.travel.agency.application.dto.HotelDto;
 import com.mnilga.travel.agency.application.exceptions.ResourceNotFoundException;
-import com.mnilga.travel.agency.application.model.Country;
+import com.mnilga.travel.agency.application.model.City;
 import com.mnilga.travel.agency.application.model.Hotel;
 import com.mnilga.travel.agency.application.repository.HotelRepository;
 import com.mnilga.travel.agency.application.service.HotelService;
@@ -19,7 +19,7 @@ public class HotelServiceImpl implements HotelService {
 
     private HotelRepository hotelRepository;
     private ConversionService service;
-    private CountryServiceImpl countryService;
+    private CityServiceImpl cityService;
 
     @Autowired
     public void setHotelRepository(HotelRepository hotelRepository) {
@@ -32,13 +32,13 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Autowired
-    public void setCountryService(CountryServiceImpl countryService) {
-        this.countryService = countryService;
+    public void setCityService(CityServiceImpl cityService) {
+        this.cityService = cityService;
     }
 
     @Override
     public HotelDto create(Hotel hotel) {
-        getCountryFromHotel(hotel);
+        getCityFromHotel(hotel);
         Hotel newHotel = hotelRepository.save(hotel);
         return service.convert(newHotel, HotelDto.class);
     }
@@ -59,7 +59,7 @@ public class HotelServiceImpl implements HotelService {
         Optional.ofNullable(hotelRepository.findByName(hotel.getName()))
                 .orElseThrow(() -> new ResourceNotFoundException("Hotel with name = " + hotel.getName() + " does not exist!"));
 
-        getCountryFromHotel(hotel);
+        getCityFromHotel(hotel);
         Hotel updatedHotel = hotelRepository.save(hotel);
         return service.convert(updatedHotel, HotelDto.class);
     }
@@ -81,8 +81,8 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Override
-    public Optional<Hotel> findByCountry(String name) {
-        return Optional.empty();
+    public Hotel findByCity(String name) {         //////!!!!!!!!
+        return null;
     }
 
     @Override
@@ -99,16 +99,12 @@ public class HotelServiceImpl implements HotelService {
         });
     }
 
-    private void getCountryFromHotel(Hotel hotelWithCountry) {
-        String countryName = hotelWithCountry.getCountry().getName();
-        Country country = countryService.findByName(countryName);
-        hotelWithCountry.setCountry(country);
+    private void getCityFromHotel(Hotel hotelWithCountry) {
+        String cityName = hotelWithCountry.getCity().getName();
+        City city = cityService.findByName(cityName);
+        hotelWithCountry.setCity(city);
     }
 
-    @Override
-    public HotelDto patch(Map<String, Object> fields, UUID id) {
-        return null;
-    }
 
 //    public void testDto(){
 //        Hotel hotel = new Hotel();

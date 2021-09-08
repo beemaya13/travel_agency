@@ -12,7 +12,6 @@ public interface RoomService {
     RoomDto readById(UUID id);
     RoomDto update(Room room);
     void delete(UUID id);
-    RoomDto patch(Map<String, Object> fields, UUID id);
     List<RoomDto> getAllRooms();
     Room findRoomById(UUID id);
 

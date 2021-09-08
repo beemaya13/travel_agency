@@ -12,6 +12,5 @@ public interface OrderService {
     OrderDto readById(UUID id);
     OrderDto update(Order order);
     void delete(UUID id);
-    OrderDto patch(Map<String, Object> fields, UUID id);
     List<OrderDto> getAllOrders();
 }

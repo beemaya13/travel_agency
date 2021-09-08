@@ -6,6 +6,6 @@ import com.mnilga.travel.agency.application.model.Country;
 import java.util.UUID;
 
 public interface CountryService {
-    public CountryDto readById(UUID id);
-    public Country findByName(String name);
+    CountryDto readById(UUID id);
+    Country findByName(String name);
 }

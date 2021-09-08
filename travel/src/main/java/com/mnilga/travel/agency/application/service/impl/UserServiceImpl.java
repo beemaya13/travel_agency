@@ -3,6 +3,7 @@ package com.mnilga.travel.agency.application.service.impl;
 
 import com.mnilga.travel.agency.application.dto.UserDto;
 import com.mnilga.travel.agency.application.exceptions.ResourceNotFoundException;
+import com.mnilga.travel.agency.application.model.Address;
 import com.mnilga.travel.agency.application.model.Role;
 import com.mnilga.travel.agency.application.model.User;
 import com.mnilga.travel.agency.application.repository.UserRepository;
@@ -30,6 +31,7 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
     private ConversionService service;
     private RoleServiceImpl roleService;
+    private AddressServiceImpl addressService;
 
     @Autowired
     public void setService(ConversionService service) {
@@ -46,13 +48,19 @@ public class UserServiceImpl implements UserService {
         this.roleService = roleService;
     }
 
+    @Autowired
+    public void setAddressService(AddressServiceImpl addressService) {
+        this.addressService = addressService;
+    }
+
     @Override
-    public UserDto create(User user) {
+    public UserDto create(User user) {      //////!!!
         LOGGER.info("Starting to create user");
         if (user == null) {
             throw new RuntimeException("User can't be null");
         }
         getRoleFromUser(user);
+        getAddressFromUser(user);
         User newUser = userRepository.save(user);
         LOGGER.info("User is created");
         return service.convert(newUser, UserDto.class);
@@ -86,6 +94,7 @@ public class UserServiceImpl implements UserService {
                 .orElseThrow(() -> new ResourceNotFoundException("User with email = " + user.getEmail() + " does not exist!"));
 
         getRoleFromUser(user);
+        getAddressFromUser(user);
         User updatedUser = userRepository.save(user);
         LOGGER.info("User with id + " + user.getId() + " is updated");
         return service.convert(updatedUser, UserDto.class);
@@ -142,6 +151,16 @@ public class UserServiceImpl implements UserService {
         LOGGER.info("Role is set");
     }
 
+    private void getAddressFromUser(User userWithAddress) {
+        String country = userWithAddress.getAddress().getCountry();
+        String city = userWithAddress.getAddress().getCity();
+        String street = userWithAddress.getAddress().getStreet();
+        Integer house = userWithAddress.getAddress().getHouseNumber();
+        Integer flat = userWithAddress.getAddress().getFlatNumber();
+        Integer zip = userWithAddress.getAddress().getZipcode();
+        Address address = addressService.findByCountryAndCityAndStreetAndHouseNumberAndFlatNumberAndZipcode(country, city, street, house, flat, zip);
+        userWithAddress.setAddress(address);
+    }
 
 //    public void testDto(){
 //        User user = new User();

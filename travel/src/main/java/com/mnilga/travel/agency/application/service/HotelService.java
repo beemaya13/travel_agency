@@ -10,9 +10,8 @@ public interface HotelService {
     HotelDto readById(UUID id);
     HotelDto update(Hotel hotel);
     void delete(UUID id);
-    HotelDto patch(Map<String, Object> fields, UUID id);
     List<HotelDto> getAllHotels();
-    Optional<Hotel> findByCountry(String name);
+    Hotel findByCity(String name);
     Hotel findByName(String name);
     Hotel findHotelById(UUID id);
 

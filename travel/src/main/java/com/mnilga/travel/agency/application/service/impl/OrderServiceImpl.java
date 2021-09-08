@@ -21,7 +21,6 @@ public class OrderServiceImpl implements OrderService {
 
     private OrderRepository orderRepository;
     private ConversionService service;
-    private HotelServiceImpl hotelService;
     private UserServiceImpl userService;
     private RoomServiceImpl roomService;
 
@@ -33,11 +32,6 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     public void setOrderRepository(OrderRepository orderRepository) {
         this.orderRepository = orderRepository;
-    }
-
-    @Autowired
-    public void setHotelService(HotelServiceImpl hotelService) {
-        this.hotelService = hotelService;
     }
 
     @Autowired
@@ -104,12 +98,6 @@ public class OrderServiceImpl implements OrderService {
                 .map(order -> service.convert(order, OrderDto.class))
                 .collect(Collectors.toList());
     }
-
-    @Override
-    public OrderDto patch(Map<String, Object> fields, UUID id) {
-        return null;
-    }
-
 
 //    public void testDto(){
 //        Order order = new Order();
