@@ -4,7 +4,6 @@ import com.mnilga.travel.agency.application.dto.CityDto;
 import com.mnilga.travel.agency.application.exceptions.ResourceNotFoundException;
 import com.mnilga.travel.agency.application.model.City;
 import com.mnilga.travel.agency.application.model.Country;
-import com.mnilga.travel.agency.application.model.Hotel;
 import com.mnilga.travel.agency.application.repository.CityRepository;
 import com.mnilga.travel.agency.application.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +47,12 @@ public class CityServiceImpl implements CityService {
         });
     }
 
+    @Override
+    public City findById(UUID id) {
+        return cityRepository.findById(id).orElseThrow(() -> {
+            throw new ResourceNotFoundException("City with id =" + id + " does not exist!");
+        });
+    }
 
     private void getCountryFromCity(City cityWithCountry) {
         String countryName = cityWithCountry.getCountry().getName();

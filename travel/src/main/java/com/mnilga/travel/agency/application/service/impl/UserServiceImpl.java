@@ -106,7 +106,7 @@ public class UserServiceImpl implements UserService {
         LOGGER.warn("Starting to delete user with id " + id);
         User user = findUserById(id);
         userRepository.delete(user);
-        LOGGER.info("User with id " + id + " is deleted") ;
+        LOGGER.info("User with id " + id + " is deleted");
     }
 
     @Override
@@ -152,13 +152,8 @@ public class UserServiceImpl implements UserService {
     }
 
     private void getAddressFromUser(User userWithAddress) {
-        String country = userWithAddress.getAddress().getCountry();
-        String city = userWithAddress.getAddress().getCity();
-        String street = userWithAddress.getAddress().getStreet();
-        Integer house = userWithAddress.getAddress().getHouseNumber();
-        Integer flat = userWithAddress.getAddress().getFlatNumber();
-        Integer zip = userWithAddress.getAddress().getZipcode();
-        Address address = addressService.findByCountryAndCityAndStreetAndHouseNumberAndFlatNumberAndZipcode(country, city, street, house, flat, zip);
+        UUID addressId = userWithAddress.getAddress().getId();
+        Address address = addressService.findById(addressId);
         userWithAddress.setAddress(address);
     }
 

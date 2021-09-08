@@ -11,7 +11,7 @@ public class Country extends Audit{
     @Column(nullable = false, unique = true)
     private String name;
 
-    @Column(nullable = false, length = 3)
+    @Column(nullable = false, length = 2)
     private String Iso;
 
     @Column(nullable = false)

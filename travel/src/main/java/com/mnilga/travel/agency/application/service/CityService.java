@@ -10,4 +10,5 @@ import java.util.UUID;
 public interface CityService {
     CityDto readById(UUID id);
     City findByName(String name);
+    City findById(UUID id);
 }
