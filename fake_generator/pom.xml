@@ -14,11 +14,19 @@
     <packaging>jar</packaging>
 
     <dependencies>
+<!--        <dependency>-->
+<!--            <groupId>com.github.javafaker</groupId>-->
+<!--            <artifactId>javafaker</artifactId>-->
+<!--            <version>0.15</version>-->
+<!--        </dependency>-->
+
+
         <dependency>
             <groupId>com.github.javafaker</groupId>
             <artifactId>javafaker</artifactId>
-            <version>0.15</version>
+            <version>1.0.2</version>
         </dependency>
+
 
         <dependency>
             <groupId>info.picocli</groupId>
