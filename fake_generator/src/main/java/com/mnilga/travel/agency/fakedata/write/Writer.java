@@ -10,7 +10,7 @@ import java.util.List;
 
 public abstract class Writer<E> {
 
-    protected String file_path = "travel/src/main/resources/generatedData/";
+    protected String file_path = "travel/src/main/resources/database/R2/generatedData/";
     protected String file_name;
     protected String header;
 
