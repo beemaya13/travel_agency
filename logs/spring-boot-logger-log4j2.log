@@ -29,3 +29,6 @@
 2021-09-08 17:01:03,980 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 8081 (http) with context path ''
 2021-09-08 17:01:03,993 INFO o.s.b.StartupInfoLogger [main] Started TravelAgencyApplication in 4.671 seconds (JVM running for 6.371)
 2021-09-08 17:01:03,996 INFO c.m.t.a.a.c.Logging [main] StopWatch 'execution(void com.mnilga.travel.agency.application.TravelAgencyApplication.test())': running time = 0 ns
+2021-09-08 17:12:17,153 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-09-08 17:12:17,156 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2021-09-08 17:12:17,164 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
