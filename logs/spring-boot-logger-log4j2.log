@@ -1,73 +1,31 @@
-2021-09-08 10:21:53,723 INFO o.s.b.StartupInfoLogger [main] Starting TravelAgencyApplication using Java 11.0.12 on 5CD110DFVX with PID 880 (C:\Users\mnilg\Work\MyProjects\travel_agency\travel\target\classes started by mnilg in C:\Users\mnilg\Work\MyProjects\travel_agency)
-2021-09-08 10:21:53,734 DEBUG o.s.b.StartupInfoLogger [main] Running with Spring Boot v2.5.3, Spring v5.3.9
-2021-09-08 10:21:53,735 INFO o.s.b.SpringApplication [main] No active profile set, falling back to default profiles: default
-2021-09-08 10:21:54,416 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2021-09-08 10:21:54,519 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 91 ms. Found 8 JPA repository interfaces.
-2021-09-08 10:21:55,073 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 8081 (http)
-2021-09-08 10:21:55,082 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8081"]
-2021-09-08 10:21:55,083 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
-2021-09-08 10:21:55,083 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.50]
-2021-09-08 10:21:55,171 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
-2021-09-08 10:21:55,171 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1401 ms
-2021-09-08 10:21:55,275 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
-2021-09-08 10:21:55,486 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
-2021-09-08 10:21:56,087 INFO l.l.c.JavaLogger [main] Successfully acquired change log lock
-2021-09-08 10:21:56,380 INFO l.l.c.JavaLogger [main] Creating database history table with name: public.databasechangelog
-2021-09-08 10:21:56,387 INFO l.l.c.JavaLogger [main] Reading from public.databasechangelog
-2021-09-08 10:21:56,434 INFO l.l.c.JavaLogger [main] Successfully released change log lock
-2021-09-08 10:21:56,438 INFO l.l.c.JavaLogger [main] Successfully acquired change log lock
-2021-09-08 10:21:56,438 WARN l.l.c.JavaLogger [main] Skipping auto-registration
-2021-09-08 10:21:56,522 INFO l.l.c.JavaLogger [main] SQL in file database/R1/sql/initDB.sql executed
-2021-09-08 10:21:56,523 INFO l.l.c.JavaLogger [main] ChangeSet database/R1/ddl.xml::init_database_schema::mnilga ran successfully in 81ms
-2021-09-08 10:21:56,553 INFO l.l.c.JavaLogger [main] SQL in file database/R1/sql/populateDB.sql executed
-2021-09-08 10:21:56,554 INFO l.l.c.JavaLogger [main] ChangeSet database/R1/dml.xml::populate_database::mnilga ran successfully in 27ms
-2021-09-08 10:21:56,558 INFO l.l.c.JavaLogger [main] Successfully released change log lock
-2021-09-08 10:21:56,633 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
-2021-09-08 10:21:56,699 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 5.4.32.Final
-2021-09-08 10:21:56,840 INFO o.h.a.c.r.j.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2021-09-08 10:21:56,954 INFO o.h.d.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
-2021-09-08 10:21:57,138 ERROR o.s.o.j.AbstractEntityManagerFactoryBean [main] Failed to initialize JPA EntityManagerFactory: Illegal attempt to map a non collection as a @OneToMany, @ManyToMany or @CollectionOfElements: com.mnilga.travel.agency.application.model.UserAddress.user
-2021-09-08 10:21:57,139 WARN o.s.c.s.AbstractApplicationContext [main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.AnnotationException: Illegal attempt to map a non collection as a @OneToMany, @ManyToMany or @CollectionOfElements: com.mnilga.travel.agency.application.model.UserAddress.user
-2021-09-08 10:21:57,140 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Shutdown initiated...
-2021-09-08 10:21:57,149 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Shutdown completed.
-2021-09-08 10:21:57,153 INFO o.a.j.l.DirectJDKLog [main] Stopping service [Tomcat]
-2021-09-08 10:21:57,163 INFO o.s.b.a.l.ConditionEvaluationReportLoggingListener [main] 
-
-Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2021-09-08 10:21:57,178 ERROR o.s.b.SpringApplication [main] Application run failed
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.AnnotationException: Illegal attempt to map a non collection as a @OneToMany, @ManyToMany or @CollectionOfElements: com.mnilga.travel.agency.application.model.UserAddress.user
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1786) ~[spring-beans-5.3.9.jar:5.3.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:602) ~[spring-beans-5.3.9.jar:5.3.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:524) ~[spring-beans-5.3.9.jar:5.3.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.9.jar:5.3.9]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.9.jar:5.3.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.9.jar:5.3.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.9.jar:5.3.9]
-	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154) ~[spring-context-5.3.9.jar:5.3.9]
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908) ~[spring-context-5.3.9.jar:5.3.9]
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.9.jar:5.3.9]
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145) ~[spring-boot-2.5.3.jar:2.5.3]
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) [spring-boot-2.5.3.jar:2.5.3]
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:434) [spring-boot-2.5.3.jar:2.5.3]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:338) [spring-boot-2.5.3.jar:2.5.3]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) [spring-boot-2.5.3.jar:2.5.3]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1332) [spring-boot-2.5.3.jar:2.5.3]
-	at com.mnilga.travel.agency.application.TravelAgencyApplication.main(TravelAgencyApplication.java:57) [classes/:?]
-Caused by: org.hibernate.AnnotationException: Illegal attempt to map a non collection as a @OneToMany, @ManyToMany or @CollectionOfElements: com.mnilga.travel.agency.application.model.UserAddress.user
-	at org.hibernate.cfg.annotations.CollectionBinder.getCollectionBinder(CollectionBinder.java:323) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.cfg.AnnotationBinder.processElementAnnotations(AnnotationBinder.java:1956) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.cfg.AnnotationBinder.processIdPropertiesIfNotAlready(AnnotationBinder.java:979) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.cfg.AnnotationBinder.bindClass(AnnotationBinder.java:806) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.boot.model.source.internal.annotations.AnnotationMetadataSourceProcessorImpl.processEntityHierarchies(AnnotationMetadataSourceProcessorImpl.java:248) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess$1.processEntityHierarchies(MetadataBuildingProcess.java:239) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:282) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1224) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1255) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58) ~[spring-orm-5.3.9.jar:5.3.9]
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365) ~[spring-orm-5.3.9.jar:5.3.9]
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-5.3.9.jar:5.3.9]
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-5.3.9.jar:5.3.9]
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341) ~[spring-orm-5.3.9.jar:5.3.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1845) ~[spring-beans-5.3.9.jar:5.3.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1782) ~[spring-beans-5.3.9.jar:5.3.9]
-	... 16 more
+2021-09-08 17:00:59,777 INFO o.s.b.StartupInfoLogger [main] Starting TravelAgencyApplication using Java 11.0.12 on 5CD110DFVX with PID 21840 (C:\Users\mnilg\Work\MyProjects\travel_agency\travel\target\classes started by mnilg in C:\Users\mnilg\Work\MyProjects\travel_agency)
+2021-09-08 17:00:59,782 DEBUG o.s.b.StartupInfoLogger [main] Running with Spring Boot v2.5.3, Spring v5.3.9
+2021-09-08 17:00:59,783 INFO o.s.b.SpringApplication [main] No active profile set, falling back to default profiles: default
+2021-09-08 17:01:00,309 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-09-08 17:01:00,388 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 73 ms. Found 8 JPA repository interfaces.
+2021-09-08 17:01:00,846 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 8081 (http)
+2021-09-08 17:01:00,855 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8081"]
+2021-09-08 17:01:00,856 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2021-09-08 17:01:00,857 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-08 17:01:00,945 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2021-09-08 17:01:00,945 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1134 ms
+2021-09-08 17:01:01,033 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2021-09-08 17:01:01,203 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2021-09-08 17:01:01,778 INFO l.l.c.JavaLogger [main] Successfully acquired change log lock
+2021-09-08 17:01:02,147 INFO l.l.c.JavaLogger [main] Reading from public.databasechangelog
+2021-09-08 17:01:02,179 INFO l.l.c.JavaLogger [main] Successfully released change log lock
+2021-09-08 17:01:02,183 INFO l.l.c.JavaLogger [main] Successfully acquired change log lock
+2021-09-08 17:01:02,184 WARN l.l.c.JavaLogger [main] Skipping auto-registration
+2021-09-08 17:01:02,189 INFO l.l.c.JavaLogger [main] Successfully released change log lock
+2021-09-08 17:01:02,251 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-09-08 17:01:02,308 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-09-08 17:01:02,457 INFO o.h.a.c.r.j.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-09-08 17:01:02,561 INFO o.h.d.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2021-09-08 17:01:03,215 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-09-08 17:01:03,222 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-09-08 17:01:03,336 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-09-08 17:01:03,349 INFO c.m.t.a.a.c.Logging [main] StopWatch 'execution(void com.mnilga.travel.agency.application.config.Config.addFormatters(FormatterRegistry))': running time = 0 ns
+2021-09-08 17:01:03,963 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8081"]
+2021-09-08 17:01:03,980 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 8081 (http) with context path ''
+2021-09-08 17:01:03,993 INFO o.s.b.StartupInfoLogger [main] Started TravelAgencyApplication in 4.671 seconds (JVM running for 6.371)
+2021-09-08 17:01:03,996 INFO c.m.t.a.a.c.Logging [main] StopWatch 'execution(void com.mnilga.travel.agency.application.TravelAgencyApplication.test())': running time = 0 ns
