@@ -1,8 +1,9 @@
 package com.mnilga.travel.agency.fakedata;
 
+import com.mnilga.travel.agency.fakedata.generate.AddressGenerator;
 import com.mnilga.travel.agency.fakedata.generate.Generator;
 import com.mnilga.travel.agency.fakedata.generate.UserGenerator;
-import com.mnilga.travel.agency.fakedata.model.User;
+import com.mnilga.travel.agency.fakedata.write.AddressWriter;
 import com.mnilga.travel.agency.fakedata.write.UserWriter;
 import com.mnilga.travel.agency.fakedata.write.Writer;
 
@@ -42,10 +43,10 @@ public class FakeGenerator {
                 generator = new UserGenerator();
                 writer = new UserWriter();
                 break;
-//            case "address":
-//                generator = new AddressGenerator();
-//                writer = new AddressWriter();
-//                break;
+            case "address":
+                generator = new AddressGenerator();
+                writer = new AddressWriter();
+                break;
 //            case "country":
 //                generator = new CountryGenerator();
 //                writer = new CountryWriter();
