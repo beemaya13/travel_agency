@@ -29,6 +29,7 @@ public class User extends Audit {
     private Role role;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "address_id")
     private Address address;
 
     @OneToMany(cascade = CascadeType.ALL,
