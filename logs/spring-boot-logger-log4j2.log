@@ -1,53 +1,52 @@
-2021-09-08 18:15:36,889 INFO o.s.b.StartupInfoLogger [main] Starting TravelAgencyApplication using Java 11.0.12 on 5CD110DFVX with PID 22896 (C:\Users\mnilg\Work\MyProjects\travel_agency\travel\target\classes started by mnilg in C:\Users\mnilg\Work\MyProjects\travel_agency)
-2021-09-08 18:15:36,895 DEBUG o.s.b.StartupInfoLogger [main] Running with Spring Boot v2.5.3, Spring v5.3.9
-2021-09-08 18:15:36,895 INFO o.s.b.SpringApplication [main] No active profile set, falling back to default profiles: default
-2021-09-08 18:15:37,405 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2021-09-08 18:15:37,491 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 71 ms. Found 8 JPA repository interfaces.
-2021-09-08 18:15:37,907 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 8081 (http)
-2021-09-08 18:15:37,914 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8081"]
-2021-09-08 18:15:37,915 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
-2021-09-08 18:15:37,915 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.50]
-2021-09-08 18:15:37,995 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
-2021-09-08 18:15:37,996 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1072 ms
-2021-09-08 18:15:38,066 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
-2021-09-08 18:15:38,216 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
-2021-09-08 18:15:38,812 INFO l.l.c.JavaLogger [main] Successfully acquired change log lock
-2021-09-08 18:15:39,119 INFO l.l.c.JavaLogger [main] Creating database history table with name: public.databasechangelog
-2021-09-08 18:15:39,131 INFO l.l.c.JavaLogger [main] Reading from public.databasechangelog
-2021-09-08 18:15:39,177 INFO l.l.c.JavaLogger [main] Successfully released change log lock
-2021-09-08 18:15:39,181 INFO l.l.c.JavaLogger [main] Successfully acquired change log lock
-2021-09-08 18:15:39,182 WARN l.l.c.JavaLogger [main] Skipping auto-registration
-2021-09-08 18:15:39,291 INFO l.l.c.JavaLogger [main] SQL in file database/R1/sql/initDB.sql executed
-2021-09-08 18:15:39,293 INFO l.l.c.JavaLogger [main] ChangeSet database/R1/ddl.xml::init_database_schema::mnilga ran successfully in 107ms
-2021-09-08 18:15:39,336 INFO l.l.c.JavaLogger [main] SQL in file database/R1/sql/populateDB.sql executed
-2021-09-08 18:15:39,337 INFO l.l.c.JavaLogger [main] ChangeSet database/R1/dml.xml::populate_database::mnilga ran successfully in 40ms
-2021-09-08 18:15:39,358 INFO l.l.c.JavaLogger [main] SQL in file database/R2/generatedData/addresses.sql executed
-2021-09-08 18:15:39,359 INFO l.l.c.JavaLogger [main] ChangeSet database/R2/dml.xml::add_addresses::mnilga ran successfully in 20ms
-2021-09-08 18:15:39,384 INFO l.l.c.JavaLogger [main] SQL in file database/R2/generatedData/users.sql executed
-2021-09-08 18:15:39,386 INFO l.l.c.JavaLogger [main] ChangeSet database/R2/dml.xml::add_users::mnilga ran successfully in 24ms
-2021-09-08 18:15:39,391 INFO l.l.c.JavaLogger [main] SQL in file database/R2/generatedData/countries.sql executed
-2021-09-08 18:15:39,392 INFO l.l.c.JavaLogger [main] ChangeSet database/R2/dml.xml::add_countries::mnilga ran successfully in 5ms
-2021-09-08 18:15:39,400 INFO l.l.c.JavaLogger [main] SQL in file database/R2/generatedData/cities.sql executed
-2021-09-08 18:15:39,402 INFO l.l.c.JavaLogger [main] ChangeSet database/R2/dml.xml::add_cities::mnilga ran successfully in 7ms
-2021-09-08 18:15:39,420 INFO l.l.c.JavaLogger [main] SQL in file database/R2/generatedData/hotels.sql executed
-2021-09-08 18:15:39,422 INFO l.l.c.JavaLogger [main] ChangeSet database/R2/dml.xml::add_hotels::mnilga ran successfully in 17ms
-2021-09-08 18:15:39,438 INFO l.l.c.JavaLogger [main] SQL in file database/R2/generatedData/rooms.sql executed
-2021-09-08 18:15:39,439 INFO l.l.c.JavaLogger [main] ChangeSet database/R2/dml.xml::add_rooms::mnilga ran successfully in 15ms
-2021-09-08 18:15:39,455 INFO l.l.c.JavaLogger [main] SQL in file database/R2/generatedData/orders.sql executed
-2021-09-08 18:15:39,456 INFO l.l.c.JavaLogger [main] ChangeSet database/R2/dml.xml::add_orders::mnilga ran successfully in 15ms
-2021-09-08 18:15:39,459 INFO l.l.c.JavaLogger [main] Successfully released change log lock
-2021-09-08 18:15:39,527 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
-2021-09-08 18:15:39,569 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 5.4.32.Final
-2021-09-08 18:15:39,683 INFO o.h.a.c.r.j.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2021-09-08 18:15:39,771 INFO o.h.d.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
-2021-09-08 18:15:40,374 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2021-09-08 18:15:40,381 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
-2021-09-08 18:15:40,511 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2021-09-08 18:15:40,527 INFO c.m.t.a.a.c.Logging [main] StopWatch 'execution(void com.mnilga.travel.agency.application.config.Config.addFormatters(FormatterRegistry))': running time = 0 ns
-2021-09-08 18:15:41,179 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8081"]
-2021-09-08 18:15:41,195 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 8081 (http) with context path ''
-2021-09-08 18:15:41,208 INFO o.s.b.StartupInfoLogger [main] Started TravelAgencyApplication in 4.748 seconds (JVM running for 6.188)
-2021-09-08 18:15:41,211 INFO c.m.t.a.a.c.Logging [main] StopWatch 'execution(void com.mnilga.travel.agency.application.TravelAgencyApplication.test())': running time = 0 ns
-2021-09-08 18:17:15,871 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
-2021-09-08 18:17:15,873 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
-2021-09-08 18:17:15,881 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2021-09-11 18:09:28,049 INFO o.s.b.StartupInfoLogger [main] Starting TravelAgencyApplication using Java 11.0.12 on 5CD110DFVX with PID 11944 (C:\Users\mnilg\Work\MyProjects\travel_agency\travel\target\classes started by mnilg in C:\Users\mnilg\Work\MyProjects\travel_agency)
+2021-09-11 18:09:28,063 DEBUG o.s.b.StartupInfoLogger [main] Running with Spring Boot v2.5.3, Spring v5.3.9
+2021-09-11 18:09:28,065 INFO o.s.b.SpringApplication [main] No active profile set, falling back to default profiles: default
+2021-09-11 18:09:29,014 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-09-11 18:09:29,145 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 119 ms. Found 8 JPA repository interfaces.
+2021-09-11 18:09:29,944 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 8081 (http)
+2021-09-11 18:09:29,955 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8081"]
+2021-09-11 18:09:29,956 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2021-09-11 18:09:29,957 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-11 18:09:30,085 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2021-09-11 18:09:30,085 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1959 ms
+2021-09-11 18:09:30,217 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2021-09-11 18:09:30,453 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2021-09-11 18:09:31,273 INFO l.l.c.JavaLogger [main] Successfully acquired change log lock
+2021-09-11 18:09:31,697 INFO l.l.c.JavaLogger [main] Creating database history table with name: public.databasechangelog
+2021-09-11 18:09:31,706 INFO l.l.c.JavaLogger [main] Reading from public.databasechangelog
+2021-09-11 18:09:31,774 INFO l.l.c.JavaLogger [main] Successfully released change log lock
+2021-09-11 18:09:31,779 INFO l.l.c.JavaLogger [main] Successfully acquired change log lock
+2021-09-11 18:09:31,780 WARN l.l.c.JavaLogger [main] Skipping auto-registration
+2021-09-11 18:09:31,896 INFO l.l.c.JavaLogger [main] SQL in file database/R1/sql/initDB.sql executed
+2021-09-11 18:09:31,897 INFO l.l.c.JavaLogger [main] ChangeSet database/R1/ddl.xml::init_database_schema::mnilga ran successfully in 114ms
+2021-09-11 18:09:31,947 INFO l.l.c.JavaLogger [main] SQL in file database/R1/sql/populateDB.sql executed
+2021-09-11 18:09:31,949 INFO l.l.c.JavaLogger [main] ChangeSet database/R1/dml.xml::populate_database::mnilga ran successfully in 45ms
+2021-09-11 18:09:31,973 INFO l.l.c.JavaLogger [main] SQL in file database/R2/generatedData/addresses.sql executed
+2021-09-11 18:09:31,975 INFO l.l.c.JavaLogger [main] ChangeSet database/R2/dml.xml::add_addresses::mnilga ran successfully in 23ms
+2021-09-11 18:09:31,999 INFO l.l.c.JavaLogger [main] SQL in file database/R2/generatedData/users.sql executed
+2021-09-11 18:09:32,000 INFO l.l.c.JavaLogger [main] ChangeSet database/R2/dml.xml::add_users::mnilga ran successfully in 20ms
+2021-09-11 18:09:32,008 INFO l.l.c.JavaLogger [main] SQL in file database/R2/generatedData/countries.sql executed
+2021-09-11 18:09:32,010 INFO l.l.c.JavaLogger [main] ChangeSet database/R2/dml.xml::add_countries::mnilga ran successfully in 7ms
+2021-09-11 18:09:32,017 INFO l.l.c.JavaLogger [main] SQL in file database/R2/generatedData/cities.sql executed
+2021-09-11 18:09:32,018 INFO l.l.c.JavaLogger [main] ChangeSet database/R2/dml.xml::add_cities::mnilga ran successfully in 6ms
+2021-09-11 18:09:32,036 INFO l.l.c.JavaLogger [main] SQL in file database/R2/generatedData/hotels.sql executed
+2021-09-11 18:09:32,036 INFO l.l.c.JavaLogger [main] ChangeSet database/R2/dml.xml::add_hotels::mnilga ran successfully in 16ms
+2021-09-11 18:09:32,053 INFO l.l.c.JavaLogger [main] SQL in file database/R2/generatedData/rooms.sql executed
+2021-09-11 18:09:32,054 INFO l.l.c.JavaLogger [main] ChangeSet database/R2/dml.xml::add_rooms::mnilga ran successfully in 16ms
+2021-09-11 18:09:32,072 INFO l.l.c.JavaLogger [main] SQL in file database/R2/generatedData/orders.sql executed
+2021-09-11 18:09:32,073 INFO l.l.c.JavaLogger [main] ChangeSet database/R2/dml.xml::add_orders::mnilga ran successfully in 16ms
+2021-09-11 18:09:33,014 INFO l.l.c.JavaLogger [main] SQL in file database/R3/sql/relation_user_role_address.sql executed
+2021-09-11 18:09:33,015 INFO l.l.c.JavaLogger [main] ChangeSet database/R3/dml.xml::add_relation_user_role_addresses::mnilga ran successfully in 940ms
+2021-09-11 18:09:33,020 INFO l.l.c.JavaLogger [main] Successfully released change log lock
+2021-09-11 18:09:33,116 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-09-11 18:09:33,192 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-09-11 18:09:33,393 INFO o.h.a.c.r.j.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-09-11 18:09:33,533 INFO o.h.d.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2021-09-11 18:09:34,397 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-09-11 18:09:34,406 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-09-11 18:09:34,555 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-09-11 18:09:34,574 INFO c.m.t.a.a.c.Logging [main] StopWatch 'execution(void com.mnilga.travel.agency.application.config.Config.addFormatters(FormatterRegistry))': running time = 0 ns
+2021-09-11 18:09:35,521 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8081"]
+2021-09-11 18:09:35,541 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 8081 (http) with context path ''
+2021-09-11 18:09:35,554 INFO o.s.b.StartupInfoLogger [main] Started TravelAgencyApplication in 8.233 seconds (JVM running for 10.467)
+2021-09-11 18:09:35,556 INFO c.m.t.a.a.c.Logging [main] StopWatch 'execution(void com.mnilga.travel.agency.application.TravelAgencyApplication.test())': running time = 0 ns

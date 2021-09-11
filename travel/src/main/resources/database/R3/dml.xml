@@ -5,7 +5,8 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
 
-<!--    <changeSet id="init_database_schema" author="mnilga" context="ddl">-->
-<!--        <sqlFile path="database/R1/sql/initDB.sql"/>-->
-<!--    </changeSet>-->
+    <changeSet id="add_relation_user_role_addresses" author="mnilga" context="dml">
+        <sqlFile path="database/R3/sql/relation_user_role_address.sql"/>
+    </changeSet>
+
 </databaseChangeLog>
