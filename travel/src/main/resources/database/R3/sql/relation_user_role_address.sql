@@ -1,9 +1,3 @@
--- update users
--- set address_id = null,
---     role_id = null
--- where true;
---
-
 update users
 set role_id = random_values.role_id,
     address_id = random_values.address_id
@@ -17,3 +11,10 @@ CROSS JOIN LATERAL (
     limit 1
     ) random_values
 WHERE users.role_id is null or users.address_id is null;
+
+-- update users
+-- set address_id = null,
+--     role_id = null
+-- where true;
+--
+
