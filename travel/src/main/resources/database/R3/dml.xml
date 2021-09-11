@@ -9,4 +9,8 @@
         <sqlFile path="database/R3/sql/relation_user_role_address.sql"/>
     </changeSet>
 
+    <changeSet id="add_relation_countries_cities" author="mnilga" context="dml">
+        <sqlFile path="database/R3/sql/relation_countries_cities.sql"/>
+    </changeSet>
+
 </databaseChangeLog>
