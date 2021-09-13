@@ -13,4 +13,16 @@
         <sqlFile path="database/R3/sql/relation_countries_cities.sql"/>
     </changeSet>
 
+    <changeSet id="add_relation_cities_hotels" author="mnilga" context="dml">
+        <sqlFile path="database/R3/sql/relation_cities_hotels.sql"/>
+    </changeSet>
+
+    <changeSet id="add_relation_hotels_rooms" author="mnilga" context="dml">
+        <sqlFile path="database/R3/sql/relation_hotels_rooms.sql"/>
+    </changeSet>
+
+    <changeSet id="add_relation_orders_rooms_users" author="mnilga" context="dml">
+        <sqlFile path="database/R3/sql/relation_orders_rooms_users.sql"/>
+    </changeSet>
+
 </databaseChangeLog>
