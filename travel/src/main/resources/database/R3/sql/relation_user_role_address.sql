@@ -12,6 +12,11 @@ CROSS JOIN LATERAL (
     ) random_values
 WHERE users.role_id is null or users.address_id is null;
 
+
+
+
+
+
 -- update users
 -- set address_id = null,
 --     role_id = null
