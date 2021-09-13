@@ -8,10 +8,10 @@ import java.util.List;
 @Table(name = "addresses")
 public class Address extends Audit {
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String country;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String city;
 
     @Column(nullable = false)

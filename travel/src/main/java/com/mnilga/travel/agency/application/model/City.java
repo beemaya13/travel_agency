@@ -8,7 +8,7 @@ import java.util.List;
 @Table(name = "cities")
 public class City extends Audit{
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String name;
 
     @ManyToOne

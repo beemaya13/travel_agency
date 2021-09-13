@@ -83,9 +83,9 @@ create table if not exists cities
     date_created timestamp    not null DEFAULT CURRENT_TIMESTAMP,
     date_deleted timestamp,
     date_updated timestamp,
-    name         varchar(255) not null
-        constraint uk_m7xlqsndengqp2kpd5nux2s5i
-            unique,
+    name         varchar(255) not null,
+--         constraint uk_m7xlqsndengqp2kpd5nux2s5i
+--             unique,
     country_id   uuid
         constraint fkkwysadtw35u6s83fllwubvkiw
             references countries (id) ON DELETE CASCADE
