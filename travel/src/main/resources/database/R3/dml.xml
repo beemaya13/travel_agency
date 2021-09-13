@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="add_relation_user_role_addresses" author="mnilga" context="dml">
+        <sqlFile path="database/R3/sql/relation_user_role_address.sql"/>
+    </changeSet>
+
+    <changeSet id="add_relation_countries_cities" author="mnilga" context="dml">
+        <sqlFile path="database/R3/sql/relation_countries_cities.sql"/>
+    </changeSet>
+
+    <changeSet id="add_relation_cities_hotels" author="mnilga" context="dml">
+        <sqlFile path="database/R3/sql/relation_cities_hotels.sql"/>
+    </changeSet>
+
+    <changeSet id="add_relation_hotels_rooms" author="mnilga" context="dml">
+        <sqlFile path="database/R3/sql/relation_hotels_rooms.sql"/>
+    </changeSet>
+
+    <changeSet id="add_relation_orders_rooms_users" author="mnilga" context="dml">
+        <sqlFile path="database/R3/sql/relation_orders_rooms_users.sql"/>
+    </changeSet>
+
+</databaseChangeLog>
