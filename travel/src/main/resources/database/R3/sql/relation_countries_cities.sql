@@ -10,9 +10,14 @@ CROSS JOIN LATERAL (
     ) random_values
 WHERE cities.country_id is null;
 
-update cities
-set country_id = null
-where true;
+
+
+
+
+
+-- update cities
+-- set country_id = null
+-- where true;
 
 
 
