@@ -13,7 +13,7 @@ CROSS JOIN LATERAL (
 WHERE users.role_id is null or users.address_id is null;
 
 
-
+-- doesn't work with big numbers of rows!!!!!
 
 
 
