@@ -2,10 +2,11 @@ CREATE OR REPLACE FUNCTION get_random(t regclass, f VARCHAR(40), OUT ret_uuid UU
     LANGUAGE plpgsql
 AS
 $$
+-- DECLARE
 begin
     EXECUTE format('SELECT %I FROM %s tablesample system_rows(10) order by random() limit 1', f, t)
     into ret_uuid;
-end
+end;
 $$;
 
 update users

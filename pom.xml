@@ -13,6 +13,7 @@
     <modules>
         <module>travel</module>
         <module>fake_generator</module>
+        <module>csv_generator</module>
     </modules>
 
     <parent>
