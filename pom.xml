@@ -14,6 +14,7 @@
         <module>travel</module>
         <module>fake_generator</module>
         <module>csv_generator</module>
+        <module>apache_beam</module>
     </modules>
 
     <parent>
