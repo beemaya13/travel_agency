@@ -13,10 +13,10 @@ public class CsvMain implements Callable<Integer>{
 
     @CommandLine.Option(names = {"-l", "--location"}, description = "pass path with double quotes")
    // private String location = "./";
-    private String location = "travel/src/main/resources/database/R3/csv/";
+    private String location = "travel/src/main/resources/database/R3/csvInput/";
 
     @CommandLine.Option(names = {"-c", "--columns"}, description = "include column names in csv?")
-    private Boolean includeColumnNames = true;
+    private Boolean includeColumnNames = false;
 
     public static void main(String[] args) {
         int exitCode = new CommandLine(new CsvMain()).execute(args);

@@ -1,4 +1,3 @@
-"id","author","filename","dateexecuted","orderexecuted","exectype","md5sum","description","comments","tag","liquibase","contexts","labels","deployment_id"
 "init_database_schema","mnilga","database/R1/ddl.xml","17-Sep-2021 13:20:28","1","EXECUTED","8:294d1876f87c60f377074d1ac6d3fa62","sqlFile","","","4.3.5","ddl","","1874028157"
 "populate_database","mnilga","database/R1/dml.xml","17-Sep-2021 13:20:28","2","EXECUTED","8:02026b0f0aa6ebe1e7929c912b99357d","sqlFile","","","4.3.5","dml","","1874028157"
 "add_addresses","mnilga","database/R2/dml.xml","17-Sep-2021 13:20:28","3","EXECUTED","8:1548df986984c7efa9137cf24936b565","sqlFile","","","4.3.5","dml","","1874028157"
