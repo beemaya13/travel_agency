@@ -34,6 +34,7 @@
             <version>4.4.3</version>
         </dependency>
 
+
         <dependency>
             <groupId>com.google.cloudspannerecosystem</groupId>
             <artifactId>liquibase-spanner</artifactId>
@@ -72,17 +73,16 @@
             <plugin>
                 <groupId>org.liquibase</groupId>
                 <artifactId>liquibase-maven-plugin</artifactId>
-                <version>4.4.3</version>
+                <version>3.5.1</version>
                 <configuration>
                     <propertyFile>src/main/resources/liquibase.properties</propertyFile>
                     <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
                 </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.google.cloud</groupId>
-                        <artifactId>google-cloud-spanner-jdbc</artifactId>
-                        <version>2.4.2</version>
-                    </dependency>
+                <dependencies><dependency>
+                    <groupId>com.google.cloud</groupId>
+                    <artifactId>google-cloud-spanner-jdbc</artifactId>
+                    <version>2.4.2</version>
+                </dependency>
                 </dependencies>
             </plugin>
         </plugins>

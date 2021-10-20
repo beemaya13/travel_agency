@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "chromatic-pride-329611",
+  "private_key_id": "471c5415d81dba0e0e1b60174483a3773a51c07c",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDblKgGHi/KlA0Q\nXm4N4MJDoI29KrfR5KuvQPhR5d1U0h48J/G7rMKGf5y6nw3KAXm2QmZQpZOmy7oT\n60s9vt0YOKYkz7EIxJWSrCqpv5wkqmwXof6DHS9vMc7sssbOOq1lDJZi0QLzDfNp\nbSNzpf1rJwcFBxdFkCX/fscv7UgiarfVZo3PU4O6Gi8HcXIJ1EE1tvePsCTmHhWH\nQPn59KCNhxSIdAE9myOSwIgu7j5/JmwWL9TjAuMSz2x61dUBD64nvcl2Gj0G7vd6\nEPHjl5lNHGOB9b96XGfUMATzK6tIAXHwa+FKg6fEKc6aUtl/ffn4AFX1chL1MxRd\nGzOERZXtAgMBAAECggEAANwBlliK5leS/4PnGV3OVNZth5aBtqwW8e4mqqdkKN9T\np/eeDhZ8gmtAcUiLFMXRtKFo5hrny4jTlx1eI4U6N0yNdepsLnUagsLyvcxWr5wN\nJUCIjvnPxDclMK74cTkwkYstkYBw6wOcdsarE1pMdh1mfSIMeMS6KVhVLj5XAG95\nopUI7TZ8FOx2wjVPpUGkX9vSrsksFiOsC8w3y5ICLbBf6sLQex+6jAeQCPFJTEn+\nfSzSSsTOCdCYR9LQeC2gKj7a09F02kbW7cUoyfzvxqiiQ6mtlKID4Nnqdi/CgrNf\nzLPWiG9EMqJG1EmJ8JKSJ2QP9Fte2ih3TN0BXHcP8QKBgQDvidWaCofQsPrrCJMt\nvegQ2Cgi1HCOFUVNJVeMVdod35qikXQ7n1hNKQuWjgxsChpPW1G1T687ZHqWpXoa\nr2WqfK33TzX6PfzOjasFOegRXmkdDbvitINYO130C8uHXO2cdJ/TElOmsdwAkWbb\n/RLeJxMVByrYnV4VEvPUEzs52QKBgQDqq7VfT5z++prXiQdVMi9tPuubu+RlGfIM\nR7LxGJKG+TkwdQWEznURigi3PMGk+H+b0AQVAYPBAwhjo1xu+T3h3PHOfHDQxkJM\nPqY9W5zNs2f/y5zs7ixjEUqEk1F4ysF+k5zphL0YoA13o8BZOA2QoE44B2d0s1XJ\nkLXeuPn8NQKBgELdYOjNA7h3jrNJA3yDRGJfVGTUlE61FVFBmTytQmOQZWP34lA6\nXLW9PWTbZhBKiamZPie0hJ+5npaqvnjweRqsDwu36sNdxlIKLbEZxvQCPKlFiirw\nZLGecM2M9VVl1VYVIAAVX5BqmZT3AZVrAXdNxP/brlQlKXwMfE+4xpGRAoGBALp4\nbsqpjGrf36Jc9EKyehUo5jb9emML1tYDMyF5ERXHe7YRhq0dENE7CenwkT7xZxT8\nmgHHDlaUfloOOSjFTHLpCgu1vj9nCs9jCN3AqjyZzo3n0W5DY2nlF315QkfldROL\nYCf+nfOvWoQyzmkWrVC60OyclYyZ5BUitCGigqHxAoGBAKWHu5YWuaa+cVxVSHnI\nY02DSmaqpZ0lWqJM3AWws3zMCHNArvBteusOro0N2acoxzvji8CzxHqx4mnhYgX0\n4DOu+lR5IHpqyVWTlekZt1BBbfFV4Wy6S3kdloTZzM6UII94K6i5noxEbnCSJcJ/\nfDueuaBOnDLBsbm0o8ttsLzp\n-----END PRIVATE KEY-----\n",
+  "client_email": "travel-account@chromatic-pride-329611.iam.gserviceaccount.com",
+  "client_id": "114995261856404855115",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/travel-account%40chromatic-pride-329611.iam.gserviceaccount.com"
+}
