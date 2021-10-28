@@ -6,6 +6,6 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
 
     <changeSet id="init_database_schema" author="mnilga" context="ddl">
-        <sqlFile path="database/R1/sql/initDB1.sql"/>
+        <sqlFile path="database/R1/sql/initDB.sql"/>
     </changeSet>
 </databaseChangeLog>
