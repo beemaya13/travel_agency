@@ -1,4 +1,4 @@
-insert into roles (name)
+nsert into roles (name)
 values ('ADMIN'),
        ('USER'),
        ('GUEST');
