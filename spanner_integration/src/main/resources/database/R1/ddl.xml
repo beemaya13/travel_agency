@@ -8,4 +8,5 @@
     <changeSet id="init_database_schema" author="mnilga" context="ddl">
         <sqlFile path="database/R1/sql/initDB.sql"/>
     </changeSet>
+
 </databaseChangeLog>

@@ -1,4 +1,4 @@
-package com.mnilga.travel.agency.spannerintegration;
+package com.mnilga.travel.agency.spannerintegration.model;
 
 import org.hibernate.annotations.GenericGenerator;
 

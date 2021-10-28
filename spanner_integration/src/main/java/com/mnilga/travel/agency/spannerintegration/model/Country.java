@@ -1,4 +1,4 @@
-package com.mnilga.travel.agency.spannerintegration;
+package com.mnilga.travel.agency.spannerintegration.model;
 
 import javax.persistence.*;
 import java.util.ArrayList;
