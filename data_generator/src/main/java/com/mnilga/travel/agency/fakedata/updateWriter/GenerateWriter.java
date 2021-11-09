@@ -1,6 +1,6 @@
 package com.mnilga.travel.agency.fakedata.updateWriter;
 
-import com.mnilga.travel.agency.application.model.User;
+
 import com.mnilga.travel.agency.fakedata.generate.Generator;
 import com.mnilga.travel.agency.fakedata.write.Writer;
 

@@ -12,7 +12,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>travel</module>
-        <module>fake_generator</module>
+        <module>data_generator</module>
         <module>csv_generator</module>
         <module>apache_beam</module>
         <module>spanner_integration</module>

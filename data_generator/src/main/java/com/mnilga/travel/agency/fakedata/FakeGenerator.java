@@ -63,42 +63,10 @@ public class FakeGenerator {
                 System.out.println("Unknown model name: " + args[0]);
                 System.exit(-1);
         }
-        //generateSql(generator, writer, size);
-        //generateUpdatedSql(updateWriter, size);
+
         if(null != writer){
             writer.write(size);
         }
     }
 
-//    public static  <T, G extends Generator<T>, W extends Writer<T>> void generateSql(G generator, W writer, int count){
-//        if(generator != null && writer != null && count>0) {
-//            List<T> list = new ArrayList<>(count);
-//            for (int i = 0; i < count; i++) {
-//                list.add(generator.generate());
-//            }
-//            writer.write(list);
-//        }
-//    }
-//
-//    public static  <T, W extends UpdateWriter<T>> void generateUpdatedSql(W updatedWriter, int count){
-//        if(updatedWriter != null && count>0) {
-//            updatedWriter.write(count);
-//        }
-//    }
 }
-
-
-
-
-//        UserGenerator userGenerator = new UserGenerator();
-//        UserWriter writer = new UserWriter();
-//model = "user"
-//        GENERATOR generator;
-//        Writer writer;
-//        switch(model){
-//        case "user":  generator = new UserGenerator;  writer = new UserWriter(); break;
-//        case "order":  generator = new OrderGenerator
-//        }
-//        generetor.generate()
-
-
