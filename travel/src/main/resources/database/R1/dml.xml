@@ -6,7 +6,7 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
 
     <changeSet id="populate_database" author="mnilga" context="dml">
-        <sqlFile path="database/R1/sql/populateDB1.sql"/>
+        <sqlFile path="database/R1/sql/populateDB.sql"/>
     </changeSet>
 
 </databaseChangeLog>
