@@ -1,22 +1,23 @@
-package com.mnilga.travel.agency.application.service.impl;
+package com.mnilga.travel.agency.spannerintegration.service.impl;
 
-import com.mnilga.travel.agency.application.dto.CityDto;
-import com.mnilga.travel.agency.application.dto.CountryDto;
-import com.mnilga.travel.agency.application.exceptions.ResourceNotFoundException;
-import com.mnilga.travel.agency.application.model.City;
-import com.mnilga.travel.agency.application.model.Country;
-import com.mnilga.travel.agency.application.repository.CityRepository;
-import com.mnilga.travel.agency.application.service.CityService;
+
+import com.mnilga.travel.agency.spannerintegration.convertor.CityMapper;
+import com.mnilga.travel.agency.spannerintegration.convertor.CountryMapper;
+import com.mnilga.travel.agency.spannerintegration.dto.CityDto;
+import com.mnilga.travel.agency.spannerintegration.exceptions.ResourceNotFoundException;
+import com.mnilga.travel.agency.spannerintegration.model.City;
+import com.mnilga.travel.agency.spannerintegration.model.Country;
+import com.mnilga.travel.agency.spannerintegration.repository.CityRepository;
+import com.mnilga.travel.agency.spannerintegration.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
+
 
 @Service
 public class CityServiceImpl implements CityService {
-    private ConversionService service;
+    //private ConversionService service;
     private CountryServiceImpl countryService;
     private CityRepository cityRepository;
 
@@ -30,20 +31,20 @@ public class CityServiceImpl implements CityService {
         this.countryService = countryService;
     }
 
-    @Autowired
-    public void setService(ConversionService service) {
-        this.service = service;
-    }
+//    @Autowired
+//    public void setService(ConversionService service) {
+//        this.service = service;
+//    }
 
     @Override
-    public CityDto readById(UUID id) {
+    public CityDto readById(String id) {
         City city = cityRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("City with id = " + id + " not found!"));
-        return service.convert(city, CityDto.class);
+
+        return CityMapper.INSTANCE.cityToCityDto(city);
     }
 
     @Override
-    @Cacheable(value = "cities-cache")
     public City findByName(String name) {
         return cityRepository.findByName(name).orElseThrow(() -> {
             throw new ResourceNotFoundException("City with name =" + name + " does not exist!");
@@ -51,7 +52,7 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public City findById(UUID id) {
+    public City findById(String id) {
         return cityRepository.findById(id).orElseThrow(() -> {
             throw new ResourceNotFoundException("City with id =" + id + " does not exist!");
         });

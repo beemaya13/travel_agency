@@ -67,9 +67,9 @@ public class UserController {
         return new ResponseEntity<>("User is successfully deleted!", HttpStatus.NO_CONTENT);
 
     }
-
-    @Autowired
-    ApplicationContext applicationContext;
+//
+//    @Autowired
+//    ApplicationContext applicationContext;
 
     @GetMapping
     public ResponseEntity<?> getAllUsers() {
