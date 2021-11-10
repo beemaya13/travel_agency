@@ -25,52 +25,24 @@ public class HotelController {
 
     @PostMapping
     public ResponseEntity<?> create(@RequestBody @Valid Hotel hotel) {
-        if (hotel == null) {
-            return new ResponseEntity<>("Hotel can't be null", HttpStatus.BAD_REQUEST);
-        }
-        HotelDto createdHotelDto;
-        try {
-            createdHotelDto = hotelService.create(hotel);
-        } catch (Exception e) {
-            return new ResponseEntity<>("Hotel with such name already exists!", HttpStatus.CONFLICT);
-        }
+        HotelDto createdHotelDto = hotelService.create(hotel);
         return new ResponseEntity<>(createdHotelDto, HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> readById(@PathVariable UUID id) {
-        if (id == null) {
-            return new ResponseEntity<>("Hotel can't be null", HttpStatus.BAD_REQUEST);
-        }
-
         HotelDto hotelDto = hotelService.readById(id);
-        if (hotelDto == null) {
-            return new ResponseEntity<>("Hotel with such id not found!", HttpStatus.NOT_FOUND);
-        }
         return new ResponseEntity<>(hotelDto, HttpStatus.OK);
     }
 
     @PutMapping
     public ResponseEntity<?> update(@RequestBody @Valid Hotel hotel) {
-        if (hotel == null) {
-            return new ResponseEntity<>("Hotel can't be null", HttpStatus.BAD_REQUEST);
-        }
-        HotelDto updatedHotel;
-        try {
-            updatedHotel = hotelService.update(hotel);
-        } catch (Exception e) {
-            return new ResponseEntity<>("Hotel with such name already exists!", HttpStatus.CONFLICT);
-        }
+        HotelDto updatedHotel = hotelService.update(hotel);
         return new ResponseEntity<>(updatedHotel, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable UUID id) {
-        try {
-            hotelService.readById(id);
-        } catch (Exception e) {
-            return new ResponseEntity<>("Hotel with such id not found!", HttpStatus.NOT_FOUND);
-        }
         hotelService.delete(id);
         return new ResponseEntity<>("Hotel is successfully deleted!", HttpStatus.NO_CONTENT);
     }
@@ -78,9 +50,6 @@ public class HotelController {
     @GetMapping
     public ResponseEntity<?> getAllHotels() {
         List<HotelDto> hotelDtoList = hotelService.getAllHotels();
-        if (hotelDtoList.isEmpty()) {
-            return new ResponseEntity<>("There are no hotels to display!", HttpStatus.NOT_FOUND);
-        }
         return new ResponseEntity<>(hotelDtoList, HttpStatus.OK);
     }
 }

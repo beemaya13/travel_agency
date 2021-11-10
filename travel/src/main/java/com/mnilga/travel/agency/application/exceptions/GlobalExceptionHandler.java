@@ -1,6 +1,5 @@
 package com.mnilga.travel.agency.application.exceptions;
 
-import com.mnilga.travel.agency.application.dto.HandlerResponseDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -36,6 +35,17 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
         LOGGER.warn("Validation exception: {}", e.getMessage());
         return new ResponseEntity<>(handlerResponseDto, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(value = {AlreadyExistsException.class})
+    public ResponseEntity<HandlerResponseDto> handleAlreadyExistsException(Exception e) {
+        HandlerResponseDto handlerResponseDto = new HandlerResponseDto();
+        handlerResponseDto.setStatus(HttpStatus.CONFLICT.value());
+        handlerResponseDto.setMessage(e.getMessage());
+        handlerResponseDto.setTimestamp(LocalDateTime.now());
+
+        LOGGER.warn("Already Exists exception: {}", e.getMessage());
+        return new ResponseEntity<>(handlerResponseDto, HttpStatus.CONFLICT);
     }
 
     @ExceptionHandler(value = {Exception.class})

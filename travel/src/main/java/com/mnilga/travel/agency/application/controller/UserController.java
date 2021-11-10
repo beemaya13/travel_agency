@@ -26,57 +26,33 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<?> create(@RequestBody @Valid User user) {
-        UserDto createdUserDto;
-        try {
-            createdUserDto = userService.create(user);
-        } catch (Exception e) {
-            return new ResponseEntity<>("User with such email already exists!", HttpStatus.CONFLICT);
-        }
+    public ResponseEntity<UserDto> create(@RequestBody @Valid User user) {
+        UserDto createdUserDto = userService.create(user);
         return new ResponseEntity<>(createdUserDto, HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> readById(@PathVariable("id") UUID id) {
+    public ResponseEntity<UserDto> readById(@PathVariable("id") UUID id) {
         UserDto userDto = userService.readById(id);
-        if (userDto == null) {
-            return new ResponseEntity<>("User with such id not found!", HttpStatus.NOT_FOUND);
-        }
         return new ResponseEntity<>(userDto, HttpStatus.OK);
     }
 
     @PutMapping
-    public ResponseEntity<?> update(@RequestBody @Valid User user) {
-        UserDto updatedUser;
-        try {
-            updatedUser = userService.update(user);
-        } catch (Exception e) {
-            return new ResponseEntity<>("User with such email already exists!", HttpStatus.CONFLICT);
-        }
+    public ResponseEntity<UserDto> update(@RequestBody @Valid User user) {
+        UserDto updatedUser = userService.update(user);
         return new ResponseEntity<>(updatedUser, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable("id") UUID id) {
-        try {
-            userService.readById(id);
-        } catch (ResourceNotFoundException e) {
-            return new ResponseEntity<>("User with such id not found!", HttpStatus.NOT_FOUND);
-        }
+    public ResponseEntity<Object> delete(@PathVariable("id") UUID id) {
         userService.delete(id);
         return new ResponseEntity<>("User is successfully deleted!", HttpStatus.NO_CONTENT);
 
     }
-//
-//    @Autowired
-//    ApplicationContext applicationContext;
 
     @GetMapping
-    public ResponseEntity<?> getAllUsers() {
+    public ResponseEntity<List<UserDto>> getAllUsers() {
         List<UserDto> userDtoList = userService.getAllUsers();
-        if (userDtoList.isEmpty()) {
-            return new ResponseEntity<>("There are no users to display!", HttpStatus.NOT_FOUND);
-        }
         return new ResponseEntity<>(userDtoList, HttpStatus.OK);
     }
 

@@ -1,4 +1,4 @@
-package com.mnilga.travel.agency.application.dto;
+package com.mnilga.travel.agency.application.exceptions;
 
 import java.time.LocalDateTime;
 
