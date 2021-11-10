@@ -1,7 +1,6 @@
 package com.mnilga.travel.agency.application.config;
 
-import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
+
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
@@ -23,23 +22,28 @@ public class Logging {
     public void callAtMyServicePublic() {
     }
 
-//    @Around("callAtMyServicePublic()")
-//    public Object aroundCallAt(ProceedingJoinPoint call) throws Throwable {
-//        StopWatch clock = new StopWatch(call.toString());
-//        LOGGER.info(clock);
-//        return call.proceed();
-//    }
-
     @Before("callAtMyServicePublic()")
     public void aroundCallAt(JoinPoint jp) {
         String args = Arrays.stream(jp.getArgs())
                 .map(Object::toString)
                 .collect(Collectors.joining(","));
         LOGGER.info("before " + jp + ", args=[" + args + "]");
+        StopWatch clock = new StopWatch(jp.toString());
+        LOGGER.debug(clock);
     }
 
     @After("callAtMyServicePublic()")
     public void afterCallAt(JoinPoint jp) {
         LOGGER.info("after " + jp.toString());
+        StopWatch clock = new StopWatch(jp.toString());
+        LOGGER.debug(clock);
     }
 }
+
+
+//    @Around("callAtMyServicePublic()")
+//    public Object aroundCallAt(ProceedingJoinPoint call) throws Throwable {
+//        StopWatch clock = new StopWatch(call.toString());
+//        LOGGER.info(clock);
+//        return call.proceed();
+//    }

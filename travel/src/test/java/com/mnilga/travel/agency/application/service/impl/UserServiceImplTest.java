@@ -43,9 +43,9 @@ class UserServiceImplTest {
 
         when(roleService.findByName(ROLE_ADMIN))
             .thenReturn(createRole());
-        when(addressService.findByCountryAndCityAndStreetAndHouseNumberAndFlatNumberAndZipcode(
-            COUNTRY, CITY, STREET, HOUSE_NUMBER, FLAT_NUMBER, ZIPCODE
-        )).thenReturn(createAddress());
+     //   when(addressService.findByCountryAndCityAndStreetAndHouseNumberAndFlatNumberAndZipcode(
+     //       COUNTRY, CITY, STREET, HOUSE_NUMBER, FLAT_NUMBER, ZIPCODE
+     //   )).thenReturn(createAddress());
         when(userRepository.save(user))
             .thenReturn(user);
 
@@ -54,8 +54,8 @@ class UserServiceImplTest {
         assertUserDto(expected, actual);
 
         verify(roleService).findByName(ROLE_ADMIN);
-        verify(addressService).findByCountryAndCityAndStreetAndHouseNumberAndFlatNumberAndZipcode(
-            COUNTRY, CITY, STREET, HOUSE_NUMBER, FLAT_NUMBER, ZIPCODE);
+     //   verify(addressService).findByCountryAndCityAndStreetAndHouseNumberAndFlatNumberAndZipcode(
+      //      COUNTRY, CITY, STREET, HOUSE_NUMBER, FLAT_NUMBER, ZIPCODE);
         verify(userRepository).save(user);
 
         verifyNoMoreInteractions(roleService, addressService, userRepository);
