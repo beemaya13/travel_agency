@@ -37,20 +37,17 @@ public class AssertUtils {
         assertAddressDto(expected.getAddressDto(), actual.getAddressDto());
     }
 
-    public static <T> void assertCollections(Collection<T> expected, Collection<T> actual, BiConsumer<T, T> assertFunction) {
+    public static void assertAddress(Address expected, Address actual){
         assertNotNull(actual);
-        assertTrue(actual.size() != 0);
-        assertEquals(expected.size(), actual.size());
-        Iterator<T> eIterator = expected.iterator();
-        Iterator<T> aIterator = actual.iterator();
-        while (eIterator.hasNext()){
-            T e = eIterator.next();
-            T a = aIterator.next();
-            assertFunction.accept(e, a);
-        }
+        assertEquals(expected.getCountry(), actual.getCountry());
+        assertEquals(expected.getCity(), actual.getCity());
+        assertEquals(expected.getStreet(), actual.getStreet());
+        assertEquals(expected.getHouseNumber(), actual.getHouseNumber());
+        assertEquals(expected.getFlatNumber(), actual.getFlatNumber());
+        assertEquals(expected.getZipcode(), actual.getZipcode());
     }
 
-    public static void assertAddress(Address expected, Address actual){
+    public static void assertAddressDto(AddressDto expected, AddressDto actual){
         assertNotNull(actual);
         assertEquals(expected.getCountry(), actual.getCountry());
         assertEquals(expected.getCity(), actual.getCity());
@@ -64,13 +61,17 @@ public class AssertUtils {
         assertNotNull(actual);
     }
 
-    public static void assertAddressDto(AddressDto expected, AddressDto actual){
+    public static <T> void assertCollections(Collection<T> expected, Collection<T> actual, BiConsumer<T, T> assertFunction) {
         assertNotNull(actual);
-        assertEquals(expected.getCountry(), actual.getCountry());
-        assertEquals(expected.getCity(), actual.getCity());
-        assertEquals(expected.getStreet(), actual.getStreet());
-        assertEquals(expected.getHouseNumber(), actual.getHouseNumber());
-        assertEquals(expected.getFlatNumber(), actual.getFlatNumber());
-        assertEquals(expected.getZipcode(), actual.getZipcode());
+        assertTrue(actual.size() != 0);
+        assertEquals(expected.size(), actual.size());
+        Iterator<T> eIterator = expected.iterator();
+        Iterator<T> aIterator = actual.iterator();
+        while (eIterator.hasNext()){
+            T e = eIterator.next();
+            T a = aIterator.next();
+            assertFunction.accept(e, a);
+        }
     }
+
 }

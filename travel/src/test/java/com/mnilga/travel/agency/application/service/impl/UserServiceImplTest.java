@@ -16,10 +16,8 @@ import com.mnilga.travel.agency.application.util.TestDataFactory;
 import static org.junit.jupiter.api.Assertions.*;
 import static com.mnilga.travel.agency.application.util.TestDataFactory.*;
 import static com.mnilga.travel.agency.application.util.AssertUtils.*;
-
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
-import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class UserServiceImplTest {
@@ -37,32 +35,34 @@ class UserServiceImplTest {
     private UserServiceImpl userService;
 
     @Test
-    void creteTest() {
+    void createTest() {
         User user = createUser();
         UserDto expected = createUserDto();
+        UserDto actual = userService.create(user);
 
         when(roleService.findByName(ROLE_ADMIN))
             .thenReturn(createRole());
-     //   when(addressService.findByCountryAndCityAndStreetAndHouseNumberAndFlatNumberAndZipcode(
-     //       COUNTRY, CITY, STREET, HOUSE_NUMBER, FLAT_NUMBER, ZIPCODE
-     //   )).thenReturn(createAddress());
-        when(userRepository.save(user))
-            .thenReturn(user);
 
-        UserDto actual = userService.create(user);
+        when(addressService.findById(ID)).thenReturn(createAddress());
+
+        doReturn(user).when(userRepository).save(any(User.class));
+        User u = userRepository.save(user);
+
+//        when(userRepository.save(user))
+//            .thenReturn(user);
+
 
         assertUserDto(expected, actual);
 
         verify(roleService).findByName(ROLE_ADMIN);
-     //   verify(addressService).findByCountryAndCityAndStreetAndHouseNumberAndFlatNumberAndZipcode(
-      //      COUNTRY, CITY, STREET, HOUSE_NUMBER, FLAT_NUMBER, ZIPCODE);
+        verify(addressService).findById(ID);
         verify(userRepository).save(user);
 
         verifyNoMoreInteractions(roleService, addressService, userRepository);
     }
 
     @Test
-    void creteShouldThrowExceptionTest() {
+    void createShouldThrowExceptionTest() {
         assertThrows(RuntimeException.class, () -> userService.create(null), "User can't be null");
     }
 
