@@ -2,6 +2,7 @@ package com.mnilga.travel.agency.application.dto;
 
 
 import java.time.LocalDate;
+import java.util.Objects;
 import java.util.UUID;
 
 public class OrderDto {
@@ -70,5 +71,18 @@ public class OrderDto {
                 ", user=" + user +
                 ", room=" + room +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        OrderDto orderDto = (OrderDto) o;
+        return Objects.equals(orderId, orderDto.orderId) && Objects.equals(arrivalDate, orderDto.arrivalDate) && Objects.equals(departureDate, orderDto.departureDate) && Objects.equals(orderDate, orderDto.orderDate) && Objects.equals(user, orderDto.user) && Objects.equals(room, orderDto.room);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(orderId, arrivalDate, departureDate, orderDate, user, room);
     }
 }

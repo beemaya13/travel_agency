@@ -1,5 +1,6 @@
 package com.mnilga.travel.agency.application.dto;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public class RoomDto {
@@ -58,5 +59,18 @@ public class RoomDto {
                 ", price='" + price + '\'' +
                 ", hotel=" + hotel +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RoomDto roomDto = (RoomDto) o;
+        return Objects.equals(roomId, roomDto.roomId) && Objects.equals(roomNumber, roomDto.roomNumber) && Objects.equals(roomType, roomDto.roomType) && Objects.equals(price, roomDto.price) && Objects.equals(hotel, roomDto.hotel);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(roomId, roomNumber, roomType, price, hotel);
     }
 }

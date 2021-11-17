@@ -1,6 +1,7 @@
 package com.mnilga.travel.agency.application.dto;
 
 
+import java.util.Objects;
 import java.util.UUID;
 
 public class UserDto {
@@ -79,5 +80,18 @@ public class UserDto {
                 ", role=" + role +
                 ", addressDto=" + addressDto +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserDto userDto = (UserDto) o;
+        return Objects.equals(id, userDto.id) && Objects.equals(email, userDto.email) && Objects.equals(firstName, userDto.firstName) && Objects.equals(lastName, userDto.lastName) && Objects.equals(sex, userDto.sex) && Objects.equals(role, userDto.role) && Objects.equals(addressDto, userDto.addressDto);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, email, firstName, lastName, sex, role, addressDto);
     }
 }

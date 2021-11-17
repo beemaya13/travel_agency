@@ -3,6 +3,7 @@ package com.mnilga.travel.agency.application.model;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "addresses")
@@ -72,5 +73,19 @@ public class Address extends Audit {
 
     public void setZipcode(Integer zipcode) {
         this.zipcode = zipcode;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Address address = (Address) o;
+        return Objects.equals(country, address.country) && Objects.equals(city, address.city) && Objects.equals(street, address.street) && Objects.equals(houseNumber, address.houseNumber) && Objects.equals(flatNumber, address.flatNumber) && Objects.equals(zipcode, address.zipcode);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), country, city, street, houseNumber, flatNumber, zipcode);
     }
 }

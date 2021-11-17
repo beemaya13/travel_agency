@@ -1,5 +1,6 @@
 package com.mnilga.travel.agency.application.dto;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public class AddressDto {
@@ -78,5 +79,18 @@ public class AddressDto {
                 ", flatNumber=" + flatNumber +
                 ", zipcode=" + zipcode +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AddressDto that = (AddressDto) o;
+        return Objects.equals(id, that.id) && Objects.equals(country, that.country) && Objects.equals(city, that.city) && Objects.equals(street, that.street) && Objects.equals(houseNumber, that.houseNumber) && Objects.equals(flatNumber, that.flatNumber) && Objects.equals(zipcode, that.zipcode);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, country, city, street, houseNumber, flatNumber, zipcode);
     }
 }

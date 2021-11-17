@@ -3,6 +3,7 @@ package com.mnilga.travel.agency.application.model;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "hotels")
@@ -63,5 +64,19 @@ public class Hotel extends Audit{
 
     public void setRooms(List<Room> rooms) {
         this.rooms = rooms;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Hotel hotel = (Hotel) o;
+        return Objects.equals(name, hotel.name) && Objects.equals(stars, hotel.stars) && Objects.equals(square, hotel.square) && Objects.equals(city, hotel.city) && Objects.equals(rooms, hotel.rooms);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), name, stars, square, city, rooms);
     }
 }
