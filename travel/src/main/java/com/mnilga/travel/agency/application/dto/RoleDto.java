@@ -1,5 +1,6 @@
 package com.mnilga.travel.agency.application.dto;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public class RoleDto {
@@ -28,5 +29,18 @@ public class RoleDto {
                 "roleId='" + roleId + '\'' +
                 ", name='" + name + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RoleDto roleDto = (RoleDto) o;
+        return Objects.equals(roleId, roleDto.roleId) && Objects.equals(name, roleDto.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(roleId, name);
     }
 }

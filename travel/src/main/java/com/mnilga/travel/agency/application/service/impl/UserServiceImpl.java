@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto create(User user) {      //////!!!
+    public UserDto create(User user) {
         LOGGER.info("Starting to create user");
         if (user == null) {
             throw new RuntimeException("User can't be null");
