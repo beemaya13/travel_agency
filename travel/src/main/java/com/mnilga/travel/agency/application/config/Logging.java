@@ -39,11 +39,3 @@ public class Logging {
         LOGGER.debug(clock);
     }
 }
-
-
-//    @Around("callAtMyServicePublic()")
-//    public Object aroundCallAt(ProceedingJoinPoint call) throws Throwable {
-//        StopWatch clock = new StopWatch(call.toString());
-//        LOGGER.info(clock);
-//        return call.proceed();
-//    }
