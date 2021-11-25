@@ -33,7 +33,7 @@ class UserServiceImplTest {
 
     @Mock
     private UserRepository userRepository;
-//    @Spy
+
     private GenericConversionService genericConversionService = new GenericConversionService();
     private ConversionService conversionService;
     @Mock
@@ -71,25 +71,6 @@ class UserServiceImplTest {
         verifyNoMoreInteractions(roleService, addressService, userRepository);
     }
 
-    @Test
-    void createTest2() {
-        User user = createUser();
-        UserDto expected = createUserDto();
-
-        doReturn(Optional.of(user))
-                .when(userRepository)
-                .findById(any(UUID.class));
-
-        doReturn(user)
-                .when(userRepository)
-                .save(user);
-
-        UserDto actual = userService.create(user);
-        verify(userRepository).save(user);
-
-        assertUserDto(expected, actual);
-
-    }
 
     @Test
     void createShouldThrowExceptionTest() {
