@@ -33,13 +33,13 @@ class UserServiceImplTest {
 
     @Mock
     private UserRepository userRepository;
-
-    private GenericConversionService genericConversionService = new GenericConversionService();
-    private ConversionService conversionService;
     @Mock
     private RoleServiceImpl roleService;
     @Mock
     private AddressServiceImpl addressService;
+
+    private GenericConversionService genericConversionService = new GenericConversionService();
+    private ConversionService conversionService;
 
     @InjectMocks
     private UserServiceImpl userService;
