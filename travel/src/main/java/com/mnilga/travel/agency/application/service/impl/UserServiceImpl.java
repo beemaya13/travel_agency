@@ -70,6 +70,7 @@ public class UserServiceImpl implements UserService {
     public UserDto readById(UUID id) {
         User user = findUserById(id);
         return service.convert(user, UserDto.class);
+
     }
 
     @Override
@@ -104,8 +105,7 @@ public class UserServiceImpl implements UserService {
     @CacheEvict   // to delete deleted users from cache
     public void delete(UUID id) {
         LOGGER.warn("Starting to delete user with id " + id);
-        User user = findUserById(id);
-        userRepository.delete(user);
+        userRepository.deleteById(id);
         LOGGER.info("User with id " + id + " is deleted");
     }
 

@@ -75,6 +75,7 @@ public class TestDataFactory {
 
     public static AddressDto createAddressDto(){
         AddressDto addressDto = new AddressDto();
+        addressDto.setId(ADDRESS_ID);
         addressDto.setCountry(COUNTRY);
         addressDto.setCity(CITY);
         addressDto.setStreet(STREET);
