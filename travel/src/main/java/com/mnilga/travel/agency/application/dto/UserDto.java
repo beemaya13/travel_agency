@@ -53,11 +53,11 @@ public class UserDto {
         this.sex = sex;
     }
 
-    public RoleDto getRole() {
+    public RoleDto getRoleDto() {
         return role;
     }
 
-    public void setRole(RoleDto role) {
+    public void setRoleDto(RoleDto role) {
         this.role = role;
     }
 

@@ -34,7 +34,7 @@ public class UserConverterToDto implements Converter<User, UserDto> {
         userDto.setEmail(user.getEmail());
         userDto.setSex(user.getSex().toString());
         RoleDto roleDto = roleConverterToDto.convert(user.getRole());
-        userDto.setRole(roleDto);
+        userDto.setRoleDto(roleDto);
         AddressDto addressDto = addressConverterToDto.convert(user.getAddress());
         userDto.setAddressDto(addressDto);
         return userDto;

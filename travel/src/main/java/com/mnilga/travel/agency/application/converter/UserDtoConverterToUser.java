@@ -33,7 +33,7 @@ public class UserDtoConverterToUser implements Converter<UserDto, User> {
         user.setFirstName(userDto.getFirstName());
         user.setLastName(userDto.getLastName());
         user.setSex(User.Sex.valueOf(userDto.getSex()));
-        Role role = roleDtoConverterToRole.convert(userDto.getRole());
+        Role role = roleDtoConverterToRole.convert(userDto.getRoleDto());
         user.setRole(role);
         Address address = addressDtoConverterToAddress.convert(userDto.getAddressDto());
         user.setAddress(address);

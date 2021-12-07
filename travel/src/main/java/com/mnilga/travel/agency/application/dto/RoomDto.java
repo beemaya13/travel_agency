@@ -42,11 +42,11 @@ public class RoomDto {
         this.roomType = roomType;
     }
 
-    public HotelDto getHotel() {
+    public HotelDto getHotelDto() {
         return hotel;
     }
 
-    public void setHotel(HotelDto hotel) {
+    public void setHotelDto(HotelDto hotel) {
         this.hotel = hotel;
     }
 

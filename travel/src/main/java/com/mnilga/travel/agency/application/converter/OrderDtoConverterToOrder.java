@@ -32,9 +32,9 @@ public class OrderDtoConverterToOrder implements Converter<OrderDto, Order> {
         order.setArrivalDate(orderDto.getArrivalDate());
         order.setDepartureDate(orderDto.getDepartureDate());
         order.setOrderDate(orderDto.getOrderDate());
-        User user = userDtoConverterToUser.convert(orderDto.getUser());
+        User user = userDtoConverterToUser.convert(orderDto.getUserDto());
         order.setUser(user);
-        Room room = roomDtoConverterToRoom.convert(orderDto.getRoom());
+        Room room = roomDtoConverterToRoom.convert(orderDto.getRoomDto());
         order.setRoom(room);
         return order;
     }

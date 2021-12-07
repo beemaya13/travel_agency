@@ -33,7 +33,7 @@ public class AssertUtils {
         assertEquals(expected.getFirstName(), actual.getFirstName());
         assertEquals(expected.getLastName(), actual.getLastName());
         assertEquals(expected.getSex(), actual.getSex());
-        assertEquals(expected.getRole(), actual.getRole());
+        assertEquals(expected.getRoleDto(), actual.getRoleDto());
         assertAddressDto(expected.getAddressDto(), actual.getAddressDto());
     }
 

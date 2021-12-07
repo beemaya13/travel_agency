@@ -25,7 +25,7 @@ public class RoomConverterToDto implements Converter<Room, RoomDto> {
         roomDto.setRoomType(room.getRoomType().toString());
         roomDto.setPrice(room.getPrice());
         HotelDto hotelDto = hotelConverterToDto.convert(room.getHotel());
-        roomDto.setHotel(hotelDto);
+        roomDto.setHotelDto(hotelDto);
         return roomDto;
     }
 }

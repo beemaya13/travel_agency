@@ -45,19 +45,19 @@ public class OrderDto {
         this.orderDate = orderDate;
     }
 
-    public UserDto getUser() {
+    public UserDto getUserDto() {
         return user;
     }
 
-    public void setUser(UserDto user) {
+    public void setUserDto(UserDto user) {
         this.user = user;
     }
 
-    public RoomDto getRoom() {
+    public RoomDto getRoomDto() {
         return room;
     }
 
-    public void setRoom(RoomDto room) {
+    public void setRoomDto(RoomDto room) {
         this.room = room;
     }
 
