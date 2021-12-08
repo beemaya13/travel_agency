@@ -1,9 +1,11 @@
 package com.mnilga.travel.agency.application.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mnilga.travel.agency.application.dto.UserDto;
 import com.mnilga.travel.agency.application.model.User;
+import com.mnilga.travel.agency.application.repository.UserRepository;
 import com.mnilga.travel.agency.application.service.impl.UserServiceImpl;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -22,6 +24,7 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.List;
+import java.util.Optional;
 
 import static com.mnilga.travel.agency.application.util.AssertUtils.assertUserDto;
 import static com.mnilga.travel.agency.application.util.TestDataFactory.*;
@@ -36,10 +39,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(UserController.class)
-@TestPropertySource("/application-test.properties")
+//@TestPropertySource("/application-test.properties")   don't need for these tests
 class UserControllerTest {
-
+    private static User expectedUser;
     private static UserDto expectedUserDto;
+    private static final String LOCALHOST = "http://localhost:8081/api/users/";
     @Autowired
     private MockMvc mockMvc;
     @Autowired
@@ -49,44 +53,65 @@ class UserControllerTest {
 
     @BeforeAll
     public static void initProcedure() {
-        expectedUserDto = new UserDto();
-        expectedUserDto.setId(USER_ID);
-        expectedUserDto.setEmail(EMAIL);
-        expectedUserDto.setFirstName(FIRST_NAME);
-        expectedUserDto.setLastName(LAST_NAME);
-        expectedUserDto.setSex(User.Sex.FEMALE.name());
-        expectedUserDto.setRoleDto(createRoleDto());
-        expectedUserDto.setAddressDto(createAddressDto());
+        expectedUser = createUser();
+        expectedUserDto = createUserDto();
     }
 
     @Test
-    void create() {
+    void create() throws Exception {
+        when(userServiceMock.create(expectedUser))
+                .thenReturn(expectedUserDto);
+
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post(LOCALHOST)
+                .content(mapper.writeValueAsString(expectedUser))
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isCreated())
+                .andReturn();
+
+        String jsonResponse = mvcResult.getResponse().getContentAsString();
+        UserDto actual = mapper.readValue(jsonResponse, UserDto.class);
+
+        assertUserDto(expectedUserDto, actual);
     }
 
     @Test
     void readById() throws Exception {
         when(userServiceMock.readById(USER_ID)).thenReturn(expectedUserDto);
 
-        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders
-                .get("http://localhost:8081/api/users/6478eef6-6358-40cb-a0b7-3e6fe372cc1a"))
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(LOCALHOST + USER_ID)
+                        .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andReturn();
 
-        mapper = new ObjectMapper();
-        UserDto actual = mapper.readValue(mvcResult.getResponse().getContentAsString(), new TypeReference<>() {
-        });
+        String jsonResponse = mvcResult.getResponse().getContentAsString();
+        UserDto actual = mapper.readValue(jsonResponse, UserDto.class);
 
-        assertNotNull(actual);
         assertUserDto(expectedUserDto, actual);
     }
 
     @Test
-    void update() {
+    void update() throws Exception {
+        when(userServiceMock.update(expectedUser))
+                .thenReturn(expectedUserDto);
+
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.put(LOCALHOST)
+                        .content(mapper.writeValueAsString(expectedUser))
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andReturn();
+
+        String jsonResponse = mvcResult.getResponse().getContentAsString();
+        UserDto actual = mapper.readValue(jsonResponse, UserDto.class);
+
+        assertUserDto(expectedUserDto, actual);
     }
 
     @Test
-    void delete() {
+    void delete() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.delete(LOCALHOST + USER_ID)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNoContent())
+                .andReturn();
     }
 
     @Test

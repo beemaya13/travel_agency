@@ -3,6 +3,7 @@ package com.mnilga.travel.agency.application.service.impl;
 import com.mnilga.travel.agency.application.converter.AddressConverterToDto;
 import com.mnilga.travel.agency.application.converter.RoleConverterToDto;
 import com.mnilga.travel.agency.application.converter.UserConverterToDto;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InOrder;
@@ -50,6 +51,10 @@ class UserServiceImplTest {
         userConverterToDto.setAddressConverterToDto(new AddressConverterToDto());
         genericConversionService.addConverter(userConverterToDto);
         conversionServiceSpy = spy(genericConversionService);
+    }
+
+    @BeforeAll
+    public static void initProcedure() {
         expectedUser = createUser();
         expectedUserDto = createUserDto();
     }
