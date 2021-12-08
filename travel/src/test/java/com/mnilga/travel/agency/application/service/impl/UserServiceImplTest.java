@@ -3,14 +3,11 @@ package com.mnilga.travel.agency.application.service.impl;
 import com.mnilga.travel.agency.application.converter.AddressConverterToDto;
 import com.mnilga.travel.agency.application.converter.RoleConverterToDto;
 import com.mnilga.travel.agency.application.converter.UserConverterToDto;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InOrder;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.core.convert.ConversionService;
 
@@ -19,7 +16,6 @@ import com.mnilga.travel.agency.application.model.User;
 import com.mnilga.travel.agency.application.repository.UserRepository;
 import org.springframework.core.convert.support.GenericConversionService;
 
-import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
