@@ -1,11 +1,9 @@
 package com.mnilga.travel.agency.application.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mnilga.travel.agency.application.dto.UserDto;
 import com.mnilga.travel.agency.application.model.User;
-import com.mnilga.travel.agency.application.repository.UserRepository;
 import com.mnilga.travel.agency.application.service.impl.UserServiceImpl;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -13,30 +11,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.web.servlet.*;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-import org.springframework.http.MediaType;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 
 import static com.mnilga.travel.agency.application.util.AssertUtils.assertUserDto;
 import static com.mnilga.travel.agency.application.util.TestDataFactory.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyLong;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 
 @WebMvcTest(UserController.class)
 //@TestPropertySource("/application-test.properties")   don't need for these tests
@@ -44,6 +31,7 @@ class UserControllerTest {
     private static User expectedUser;
     private static UserDto expectedUserDto;
     private static final String LOCALHOST = "http://localhost:8081/api/users/";
+
     @Autowired
     private MockMvc mockMvc;
     @Autowired
@@ -63,8 +51,8 @@ class UserControllerTest {
                 .thenReturn(expectedUserDto);
 
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post(LOCALHOST)
-                .content(mapper.writeValueAsString(expectedUser))
-                .contentType(MediaType.APPLICATION_JSON))
+                        .content(mapper.writeValueAsString(expectedUser))
+                        .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated())
                 .andReturn();
 
@@ -115,11 +103,45 @@ class UserControllerTest {
     }
 
     @Test
-    void getAllUsers() { //method read
-        List<UserDto> list = List.of(expectedUserDto);
+    void getAllUsers() throws Exception { //method read
+        List<UserDto> users = List.of(expectedUserDto);
+        when(userServiceMock.getAllUsers()).thenReturn(users);
+
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(LOCALHOST)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andReturn();
+
+        String jsonResponse = mvcResult.getResponse().getContentAsString();
+        List<UserDto> userDtoList = mapper.readValue(jsonResponse,
+                mapper.getTypeFactory().constructCollectionType(List.class, UserDto.class));
+
+        assertFalse(userDtoList.isEmpty());
+        assertEquals(1, userDtoList.size());
+        assertTrue(userDtoList.contains(expectedUserDto));
     }
 
     @Test
-    void patch() {
+    void patch() throws Exception {
+        Map<String, Object> patchedFields = createUserPatchFields();
+        String patchedName = "patched_first_name";
+        String patchedEmail = "patched_email";
+        expectedUserDto.setFirstName(patchedName);
+        expectedUserDto.setEmail(patchedEmail);
+
+        when(userServiceMock.patch(patchedFields, USER_ID)).thenReturn(expectedUserDto);
+
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.patch(LOCALHOST + USER_ID)
+                        .content(mapper.writeValueAsString(patchedFields))
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andReturn();
+
+        String jsonResponse = mvcResult.getResponse().getContentAsString();
+        UserDto actual = mapper.readValue(jsonResponse, UserDto.class);
+
+        assertUserDto(expectedUserDto, actual);
+        assertEquals(patchedFields.get("first_name"), actual.getFirstName());
+        assertEquals(patchedFields.get("email"), actual.getEmail());
     }
 }

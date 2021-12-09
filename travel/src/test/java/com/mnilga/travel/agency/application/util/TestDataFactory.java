@@ -1,7 +1,9 @@
 package com.mnilga.travel.agency.application.util;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import com.mnilga.travel.agency.application.dto.*;
@@ -62,6 +64,13 @@ public class TestDataFactory {
         userDto.setRoleDto(createRoleDto());
         userDto.setAddressDto(createAddressDto());
         return userDto;
+    }
+
+    public static Map<String, Object> createUserPatchFields() {
+        Map<String, Object> patchFields = new HashMap<>();
+        patchFields.put("first_name", "patched_first_name");
+        patchFields.put("email", "patched_email");
+        return patchFields;
     }
 
     public static Role createRole(){
