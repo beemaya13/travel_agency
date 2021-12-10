@@ -8,9 +8,13 @@ import org.junit.jupiter.api.Test;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeAll;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -23,7 +27,11 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(OrderController.class)
+//@WebMvcTest(OrderController.class)
+@SpringBootTest
+@AutoConfigureMockMvc
+//@TestPropertySource("/application-test.properties")   //or
+@ActiveProfiles("test")
 class OrderControllerTest {
 
     private static Order expectedOrder;
@@ -34,7 +42,8 @@ class OrderControllerTest {
     private MockMvc mockMvc;
     @Autowired
     private ObjectMapper mapper;
-    @MockBean
+    //@MockBean
+    @Autowired
     private OrderServiceImpl orderServiceMock;
 
     @BeforeAll
@@ -45,8 +54,8 @@ class OrderControllerTest {
 
     @Test
     void create() throws Exception {
-        when(orderServiceMock.create(expectedOrder))
-                .thenReturn(expectedOrderDto);
+//        when(orderServiceMock.create(expectedOrder))
+//                .thenReturn(expectedOrderDto);
 
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post(LOCALHOST)
                         .content(mapper.writeValueAsString(expectedOrder))
@@ -62,7 +71,7 @@ class OrderControllerTest {
 
     @Test
     void readById() throws Exception {
-        when(orderServiceMock.readById(ORDER_ID)).thenReturn(expectedOrderDto);
+//        when(orderServiceMock.readById(ORDER_ID)).thenReturn(expectedOrderDto);
 
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(LOCALHOST + ORDER_ID)
                         .contentType(MediaType.APPLICATION_JSON))

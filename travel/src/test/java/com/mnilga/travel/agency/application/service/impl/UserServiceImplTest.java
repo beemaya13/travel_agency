@@ -3,7 +3,10 @@ package com.mnilga.travel.agency.application.service.impl;
 import com.mnilga.travel.agency.application.converter.AddressConverterToDto;
 import com.mnilga.travel.agency.application.converter.RoleConverterToDto;
 import com.mnilga.travel.agency.application.converter.UserConverterToDto;
+import com.mnilga.travel.agency.application.exceptions.ResourceNotFoundException;
+import com.mnilga.travel.agency.application.model.Role;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InOrder;
@@ -51,10 +54,11 @@ class UserServiceImplTest {
         userConverterToDto.setAddressConverterToDto(new AddressConverterToDto());
         genericConversionService.addConverter(userConverterToDto);
         conversionServiceSpy = spy(genericConversionService);
+
     }
 
-    @BeforeAll
-    public static void initProcedure() {
+    @BeforeEach
+    public  void initProcedure() {
         expectedUser = createUser();
         expectedUserDto = createUserDto();
     }
@@ -117,6 +121,27 @@ class UserServiceImplTest {
         assertThrows(RuntimeException.class, () -> userService.update(null), "User can't be null");
     }
 
+    @Test
+    void updateShouldThrowExceptionNotFoundTest() {
+        when(userRepositoryMock.findByEmail(EMAIL)).thenReturn(expectedUser);
+        when(roleServiceMock.findByName("Incorrect value")).thenThrow(ResourceNotFoundException.class);
+        when(roleServiceMock.findByName(ROLE_USER)).thenReturn(createRole());
+        when(addressServiceMock.findById(ADDRESS_ID)).thenReturn(createAddress());
+        when(userRepositoryMock.save(expectedUser)).thenReturn(expectedUser);
+
+        Role incorrectRole = createRole();
+        incorrectRole.setName("Incorrect value");
+        expectedUser.setRole(incorrectRole);
+        UserDto actualUserDto = userService.update(expectedUser);
+        assertUserDto(expectedUserDto, actualUserDto);
+
+        verify(userRepositoryMock).findByEmail(EMAIL);
+        verify(roleServiceMock).findByName(ROLE_USER);
+        verify(addressServiceMock).findById(ADDRESS_ID);
+        verify(userRepositoryMock).save(expectedUser);
+
+        verifyNoMoreInteractions(roleServiceMock, addressServiceMock, userRepositoryMock);
+    }
     @Test
     void deleteTest() {
         userService.delete(expectedUser.getId());

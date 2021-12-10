@@ -23,6 +23,7 @@ public class TestDataFactory {
     public static final String FIRST_NAME = "Ira";
     public static final String LAST_NAME = "Ivanova";
     public static final String ROLE_ADMIN = "Admin";
+    public static final String ROLE_USER = "USER";
     public static final int ZIPCODE = 61000;
     public static final int FLAT_NUMBER = 13;
     public static final int HOUSE_NUMBER = 12;
