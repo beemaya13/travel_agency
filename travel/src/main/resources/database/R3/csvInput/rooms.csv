@@ -1,3 +1,4 @@
+"id","date_created","date_deleted","date_updated","price","room_number","room_type","hotel_id"
 "","17-Sep-2021 13:20:28","","","100.0","1","SINGLE",""
 "","17-Sep-2021 13:20:28","","","200.0","2","DOUBLE",""
 "","17-Sep-2021 13:20:28","","","300.0","3","FAMILY",""

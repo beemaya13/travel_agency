@@ -15,7 +15,7 @@ public class CsvMain implements Callable<Integer>{
     private String location = "travel/src/main/resources/database/R3/csvInput/";
 
     @CommandLine.Option(names = {"-c", "--columns"}, description = "include column names in csv?")
-    private Boolean includeColumnNames = false;
+    private Boolean includeColumnNames = true;
 
     public static void main(String[] args) {
         int exitCode = new CommandLine(new CsvMain()).execute(args);

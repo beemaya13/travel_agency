@@ -36,6 +36,18 @@ public class AssertUtils {
         assertAddressDto(expected.getAddressDto(), actual.getAddressDto());
     }
 
+    public static void assertRole(Role expected, Role actual){
+        assertNotNull(actual);
+        assertEquals(expected.getId(), actual.getId());
+        assertEquals(expected.getName(), actual.getName());
+    }
+
+    public static void assertRoleDto(RoleDto expected, RoleDto actual){
+        assertNotNull(actual);
+        assertEquals(expected.getRoleId(), actual.getRoleId());
+        assertEquals(expected.getName(), actual.getName());
+    }
+
     public static void assertAddress(Address expected, Address actual){
         assertNotNull(actual);
         assertEquals(expected.getCountry(), actual.getCountry());

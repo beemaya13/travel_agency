@@ -73,7 +73,7 @@ public class UserServiceImpl implements UserService {
 
     }
 
-    @Override
+
     public User findUserById(UUID id) {
         LOGGER.info("Starting to find user with id " + id);
         Optional<User> optionalUser = userRepository.findById(id);

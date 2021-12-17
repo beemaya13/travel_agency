@@ -3,10 +3,13 @@ package com.mnilga.travel.agency.application.controller;
 import com.mnilga.travel.agency.application.dto.OrderDto;
 import com.mnilga.travel.agency.application.model.Order;
 import com.mnilga.travel.agency.application.service.impl.OrderServiceImpl;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -27,8 +30,13 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(OrderController.class)
-class OrderControllerTest {
+
+@SpringBootTest
+@AutoConfigureMockMvc
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@TestPropertySource("/application-test.properties")   //or
+//@ActiveProfiles("test")
+class OrderControllerIntegrationTest {
 
     private static Order expectedOrder;
     private static OrderDto expectedOrderDto;
@@ -38,8 +46,9 @@ class OrderControllerTest {
     private MockMvc mockMvc;
     @Autowired
     private ObjectMapper mapper;
-    @MockBean
-    private OrderServiceImpl orderServiceMock;
+
+//    @Autowired
+//    private OrderServiceImpl orderServiceMock;
 
     @BeforeAll
     public static void initProcedure() {
@@ -48,9 +57,8 @@ class OrderControllerTest {
     }
 
     @Test
+    @org.junit.jupiter.api.Order(1)
     void create() throws Exception {
-        when(orderServiceMock.create(expectedOrder))
-                .thenReturn(expectedOrderDto);
 
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post(LOCALHOST)
                         .content(mapper.writeValueAsString(expectedOrder))
@@ -66,7 +74,6 @@ class OrderControllerTest {
 
     @Test
     void readById() throws Exception {
-        when(orderServiceMock.readById(ORDER_ID)).thenReturn(expectedOrderDto);
 
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(LOCALHOST + ORDER_ID)
                         .contentType(MediaType.APPLICATION_JSON))
@@ -81,8 +88,6 @@ class OrderControllerTest {
 
     @Test
     void update() throws Exception {
-        when(orderServiceMock.update(expectedOrder))
-                .thenReturn(expectedOrderDto);
 
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.put(LOCALHOST)
                         .content(mapper.writeValueAsString(expectedOrder))
@@ -106,8 +111,6 @@ class OrderControllerTest {
 
     @Test
     void getAllOrders() throws Exception {
-        List<OrderDto> orders = List.of(expectedOrderDto);
-        when(orderServiceMock.getAllOrders()).thenReturn(orders);
 
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(LOCALHOST)
                         .contentType(MediaType.APPLICATION_JSON))

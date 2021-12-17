@@ -147,7 +147,7 @@ class UserServiceImplTest {
         userService.delete(expectedUser.getId());
 
         verify(userRepositoryMock).deleteById(USER_ID);   //or
-        verify(userRepositoryMock).deleteById(any(UUID.class));
+        //verify(userRepositoryMock).deleteById(any(UUID.class));
         verifyNoMoreInteractions(userRepositoryMock);
     }
 

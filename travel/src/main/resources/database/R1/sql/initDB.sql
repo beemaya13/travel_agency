@@ -1,6 +1,6 @@
 create table if not exists roles
 (
-    id           uuid         not null DEFAULT uuid_generate_v1(),
+    id           uuid         not null default random_uuid(),
     constraint roles_pkey
         primary key (id),
     date_created timestamp    not null DEFAULT CURRENT_TIMESTAMP,
@@ -10,12 +10,12 @@ create table if not exists roles
         constraint uk_6dotkott2kjsp8vw4d0m25fb8
             unique
 );
-alter table roles
-    owner to postgres;
+-- alter table roles
+--     owner to postgres;
 
 create table if not exists addresses
 (
-    id           uuid         not null DEFAULT uuid_generate_v1(),
+    id           uuid         not null default random_uuid(),
     constraint addresses_pkey
         primary key (id),
     date_created timestamp    not null DEFAULT CURRENT_TIMESTAMP,
@@ -28,12 +28,12 @@ create table if not exists addresses
     country      varchar(255) not null,
     city         varchar(255) not null
 );
-alter table addresses
-    owner to postgres;
+    -- alter table addresses
+    --     owner to postgres;
 
 create table if not exists users
 (
-    id           uuid         not null DEFAULT uuid_generate_v1(),
+    id           uuid         not null default random_uuid(),
     constraint users_pkey
         primary key (id),
     date_created timestamp    not null DEFAULT CURRENT_TIMESTAMP,
@@ -52,13 +52,13 @@ create table if not exists users
         constraint fk32ql1ubntj7uh44ph9659tiih
             references addresses (id) ON DELETE CASCADE
 );
-alter table users
-    owner to postgres;
+-- alter table users
+--     owner to postgres;
 
 
 create table if not exists countries
 (
-    id           uuid         not null DEFAULT uuid_generate_v1(),
+    id           uuid         not null default random_uuid(),
     constraint countries_pkey
         primary key (id),
     date_created timestamp    not null DEFAULT CURRENT_TIMESTAMP,
@@ -71,13 +71,13 @@ create table if not exists countries
         constraint uk_m7xlqsndengqp2kpd5nux2s4i
             unique
 );
-alter table countries
-    owner to postgres;
+-- alter table countries
+--     owner to postgres;
 
 
 create table if not exists cities
 (
-    id           uuid         not null DEFAULT uuid_generate_v1(),
+    id           uuid         not null default random_uuid(),
     constraint cities_pkey
         primary key (id),
     date_created timestamp    not null DEFAULT CURRENT_TIMESTAMP,
@@ -88,12 +88,12 @@ create table if not exists cities
         constraint fkkwysadtw35u6s83fllwubvkiw
             references countries (id) ON DELETE CASCADE
 );
-alter table cities
-    owner to postgres;
+-- alter table cities
+--     owner to postgres;
 
 create table if not exists hotels
 (
-    id           uuid             not null DEFAULT uuid_generate_v1(),
+    id           uuid             not null default random_uuid(),
     constraint hotels_pkey
         primary key (id),
     date_created timestamp        not null DEFAULT CURRENT_TIMESTAMP,
@@ -108,14 +108,14 @@ create table if not exists hotels
         constraint fkkwysadtw45u6s82fllwubvkiw
             references cities (id) ON DELETE CASCADE
 );
-alter table hotels
-    owner to postgres;
+-- alter table hotels
+--     owner to postgres;
 
 
 
 create table if not exists rooms
 (
-    id           uuid             not null DEFAULT uuid_generate_v1(),
+    id           uuid             not null default random_uuid(),
     constraint rooms_pkey
         primary key (id),
     date_created timestamp        not null DEFAULT CURRENT_TIMESTAMP,
@@ -128,12 +128,12 @@ create table if not exists rooms
         constraint fkp5lufxy0ghq53ugm93hdc941k
             references hotels (id) ON DELETE CASCADE
 );
-alter table rooms
-    owner to postgres;
+-- alter table rooms
+--     owner to postgres;
 
 create table if not exists orders
 (
-    id             uuid      not null DEFAULT uuid_generate_v1(),
+    id             uuid      not null default random_uuid(),
     constraint orders_pkey
         primary key (id),
     date_created   timestamp not null DEFAULT CURRENT_TIMESTAMP,
@@ -149,7 +149,7 @@ create table if not exists orders
         constraint fk32ql8ubntj5uh44ph9659tiih
             references users (id) ON DELETE CASCADE
 );
-alter table orders
-    owner to postgres;
+-- alter table orders
+--     owner to postgres;
 
 

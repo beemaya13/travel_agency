@@ -3,6 +3,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class DbReader {
@@ -37,7 +38,7 @@ public class DbReader {
         return tableNames;
     }
 
-    public void readTablesAndGenerateCsv(ArrayList<String> tableNames, String location, Boolean includeColumnNames) {
+    public void readTablesAndGenerateCsv(List<String> tableNames, String location, Boolean includeColumnNames) {
         try {
             for (String tableName : tableNames) {
                 String pathToWrite = location + "\\" + tableName + ".csv";

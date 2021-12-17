@@ -32,6 +32,9 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public RoleDto create(Role role) {
+        if (role == null) {
+            throw new RuntimeException("Role can't be null");
+        }
         Role newRole = roleRepository.save(role);
         return service.convert(newRole, RoleDto.class);
     }
