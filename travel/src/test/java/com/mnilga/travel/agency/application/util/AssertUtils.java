@@ -163,7 +163,7 @@ public class AssertUtils {
 
     public static <T> void assertCollections(Collection<T> expected, Collection<T> actual, BiConsumer<T, T> assertFunction) {
         assertNotNull(actual);
-        assertTrue(actual.size() != 0);
+        //assertTrue(actual.size() != 0);
         assertEquals(expected.size(), actual.size());
         Iterator<T> eIterator = expected.iterator();
         Iterator<T> aIterator = actual.iterator();
