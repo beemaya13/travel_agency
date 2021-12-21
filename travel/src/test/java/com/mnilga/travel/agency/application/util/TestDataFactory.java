@@ -33,14 +33,14 @@ public class TestDataFactory {
     public static final LocalDate ARRIVAL_DATE = LocalDate.of(2022, 1, 1);
     public static final LocalDate DEPARTURE_DATE = LocalDate.of(2022, 1, 14);
     public static final LocalDate ORDER_DATE = LocalDate.of(2021, 12, 7);
-    private static final Integer ROOM_NUMBER = 13;
-    private static final Room.RoomType ROOM_TYPE = Room.RoomType.valueOf("DOUBLE");
-    private static final Double PRICE = 2000.0;
-    private static final String HOTEL_NAME = "Rixos";
-    private static final Integer STARS = 5;
-    private static final Integer SQUARE = 100000;
-    private static final String ISO = "UK";
-    private static final String CONTINENT = "EUROPE";
+    public static final Integer ROOM_NUMBER = 13;
+    public static final Room.RoomType ROOM_TYPE = Room.RoomType.valueOf("DOUBLE");
+    public static final Double PRICE = 2000.0;
+    public static final String HOTEL_NAME = "Rixos";
+    public static final Integer STARS = 5;
+    public static final Integer SQUARE = 100000;
+    public static final String ISO = "UK";
+    public static final String CONTINENT = "EUROPE";
 
     public static User createUser (){
         User user = new User();
